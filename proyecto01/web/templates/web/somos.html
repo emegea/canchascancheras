@@ -1,0 +1,44 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block titulo %} » QUIENES SOMOS - Canchas Cancheras {% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'web/css/somos.css' %}">
+{% endblock %}
+
+{% block principal %}
+<main id="somos">
+  <section class="contenedor">
+    <img class="mobileImg" src="{% static '/web/img/somos.png' %}" alt="Quienes Sooms - Canchas Cancheras">
+    <article>
+      <h1>Quiénes somos</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec
+        mi sed odio tristique aliquet. Integer sed lorem eu enim feugiat tincidunt.
+        Fusce scelerisque nunc eu orci faucibus suscipit. Pellentesque habitant morbi
+        tristique senectus et netus et malesuada.</p>
+      <br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec
+        mi sed odio tristique aliquet. Integer sed lorem eu enim feugiat tincidunt.
+        Fusce scelerisque nunc eu orci faucibus suscipit. Pellentesque habitant morbi
+        tristique senectus et netus et malesuada.
+      <br><br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec
+        mi sed odio tristique aliquet. Integer sed lorem eu enim feugiat tincidunt.
+        Fusce scelerisque nunc eu orci faucibus suscipit. Pellentesque habitant morbi
+        tristique senectus et netus et malesuada.
+      <br><br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec
+        mi sed odio tristique aliquet. Integer sed lorem eu enim feugiat tincidunt.
+        Fusce scelerisque nunc eu orci faucibus suscipit. Pellentesque habitant morbi
+        tristique senectus et netus et malesuada.
+      <br><br>
+      <p>
+        En <strong>Canchas Cancheras</strong>, estamos muy contentos de disfrutar cada
+        partido que se arma en nuestras canchas. Por eso queremos decirte...
+      </p> 
+      <p>¡Gracias por confiar en nosotros!</p>
+    </article>
+
+
+  </section>
+</main>
+{% endblock %}

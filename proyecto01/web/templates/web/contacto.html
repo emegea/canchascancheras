@@ -1,0 +1,84 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block titulo %} » CONTACTO - Canchas Cancheras {% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'web/css/contacto.css' %}">
+{% endblock %}
+
+{% block principal %}
+<!-- MAIN -->
+<main id="contacto">
+  <article class="contenedor">
+    <h2><i class="fa-regular fa-futbol"></i> Pongámonos en contacto</h2>
+    <div class="row">      
+      <form id="formularioReservas" class="w60">
+        <div class="row w100">
+          <div class="w50 column">
+            <input type="text" id="nombre" placeholder="Nombre">
+            <input type="tel" id="telefono" placeholder="Teléfono">
+          </div>
+          <div class="w50 column">
+            <input type="text" id="dni" placeholder="DNI">
+            <input type="email" id="email" placeholder="email">
+          </div>
+      </div>
+      <textarea name="mensaje" id="" cols="30" rows="10" placeholder="¿Qué querés comentarnos?"></textarea>
+      <button class="boton" type="submit">
+        <a href="{% url 'contacto' %}">Enviar</a>
+      </button>
+      <p id="error"></p>
+    </form>
+    <div id="masInfo" class="w40">
+      <h2>+ Más información</h2>
+      <p>San Martín 1234</p>
+      <p>C1015ABE - CABA</p>
+      <p>+54 1234 5678</p>
+      <p>info@canchascancheras.com.ar</p>
+      <p>¡Gracias por confiar en nosotros!</p>
+      <img src="{% static 'web/img/logo.svg' %}" />
+    </div>
+
+    
+  </div>
+  
+</article>
+</main>
+
+
+
+
+
+
+
+<!--
+<main id="contacto">
+  <article class="contenedor">    
+    <form id="formularioContacto" class="w60">
+      <h1>> Contactanos</h1>
+      <div class="arriba">
+        <input type="text" id="nombre" placeholder="Carlos Perez">
+        <input type="email" id="email" placeholder="nombre@ejemplo.com">
+      </div>
+      <div class="abajo">
+        <input type="tel" id="telefono" placeholder="+54 1234 5678">
+        <input type="text" id="asunto" placeholder="Presupuesto">
+      </div>
+      <textarea name="mensaje" id="" cols="30" rows="10"></textarea>
+      <button class="boton" type="submit">Enviar</button>
+      <p id="error" style="color:#000;"></p>
+    </form>
+    <div id="masInfo" class="w50">
+      <h2>+ Más información</h2>
+      <p>San Martín 1234</p>
+      <p>C1015ABE - CABA</p>
+      <p>+54 1234 5678</p>
+      <p>info@canchascancheras.com.ar</p>
+      <p>¡Gracias por confiar en nosotros!</p>
+      <img src="{% static 'web/img/logo.svg' %}" />
+    </div>
+  </article>
+</main>
+-->
+
+
+{% endblock %}

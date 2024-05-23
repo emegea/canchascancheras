@@ -1,0 +1,30 @@
+#somos {
+    background:#fff;
+    display:flex;
+    flex-direction:column;
+    padding-top:80px;
+    gap:20px;
+    flex-direction:row;
+    background-image:url("../img/somos.png");
+    background-repeat:no-repeat;
+    background-position:right bottom;
+    background-size:40%;
+  }
+  #somos .contenedor {
+    display:flex;
+    padding:20px 0;
+  }
+  #somos h1 {
+    font-size:2em;
+    margin:0 0 20px 0;
+  }
+  #somos article {
+    width:70%;
+    padding:60px 0;
+  }
+  #somos p {
+    font-size:1.1em;
+  }
+  #somos .ilustracionSomos {
+    width:30%;
+  }

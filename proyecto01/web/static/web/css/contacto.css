@@ -1,0 +1,71 @@
+#contacto {
+  position: relative;
+  padding:80px 20% 0 20%;
+}
+#contacto:before {
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  background-image:url("../img/lineas.svg");
+  mix-blend-mode:multiply;
+  background-size:cover;
+  background-repeat:no-repeat;
+  transition:.5s ease-in;
+  background-attachment: fixed;
+}
+#contacto h1 {
+  font-size:2em;
+  text-transform: uppercase;
+}
+#contacto .contenedor {
+  z-index:99;
+  display:flex;
+  flex-direction:column;
+  justify-content: space-between;
+}
+#masInfo {
+  display:flex;
+  flex-direction:column;
+  justify-content: space-between;
+}
+#masInfo img {
+  margin: 20px 0 0 0 !important;  
+}
+
+
+
+
+#formularioReservas {
+  gap:15px !important;
+}
+#contacto .contenedor > .row {
+  gap:40px !important;
+}
+/*
+*/
+#contacto .row, #contacto .row .w100 .w50 {
+  gap:10px !important;
+}
+#contacto .boton {
+  margin:0 auto;
+  margin-top:20px 0 0 40px;
+  font-size:1.2em;
+}
+#contacto .boton a {
+  color:#fafafa;
+}
+
+
+
+
+
+/**/
+/*  RESPONSIVE */
+@media(max-width:480px){
+  #contacto .contenedor {
+    flex-direction: column;
+  }
+}

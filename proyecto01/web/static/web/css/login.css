@@ -1,0 +1,46 @@
+#login {
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  margin:0;
+  background:linear-gradient(45deg, #0c2955, #60bdd9);
+}
+#login:before {
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  background-image:url("../img/lineas.svg");
+  mix-blend-mode:multiply;
+  background-size:cover;
+  background-repeat:no-repeat;
+  transition:.5s ease-in;
+}
+#login h1 {
+  color:#fafafa;
+  font-size:2em;
+}
+#login .contenedor {
+  z-index:99;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+#login form {
+  background:#fafafa;
+  box-shadow:0 0 20px rgba(0,0,0,0.1);
+  border-radius:8px;
+  padding:40px 30px;
+  gap:15px;
+  border:0px solid;
+}
+#login form #recordarme {
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  gap:10px;
+}

@@ -1,0 +1,378 @@
+
+/* CARRUSEL */
+#novedades {
+  display:flex;
+  flex-direction:column;
+}
+#carrusel {
+  min-height:480px;
+  width:100%;
+  padding:0;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  transition:transform 0.5s ease;
+}
+.carruseles {
+  min-height:480px;
+  color:#fafafa;
+  position:absolute;
+  width:100%;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform 0.5s ease;
+}
+.carruseles:before {
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  background-image:url("../img/lineas.svg");
+  mix-blend-mode:multiply;
+  background-size:cover;
+  background-repeat:no-repeat;
+  transition:.5s ease-in;
+}
+.carruseles img {
+  height:400px;
+}
+.carruseles .contenedor {
+  padding:120px 40px 40px 40px !important;
+
+}
+
+#carruselPrincipal {
+  background:linear-gradient(-45deg, #0c2955, #e90066);
+}
+#carruselPrincipal .contenedor {
+  gap:20px;
+}
+#carruselPrincipal h1 {
+  text-align: center;
+}
+#carruselPrincipal h1 span {
+  display:none;
+}
+#carruselPrincipal img {
+  max-height:150px;
+  filter: invert(1);
+}
+#carruselPrincipal .cls-1 {
+  fill:#fafafa !important;
+}
+#carruselDos {
+  background:linear-gradient(45deg, #0c2955, #60bdd9);
+}
+#carruselDos:before {
+  transform:scaleY(-1);
+}
+#carruselTres {
+  background:linear-gradient(45deg, #7ac143, #60bdd9);
+}
+#carruselCuatro {
+  background:linear-gradient(-45deg, #f85a40, #be0027);
+}
+#carruselCuatro:before {
+  transform:scaleY(-1);
+}
+
+#carruselPrincipal h1 {
+  font-size:2em;
+  font-weight:600;
+  margin:0 0 20px 0;
+}
+#carruselPrincipal p {
+  font-size:1.5em;
+  font-weight:400;
+}
+.carruseles p.titulo {
+  font-size:2em;
+  font-weight:600;
+  margin:0 0 20px 0;
+}
+.carruseles p {
+  font-size:1.5em;
+  font-weight:400;
+}
+.izquierda {
+  opacity:0;
+  transition:.3s ease-in;
+}
+.centro {
+  opacity:1;
+  transition:.5s ease-in;
+}
+.derecha {
+  opacity:0;
+  transition:.3s ease-in;
+}
+#botonAnterior, #botonSiguiente {
+  background:#fafafa;
+  width:25px;
+  height:40px;
+  border:0;
+  overflow:hidden;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:absolute;
+  transition:.3s ease-in;
+  box-shadow:0 0 20px rgba(0,0,0,0.2);
+}
+#botonAnterior:hover, #botonSiguiente:hover {
+  background:#DC834E;
+  transition:.2s ease-out;
+}
+#botonAnterior {
+  left:0;
+  border-radius:0 100px 100px 0;
+  padding:0 5px 0 0;
+}
+#botonSiguiente {
+  right:0;
+  border-radius:100px 0 0 100px;
+  padding:0 0 0 5px;
+}
+#botonAnterior i, #botonSiguiente i {
+  color:#0c2955;
+  transition:.2s ease-out;
+}
+#botonAnterior:hover i, #botonSiguiente:hover i {
+  color:#fafafa;
+  transition:.2s ease-out;
+}
+
+/**/
+/* CANCHAS */
+#canchas {
+  background: rgb(0,0,0,0.8);
+  position: relative;
+}
+#canchas::after {
+  position: absolute;
+  content: "";
+  background-image: url("../img/canchasBg.webp");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#canchas h2 {
+  text-transform: uppercase;
+  color:#dce5eb;
+  font-size:2em;
+}
+#canchas ul { 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+#canchas ul li img {
+  width:100%;
+  opacity:0.8;
+  transition:.2s ease-in;
+}
+#canchas ul li img:hover {
+  opacity:1;
+  box-shadow:0 0 30px rgb(255, 255, 0, 0.5) !important;
+  transition:.2s ease-out;
+}
+#canchas .boton {
+  font-size:1.5em;
+  background:#DC834E !important;
+  transition:.2s ease-in;
+}
+#canchas .boton:hover {
+  background:#7ac143 !important;
+  transition:.2s ease-out;
+  text-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+
+/**/
+/* CREÁ TU CUENTA */
+#creaTuCuenta {
+  padding:0;
+  background:#fff;
+}
+#creaTuCuenta .contenedor {
+  flex-direction:row;
+  background-image:url("../img/creaTuCuenta.svg");
+  background-repeat:no-repeat;
+  background-position:right;
+  background-size:contain;
+}
+#creaTuCuenta h2 {
+  margin:0 0 40px 0;
+}
+#creaTuCuenta ul {
+  padding:60px 0;
+}
+#creaTuCuenta ul li {
+  display:flex;
+  align-items:center;
+}
+#creaTuCuenta ul li > .boton{
+  margin:20px 0 0
+}
+#creaTuCuenta ul li i {
+  font-size:20px;
+  color:#DC834E;
+  margin:0 15px 0 0;
+}
+#creaTuCuenta .boton {
+  margin:0 auto;
+  margin-top:20px 0 0 40px;
+  font-size:1.2em;
+}
+
+/**/
+/* RESERVA TU CANCHA */
+#reservaTuCancha {
+  background: rgb(0,0,0,0.8);
+  position: relative;
+  color:#dce5eb;
+}
+#reservaTuCancha::after {
+  position: absolute;
+  content: "";
+  background-image: url("../img/bg2.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#reservaTuCancha h2 {
+  text-transform: uppercase;
+  color:#dce5eb;
+  font-size:2em;
+}
+#formularioReservas {
+  gap:15px !important;
+}
+#reservaTuCancha .contenedor > .row {
+  gap:40px !important;
+}
+#reservaTuCancha .row, #reservaTuCancha .row .w100 .w50 {
+  gap:10px !important;
+}
+#reservaTuCancha .boton {
+  margin:0 auto;
+  margin-top:20px 0 0 40px;
+  font-size:1.2em;
+}
+#reservaTuCancha .boton a {
+  color:#fafafa;
+}
+
+/**/
+/* BANNER LOGO */
+#bannerLogo {
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#bannerLogo img {
+  max-width: 50%;
+  margin:0 auto;
+}
+
+/**/
+/*  RESPONSIVE */
+
+@media(max-width:480px){
+
+  /* NOVEDADES */
+  .carruseles {
+    padding:0 !important;
+  }
+  .carruseles div.contenedor {
+    padding:0 40px !important;
+  }
+  #botonAnterior, #botonSiguiente  {
+      height:40px;
+      width:20px !important;
+  }
+  #botonAnterior a, #botonSiguiente a {
+      padding:0 !important;
+      margin:0 auto;
+  }
+  #botonSiguiente a  {
+      right:-5px;
+  }
+  #botonAnterior i, #botonSiguiente i {
+      font-size:15px;
+  }
+  #novedades .contenedor {
+    grid-template-columns:1fr;
+  }
+
+  /**/
+  /* CANCHAS */
+  #canchas ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /**/
+  /* CREÁ TU CUENTA */
+  #creaTuCuenta .contenedor {
+    flex-direction:column;
+    background:none;
+    padding:60px 0;
+  }
+  #creaTuCuenta ul {
+    width:100%;
+    padding:0;
+  }
+  #creaTuCuenta h2 {
+    text-align:center;
+  }
+  .ilustracion { 
+    display:none;
+  }
+  .mobileImg {
+    display:flex;
+    width:80%;
+    margin:0 auto;
+  }
+
+  /**/
+  /* RESERVA TU CANCHA */
+  #reservaTuCancha ul {
+    display:contents;
+  }
+  #reservaTuCancha ul li {
+    width:100%;
+  }
+  #reservaTuCancha h2 {
+    text-align:center;
+  }
+  #reservaTuCancha form {
+    margin: 0 0 20px 0;
+  }
+  #reservaTuCancha .row,
+  #reservaTuCancha .row .w100 .w50,
+  #reservaTuCancha .contenedor > .row {
+    flex-direction: column;
+    gap:10px !important;
+  }
+  #reservaTuCancha .w50 {
+    width:100% !important;
+  }
+  .listaIconos li {
+    margin:0 0 10px 0 !important;
+  }
+}

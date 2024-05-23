@@ -1,0 +1,24 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block titulo %} » LISTADO DE CANCHAS - Canchas Cancheras {% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'web/css/lista_canchas.css' %}">
+{% endblock %}
+
+{% block principal %}
+  <h1>Conocé nuestras canchas</h1>
+  <section>
+    {% for cancha in canchas %}
+    <article>
+      <p>{{ cancha }}</p>
+    </article>
+    {% empty %}
+    <article>
+      <p>{{ cancha }}</p>
+    </article>
+    {% endfor %}
+  </section>
+{% endblock %}
+  
+</body>
+</html>

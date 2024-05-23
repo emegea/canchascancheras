@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta
+        comisión:="24309"
+        grupo:="19"
+        integrantes:="Martín, Martín, Cristian, Damian, G Briceño" >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}{% endblock %}</title>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="shortcut icon" href="{% static 'web/img/icono.svg' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'web/css/base.css' %}" />
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+<!-- HEADER -->
+<header class="w100">
+    <section class="contenedorHeader">
+      <div id="logo">
+        <a href="{% url 'index' %}">
+          <img src="{% static 'web/img/logo.svg' %}" />
+        </a>
+      </div>
+      <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="{% url 'somos' %}">Quienes Somos</a></li>
+            <li><a href="{% url 'canchas' %}">Nuestras Canchas</a></li>
+            <li><a href="{% url 'reservas' %}">Reservá tu Cancha</a></li>
+            <li><a href="{% url 'contacto' %}">Contacto</a></li>
+        </ul>
+        <ul>
+          <li><button class="botonDos">Crear Cuenta</button></li>
+          <li><button class="boton">Iniciar Sesión</button></li>
+        </ul>
+      </nav>
+    </section>
+  </header>
+
+  {% block principal %}{% endblock %}
+  
+  <!-- FOOTER -->
+  <footer>
+      <div class="contenedor">
+          <h2>Seguínos en las redes sociales</h2>
+          <div class="redes">
+              <ul>
+                  <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+              </ul>     
+          </div>
+      </div>
+      <div class="copyright">
+          <p>© 2023 Canchas Cancheras</p>
+          <p><a href="#terminos">Terminos y Condiciones</a> | <a href="#politicas">Políticas de Privacidad</a></p>
+      </div>
+  </footer>
+  <!-- ACÁ CARGAMOS LOS JS -->
+  <script src="{% static 'web/js/cositas.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block titulo %} » NUESTRAS CANCHAS - Canchas Cancheras {% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'web/css/canchas.css' %}">
+{% endblock %}
+
+{% block principal %}
+
+<!-- CANCHAS -->
+<main id="canchas">
+  <section class="contenedor">    
+    <h1><i class="fa-regular fa-futbol"></i> Conocé nuestras canchas</h1>
+      <ul>
+        {% for canchita in canchitas %}
+        <li><img src="{{canchita}}" alt="Cancha 1"></li>
+        {% empty %}
+        <li><p>No hay canchas para mostrar</p></li>
+        {% endfor %}
+      </ul>
+      <button class="boton"><p>Reservá tu cancha</p></button>
+    </article>
+  </section>
+
+{% endblock %}

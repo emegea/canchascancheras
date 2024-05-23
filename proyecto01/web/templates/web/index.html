@@ -1,0 +1,195 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block titulo %} CANCHAS CANCHERAS - Reservá tu cancha !{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static '/web/css/index.css' %}">
+{% endblock %}
+
+{% block principal %}
+<!-- 
+  <h1>Hola Shango</h1>
+  <p>Bienvenido {{ nombre }}</p>
+  <p>Hora actual: {{ fecha_hora }}</p>
+-->
+
+  <!-- MAIN -->
+  <main id="novedades">
+    <ul id="carrusel" class="w100">
+  
+      <li id="carruselPrincipal" class="carruseles">
+        <div class="contenedor">
+          <h1>Bienvenido a <span>Canchas Cancheras</span></h1>
+          <img src="{% static '/web/img/logo.svg' %}">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec
+            mi sed odio tristique aliquet. 
+          </p>
+        </div>
+      </li>
+      <li id="carruselDos" class="carruseles w100">
+        <div class="contenedor">
+          <p class="titulo">Título motivador 1</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec
+            mi sed odio tristique aliquet. 
+          </p>
+        </div>
+      </li>
+      <li id="carruselTres" class="carruseles w100">
+        <div class="contenedor">
+          <p class="titulo">Título motivador 2</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec
+            mi sed odio tristique aliquet.
+          </p>
+        </div>
+      </li>
+      <li id="carruselCuatro" class="carruseles w100">
+        <div class="contenedor">
+          <p class="titulo">Título motivador 3</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec
+            mi sed odio tristique aliquet.
+          </p>
+        </div>
+      </li>
+  
+      <!-- BOTONES -->
+      <a id="botonAnterior">
+        <i class="fas fa-angle-left" aria-hidden="true"></i>
+      </a>
+      <a id="botonSiguiente">
+        <i class="fas fa-angle-right" aria-hidden="true"></i>
+      </a>
+  
+    </ul>
+  </main>
+  <!-- CANCHAS -->
+  <section id="canchas">
+    <article class="contenedor">
+      <h2><i class="fa-regular fa-futbol"></i> Conocé nuestras canchas</h2>
+      <div class="contenedor2">
+        <ul class="w45">
+          {% for canchita in canchas %}
+          <li><img src="{{canchita}}" alt="Cancha 1">
+          {% endfor %}
+        </ul>
+        <iframe class="w55" width="100%" height="300" src="https://www.youtube.com/embed/_UKAVnsfDrU?start=6&autoplay=1&mute=1&controls=0&modestbranding=1" title="Canchas Cancheras" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <button class="boton"><a href="{% url 'canchas' %}">» Ver todas las canchas</a></button>
+    </article>
+  </section>
+  
+  
+  <!-- CREA TU CUENTA-->
+  <section id="creaTuCuenta">
+    <article class="contenedor">
+      <img class="mobileImg" src="{% static '/web/img/creaTuCuenta.svg' %}" alt="">
+      <ul class="listaIconos w60">
+        <h2>Creá tu cuenta y empezá a reservar tus turnos.</h2>
+        <li>
+          <i class="fa-solid fa-rocket"></i>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </li>
+        <li>
+          <i class="fa-solid fa-pen"></i>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </li>
+        <li>
+          <i class="fa-regular fa-square-check"></i>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </li>
+        <li>
+          <i class="fa-regular fa-floppy-disk"></i>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </li>
+        <li>
+          <button class="boton"><a href="{% url 'login' %}">» Quiero crear mi cuenta</a></button>
+        </li>
+      </ul>
+      <div class="ilustracion w40"></div>
+    </article>
+    
+  </section>
+  
+  
+  <!-- reservaTuCancha -->
+  <section id="reservaTuCancha">
+    <article class="contenedor">
+      <h2><i class="fa-regular fa-futbol"></i> Reservá tu cancha</h2>
+      <div class="row">
+        <form id="formularioReservas" class="w50">
+          <div class="row w100">
+            <div class="w50 column">
+              <input type="text" id="nombre" placeholder="NOMBRE: Carlos Perez">
+              <input type="tel" id="telefono" placeholder="TELÉFONO: +54 1234 5678">
+              <input type="text" id="dni" placeholder="DNI: +12.345.678">
+            </div>
+            <div class="w50 column">
+              <select id="horario">
+                <option value="" disabled selected hidden>Elegí tu horario</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+                <option value="18:00">18:00</option>
+                <option value="19:00">19:00</option>
+                <option value="20:00">20:00</option>
+                <option value="21:00">21:00</option>
+                <option value="22:00">22:00</option>
+                <option value="23:00">23:00</option>
+              </select>
+              <select id="tipoDeCancha">
+                <option value="" disabled selected hidden>Elegí el tipo de cancha</option>
+                <option value="cancha_de_5">Cancha de 5</option>
+                <option value="cancha_de_7">Cancha de 7</option>
+                <option value="cancha_de_11">Cancha de 11</option>
+              </select>
+              <select id="metodoDePago">
+                <option value="" disabled selected hidden>Elegí el método de pago</option>
+                <option value="cancha_de_7">Transferencia</option>
+                <option value="cancha_de_5">Mercado Pago</option>
+                <option value="cancha_de_11">Pago Mis Cuentas</option>
+              </select>
+            </div>
+          </div>
+          <textarea name="mensaje" id="" cols="30" rows="10" placeholder="¿Querés dejanos algún comentario extra?"></textarea>
+          <button class="boton" type="submit">
+            <a href="{% url 'reservas' %}">Enviar</a>
+          </button>
+          <p id="error"></p>
+        </form>
+        <ul class="listaIconos w50">
+          <li>
+            <i class="fa-regular fa-futbol"></i>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </li>
+          <li>
+            <i class="fa-solid fa-volleyball"></i>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </li>
+          <li>
+            <i class="fa-solid fa-person-running"></i>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </li>
+          <li>
+            <i class="fa-solid fa-mitten"></i>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </li>
+          <li>
+            <i class="fa-solid fa-shirt"></i>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </li>
+          <li>
+            <i class="fa-solid fa-shower"></i>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </li>
+          <li>
+            <i class="fa-solid fa-beer-mug-empty"></i>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </li>
+        </ul>  
+      </div>    
+    </article>
+  </section>
+  
+  <section id="bannerLogo">
+    <article class="contenedor">
+      <img src="{% static 'web/img/logo.svg' %}" alt="logo">
+    </article>
+  </section>
+  {% endblock %}
