@@ -40,7 +40,8 @@ def canchas(request):
 def reservas(request):
     contexto = {
         'canchitas': [
-            '/static/web/img/canchita-01.jpg'        ]
+            '/static/web/img/canchita-01.jpg'        
+        ]
     }
     return render(request, "web/reservas.html", contexto)
 
