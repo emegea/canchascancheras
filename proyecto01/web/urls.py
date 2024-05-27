@@ -7,6 +7,6 @@ urlpatterns = [
     path('canchas', views.canchas, name='canchas'),
     path('reservas', views.reservas, name='reservas'),
     path('contacto', views.contacto, name='contacto'),
-    path('login', views.login, name='login')
+    path('login', views.login, name='login'),
 #    path('saludar/<str:nombre>', views.saludar, name='saludar')
 ]

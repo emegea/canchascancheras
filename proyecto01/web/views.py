@@ -11,7 +11,7 @@ def index(request):
             '/static/web/img/canchita-01.jpg',
             '/static/web/img/canchita-02.jpg',
             '/static/web/img/canchita-03.jpg',
-            '/static/web/img/canchita-04.jpg'
+            '/static/web/img/canchita-04.jpg',
         ]
     }
     return render(request, "web/index.html", contexto)
@@ -31,7 +31,7 @@ def canchas(request):
             '/static/web/img/canchita-04.jpg',
             '/static/web/img/canchita-01.jpg',
             '/static/web/img/canchita-02.jpg',
-            '/static/web/img/canchita-03.jpg'
+            '/static/web/img/canchita-03.jpg',
         ]
     }
     return render(request, "web/canchas.html", contexto)
