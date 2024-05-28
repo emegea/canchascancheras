@@ -79,7 +79,7 @@ def crear_cuenta(request):
             return redirect('logeado_exito')  # Redirige a la página de inicio
     else:
         form = CrearCuentaForm()
-    return render(request, 'web/formulario_crear_cuenta.html', {'form': form})
+    return render(request, 'web/crear_cuenta.html', {'form': form})
 
 # Vista de Inicio de Sesión Exitoso
 def logeado_exito(request):
