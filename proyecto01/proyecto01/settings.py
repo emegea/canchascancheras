@@ -58,18 +58,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'proyecto01.wsgi.application'
 
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'CanchasCancheras',
-#         'USER': 'cristian',
-#         'PASSWORD': '1234',
-#         'HOST': 'localhost',  # O la dirección IP del servidor de la base de datos
-#         'PORT': '5432',       # Puerto por defecto de PostgreSQL
+#         'NAME': 'usuariosactivos',        # Nombre de la base de datos
+#         'USER': 'cristian',               # Usuario de la base de datos
+#         'PASSWORD': 'marcus',             # Contraseña del usuario de la base de datos
+#         'HOST': 'localhost',              # Dirección del servidor (localhost para local)
+#         'PORT': '5432',                   # Puerto en el que PostgreSQL está escuchando
 #     }
 # }
-
 
 
 # Password validation
@@ -106,7 +104,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
