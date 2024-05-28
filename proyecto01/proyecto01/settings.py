@@ -59,15 +59,20 @@ TEMPLATES = [
 WSGI_APPLICATION = 'proyecto01.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'canchas',        # Nombre de la base de datos
+#         'USER': 'cristian',                # Usuario de la base de datos
+#         'PASSWORD': 'marcus',       # Contraseña del usuario de la base de datos
+#         'HOST': 'localhost',               # Dirección del servidor (localhost para local)
+#         'PORT': '5432',                   # Puerto en el que PostgreSQL está escuchando
+#          'OPTIONS': {
+#             'client_encoding': 'UTF8',
+#                     },
+#     }
+# }
+    
 
 
 # Password validation
