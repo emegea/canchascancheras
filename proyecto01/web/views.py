@@ -1,6 +1,9 @@
-from django.shortcuts import render
-# from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.contrib.auth import login
+from django.contrib.auth.models import User
+from .forms import CrearCuentaForm  # Asegúrate de que esta importación esté presente
 import datetime
+from django.contrib import messages  # Para manejar mensajes de error
 
 # Vista del Index
 def index(request):
@@ -49,12 +52,11 @@ def reservas(request):
 def contacto(request):
     return render(request, "web/contacto.html")
 
-# Vista de Reservas
+# Vista de Login
 def login(request):
     return render(request, "web/login.html")
 
 # Vista de Lista de Canchas
-# (por si se necesita hacer un listado para luego cargarlo o algo así)
 def lista_canchas(request):
     contexto = {
         'canchas': [
@@ -65,5 +67,21 @@ def lista_canchas(request):
     }
     return render(request, 'web/lista_canchas.html', contexto)
 
-# def saludar(request, nombre):
-#     return HttpResponse(f"<h1>Hola {nombre}</h1>")
+# Nueva vista de Crear Cuenta
+def crear_cuenta(request):
+    if request.method == 'POST':
+        form = CrearCuentaForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password'])  # Encripta la contraseña
+            user.save()
+            login(request, user)  # Autentica y loguea al usuario
+            return redirect('logeado_exito')  # Redirige a la página de inicio
+    else:
+        form = CrearCuentaForm()
+    return render(request, 'web/formulario_crear_cuenta.html', {'form': form})
+
+# Vista de Inicio de Sesión Exitoso
+def logeado_exito(request):
+    # Lógica para manejar el inicio de sesión exitoso
+    return render(request, 'logeado_exito.html')
