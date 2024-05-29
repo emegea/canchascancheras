@@ -30,51 +30,17 @@
   flex-direction:column;
   align-items:center;
 }
-#formularioLogin {
+#login form {
   background:#fafafa;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  height:fit-content;
-  gap:20px !important;
   box-shadow:0 0 20px rgba(0,0,0,0.1);
-  padding:40px 30px;
   border-radius:8px;
+  padding:40px 30px;
+  gap:15px;
   border:0px solid;
-}
-#formularioLogin div label {
-  display:none;
-}
-#formularioLogin div:has(input) {
-  margin:0;
-  padding:0;
-  width:100%;
-}
-#formularioLogin div input {
-  width:90%;
-  padding:3% 5%;
-}
-#formularioLogin div input[type="checkbox" i] {
-  width:5%;
 }
 #login form #recordarme {
   display:flex;
   flex-direction:row;
   align-items:center;
   gap:10px;
-}
-#recordarme label {
-  display: block !important;
-  font-size: 0.8em;
-}
-#formularioLogin .boton {
-  font-size:1.2em;
-  width: 100%;
-}
-#formularioLogin .boton a, #ayudaForm, #ayudaForm a {
-  color:#fafafa;
-}
-#ayudaForm a:hover {
-  color:#fafafa;
-  text-decoration: underline;
 }

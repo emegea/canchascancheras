@@ -1,6 +1,6 @@
 {% extends "web/base.html" %}
 {% load static %}
-{% block titulo %} » HACÉ TU RESERVA ! - Canchas Cancheras {% endblock %}
+{% block titulo %}HACÉ TU RESERVA ! » Canchas Cancheras{% endblock %}
 {% block extra_css %}
   <link rel="stylesheet" href="{% static 'web/css/reservas.css' %}">
 {% endblock %}
@@ -8,49 +8,17 @@
 {% block principal %}
 <main id="reservas">
   <article class="contenedor">
-    <h2><i class="fa-regular fa-futbol"></i> Reservá tu cancha</h2>
+    <h1><i class="fa-regular fa-futbol"></i> Reservá tu cancha</h1>
     <div class="row">
-      <form id="formularioReservas" class="w50">
-        <div class="row w100">
-          <div class="w50 column">
-            <input type="text" id="nombre" placeholder="NOMBRE: Carlos Perez">
-            <input type="tel" id="telefono" placeholder="TELÉFONO: +54 1234 5678">
-            <input type="text" id="dni" placeholder="DNI: +12.345.678">
-          </div>
-          <div class="w50 column">
-            <select id="tipoDeCancha">
-              <option value="" disabled selected hidden>Elegí tu cancha</option>
-              <option value="cancha_de_5">Cancha de 5</option>
-              <option value="cancha_de_7">Cancha de 7</option>
-              <option value="cancha_de_11">Cancha de 11</option>
-            </select>
-            <select id="horario">
-              <option value="" disabled selected hidden>Elegí tu horario</option>
-              <option value="16:00">16:00</option>
-              <option value="17:00">17:00</option>
-              <option value="18:00">18:00</option>
-              <option value="19:00">19:00</option>
-              <option value="20:00">20:00</option>
-              <option value="21:00">21:00</option>
-              <option value="22:00">22:00</option>
-              <option value="23:00">23:00</option>
-            </select>
-            <select id="metodoDePago">
-              <option value="" disabled selected hidden>Elegí el método de pago</option>
-              <option value="cancha_de_7">Transferencia</option>
-              <option value="cancha_de_5">Mercado Pago</option>
-              <option value="cancha_de_11">Pago Mis Cuentas</option>
-            </select>
-          </div>
-        </div>
-        <textarea name="mensaje" id="" cols="30" rows="10" placeholder="¿Querés dejanos algún comentario extra?"></textarea>
-        <button class="boton" type="submit">
-          <a href="{% url 'reservas' %}">Enviar</a>
+      <form id="formularioReservas" class="w60" method="post" action="{% url 'index' %}">
+        {% csrf_token %}          
+        {{ formulario_reservas }}
+        <button class="boton">
+          <input type="submit" value="Enviar">
         </button>
-        <p id="error"></p>
+        <div id="error">* Mensaje de error !</div>
       </form>
-      <ul class="listaCanchas w50">
-
+      <ul class="listaCanchas w50">        
         {% for canchita in canchitas %}
         <li><img src="{{canchita}}" alt="Cancha 1"></li>
         <li><p>Tipo de cancha: Cancha de 11</p></li>
@@ -63,3 +31,44 @@
   </article>
 </main>
 {% endblock %}
+      <!--
+        <form id="formularioReservas" class="w50">
+          <div class="row w100">
+            <div class="w50 column">
+              <input type="text" id="nombre" placeholder="NOMBRE: Carlos Perez">
+              <input type="tel" id="telefono" placeholder="TELÉFONO: +54 1234 5678">
+              <input type="text" id="dni" placeholder="DNI: +12.345.678">
+            </div>
+            <div class="w50 column">
+              <select id="tipoDeCancha">
+                <option value="" disabled selected hidden>Elegí tu cancha</option>
+                <option value="cancha_de_5">Cancha de 5</option>
+                <option value="cancha_de_7">Cancha de 7</option>
+                <option value="cancha_de_11">Cancha de 11</option>
+              </select>
+              <select id="horario">
+                <option value="" disabled selected hidden>Elegí tu horario</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+                <option value="18:00">18:00</option>
+                <option value="19:00">19:00</option>
+                <option value="20:00">20:00</option>
+                <option value="21:00">21:00</option>
+                <option value="22:00">22:00</option>
+                <option value="23:00">23:00</option>
+              </select>
+              <select id="metodoDePago">
+                <option value="" disabled selected hidden>Elegí el método de pago</option>
+                <option value="cancha_de_7">Transferencia</option>
+                <option value="cancha_de_5">Mercado Pago</option>
+                <option value="cancha_de_11">Pago Mis Cuentas</option>
+              </select>
+            </div>
+          </div>
+          <textarea name="mensaje" id="" cols="30" rows="10" placeholder="¿Querés dejanos algún comentario extra?"></textarea>
+          <button class="boton" type="submit">
+            <a href="{% url 'reservas' %}">Enviar</a>
+          </button>
+          <p id="error"></p>
+        </form>
+      -->

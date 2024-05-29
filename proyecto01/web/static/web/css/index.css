@@ -1,28 +1,28 @@
-
-/* CARRUSEL */
 #novedades {
   display:flex;
   flex-direction:column;
 }
 #carrusel {
-  min-height:480px;
+  min-height:540px;
   width:100%;
   padding:0;
   margin:0 auto;
   display:flex;
   align-items:center;
-  transition:transform 0.5s ease;
 }
 .carruseles {
-  min-height:480px;
-  color:#fafafa;
-  position:absolute;
-  width:100%;
-  margin:0 auto;
   display:flex;
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height:540px;
+  color:#fafafa;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+  z-index: 0;
   align-items:center;
   justify-content:center;
-  transition:transform 0.5s ease;
 }
 .carruseles:before {
   content:"";
@@ -37,12 +37,19 @@
   background-repeat:no-repeat;
   transition:.5s ease-in;
 }
+.carruseles.centro {
+  opacity: 1;
+  z-index: 1;
+}
+.carruseles.izquierda, .carruseles.derecha {
+  opacity: 0;
+  z-index: 0;
+}
 .carruseles img {
   height:400px;
 }
 .carruseles .contenedor {
-  padding:120px 40px 40px 40px !important;
-
+  padding:140px 40px 60px 40px !important;
 }
 
 #carruselPrincipal {
@@ -111,6 +118,8 @@
   transition:.3s ease-in;
 }
 #botonAnterior, #botonSiguiente {
+  z-index: 999;
+  top:290px;
   background:#fafafa;
   width:25px;
   height:40px;
@@ -187,7 +196,7 @@
   transition:.2s ease-out;
 }
 #canchas .boton {
-  font-size:1.5em;
+  font-size:1.2em;
   background:#DC834E !important;
   transition:.2s ease-in;
 }
@@ -220,7 +229,7 @@
   display:flex;
   align-items:center;
 }
-#creaTuCuenta ul li > .boton{
+#creaTuCuenta ul li > .boton {
   margin:20px 0 0
 }
 #creaTuCuenta ul li i {
@@ -254,27 +263,61 @@
   height: 100%;
   z-index: -1;
 }
+#reservaTuCancha .contenedor > .row {
+  gap:40px !important;
+}
+
 #reservaTuCancha h2 {
   text-transform: uppercase;
   color:#dce5eb;
   font-size:2em;
 }
 #formularioReservas {
-  gap:15px !important;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height:fit-content;
+  gap:20px !important;
 }
-#reservaTuCancha .contenedor > .row {
-  gap:40px !important;
+#formularioReservas div:has(input),
+#formularioReservas div:has(select) {
+  margin:0;
+  padding:0;
+  width:48%;
+  height:40px;
 }
-#reservaTuCancha .row, #reservaTuCancha .row .w100 .w50 {
-  gap:10px !important;
+#formularioReservas div input {
+  width: 90%;
+  padding:5%;
 }
-#reservaTuCancha .boton {
-  margin:0 auto;
-  margin-top:20px 0 0 40px;
+#formularioReservas div select {
+  width:100%;
+  padding:5%;
+}
+#formularioReservas div label {
+  display:none;
+}
+#formularioReservas .boton {
   font-size:1.2em;
+  width: 100%;
 }
-#reservaTuCancha .boton a {
+#formularioReservas .boton a {
   color:#fafafa;
+}
+
+.listaIconos {
+  align-items: flex-start;
+  flex-direction: column;
+}
+.listaIconos li {
+  display:flex;
+  align-items:center;
+}
+.listaIconos li i {
+  font-size:20px;
+  color:#DC834E;
+  margin:0 15px 0 0;
 }
 
 /**/
@@ -348,6 +391,7 @@
     width:80%;
     margin:0 auto;
   }
+
 
   /**/
   /* RESERVA TU CANCHA */
