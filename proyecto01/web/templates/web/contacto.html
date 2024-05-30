@@ -1,7 +1,7 @@
 {% extends "web/base.html" %}
 {% load static %}
 {% block titulo %}CONTACTO » Canchas Cancheras{% endblock %}
-{% block extra_css %}
+{% block extra_css_js %}
   <link rel="stylesheet" href="{% static 'web/css/contacto.css' %}">
 {% endblock %}
 
@@ -10,7 +10,7 @@
   <article class="contenedor">
     <h1><i class="fa-regular fa-futbol"></i> Pongámonos en contacto</h1>
     <div class="row">
-      <form id="formularioContacto" class="w60" method="post" action="{% url 'index' %}">
+      <form id="formularioContacto" class="w60" method="post" action="{% url 'contacto' %}">
         {% csrf_token %}          
         {{ formulario_contacto }}
         <button class="boton">

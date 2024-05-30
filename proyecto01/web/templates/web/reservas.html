@@ -1,7 +1,7 @@
 {% extends "web/base.html" %}
 {% load static %}
 {% block titulo %}HACÉ TU RESERVA ! » Canchas Cancheras{% endblock %}
-{% block extra_css %}
+{% block extra_css_js %}
   <link rel="stylesheet" href="{% static 'web/css/reservas.css' %}">
 {% endblock %}
 
@@ -10,7 +10,7 @@
   <article class="contenedor">
     <h1><i class="fa-regular fa-futbol"></i> Reservá tu cancha</h1>
     <div class="row">
-      <form id="formularioReservas" class="w60" method="post" action="{% url 'index' %}">
+      <form id="formularioReservas" class="w60" method="post" action="{% url 'reservas' %}">
         {% csrf_token %}          
         {{ formulario_reservas }}
         <button class="boton">

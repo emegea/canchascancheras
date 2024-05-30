@@ -1,8 +1,10 @@
 {% extends "web/base.html" %}
 {% load static %}
 {% block titulo %} CANCHAS CANCHERAS - Reservá tu cancha !{% endblock %}
-{% block extra_css %}
+{% block extra_css_js %}
   <link rel="stylesheet" href="{% static '/web/css/index.css' %}">
+  <!-- ACÁ CARGAMOS LOS JS -->
+  <script src="{% static 'web/js/carrusel.js' %}"></script>
 {% endblock %}
 
 {% block principal %}

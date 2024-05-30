@@ -15,7 +15,7 @@
     />
     <link rel="shortcut icon" href="{% static 'web/img/icono.svg' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'web/css/base.css' %}" />
-    {% block extra_css %}{% endblock %}
+    {% block extra_css_js %}{% endblock %}
 </head>
 <body>
 <!-- HEADER -->
@@ -53,11 +53,15 @@
   </header>
 
   {% if messages %}
-  <ul id="alertas">
-    {% for message in messages %}
-    <li>{% if message.tags %} class="{{message.tags}}" {% endif %} {{ message }}</li>
-    {% endfor %}
-  </ul>
+    <ul id="alertas">
+      {% for message in messages %}
+        {% if message.tags %}
+        <li class="{{message.tags}}">
+          <p>{{ message }}</p>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
   {% endif %}
 
   {% block principal %}{% endblock %}
@@ -80,8 +84,5 @@
           <p><a href="#terminos">Terminos y Condiciones</a> | <a href="#politicas">Políticas de Privacidad</a></p>
       </div>
   </footer>
-  <!-- ACÁ CARGAMOS LOS JS -->
-  <script src="{% static 'web/js/cositas.js' %}"></script>
-
 </body>
 </html>

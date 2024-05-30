@@ -3,50 +3,74 @@ from django.core.exceptions import ValidationError
 
 # Formulario de la sección Contacto
 class formularioContacto(forms.Form):
-    nombre = forms.CharField(
-        label="Nombre",
-        required=True,
+    nombre = forms.CharField( label="Nombre", required=True,
         widget=forms.TextInput(
             attrs={'placeholder': 'Nombre'}
-        )
-    )
-    dni = forms.IntegerField(
-        label="DNI",
-        required=True,
+        ))
+    dni = forms.IntegerField( label="DNI", required=True,
         widget=forms.TextInput(
             attrs={'placeholder': 'DNI'}
-        )
+        ),
+        error_messages={'invalid': 'El campo "DNI" solo puede contener números'}
     )
-    telefono = forms.IntegerField(
-        label="Teléfono",
-        required=True,
+    telefono = forms.IntegerField( label="Teléfono", required=True,
         widget=forms.TextInput(
             attrs={'placeholder': 'Teléfono'}
-        )
+        ),
+        error_messages={'invalid': 'El campo "Teléfono" solo puede contener números'}
     )
-    email = forms.EmailField(
-        label="Email",
-        required=True,
+    email = forms.EmailField( label="Email", required=True,
         widget=forms.TextInput(
             attrs={'placeholder': 'Email'}
-        )
+        ),
+        error_messages={'invalid': 'Ingresá una dirección de email válida. Ejemplo: nombre@email.com'}
     )
-    mensaje = forms.CharField(
-        label="Mensaje",
-        required=True,
+    mensaje = forms.CharField( label="Mensaje", required=True,
         widget=forms.Textarea(
             attrs={'placeholder': 'Dejanos tu mensaje...'}
-        )
-    )    
+        ))
+
     def clean_nombre(self):
-        if not self.cleaned_data["nombre"].isalpha():
+        nombre = self.cleaned_data.get("nombre")
+        if not nombre.isalpha():
             raise ValidationError('El campo "nombre" solo puede contener letras')
-        return self.cleaned_data["nombre"]
+        return nombre
+
+    def clean_dni(self):
+        dni = str(self.cleaned_data.get("dni"))
+        if not dni.isdigit():
+            raise ValidationError('El campo "DNI" solo puede contener números')
+        if not len(dni) != 8:
+            raise ValidationError('El campo "DNI" debe contener 8 dígitos')
+        return dni
+    
+    def clean_telefono(self):
+        telefono = str(self.cleaned_data.get("telefono"))
+        if not telefono.isdigit():
+            raise ValidationError('El campo "Teléfono" solo puede contener números')
+        return telefono
+
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+        if "@" not in email:
+            raise ValidationError('Ingesá una dirección de email válida. Ejemplo nombre@email.com')
+        return email
+
+    def clean_mensaje(self):
+        mensaje = self.cleaned_data.get("mensaje")
+        if len(mensaje) < 10:    
+            raise ValidationError('El campo "Mensaje" debe contener al menos 10 caracteres')
+        return mensaje
 
     def clean(self):
+        cleaned_data = super().clean()
+        nombre = cleaned_data.get("nombre")
+        dni = cleaned_data.get("dni")
+        telefono = cleaned_data.get("telefono")
+        email = cleaned_data.get("email")
+        mensaje = cleaned_data.get("mensaje")
+    
         return self.cleaned_data
-        
-
 
 #
 #
