@@ -58,16 +58,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'proyecto01.wsgi.application'
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'usuariosactivos',        # Nombre de la base de datos
-#         'USER': 'cristian',               # Usuario de la base de datos
-#         'PASSWORD': 'marcus',             # Contraseña del usuario de la base de datos
-#         'HOST': 'localhost',              # Dirección del servidor (localhost para local)
-#         'PORT': '5432',                   # Puerto en el que PostgreSQL está escuchando
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'canchascancheras',        # Nombre de la base de datos
+        'USER': 'postgres',               # Usuario de la base de datos
+        'PASSWORD': '1234',             # Contraseña del usuario de la base de datos
+        'HOST': '127.0.0.1',              # Dirección del servidor (localhost para local)
+        'PORT': '5432',                   # Puerto en el que PostgreSQL está escuchando
+    }
+}
 
 
 # Password validation
