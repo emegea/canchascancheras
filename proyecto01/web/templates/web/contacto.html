@@ -1,48 +1,72 @@
 {% extends "web/base.html" %}
 {% load static %}
-{% block titulo %} » CONTACTO - Canchas Cancheras {% endblock %}
-{% block extra_css %}
+{% block titulo %}CONTACTO » Canchas Cancheras{% endblock %}
+{% block extra_css_js %}
   <link rel="stylesheet" href="{% static 'web/css/contacto.css' %}">
 {% endblock %}
 
 {% block principal %}
-<!-- MAIN -->
 <main id="contacto">
   <article class="contenedor">
-    <h2><i class="fa-regular fa-futbol"></i> Pongámonos en contacto</h2>
-    <div class="row">      
-      <form id="formularioReservas" class="w60">
-        <div class="row w100">
-          <div class="w50 column">
-            <input type="text" id="nombre" placeholder="Nombre">
-            <input type="tel" id="telefono" placeholder="Teléfono">
-          </div>
-          <div class="w50 column">
-            <input type="text" id="dni" placeholder="DNI">
-            <input type="email" id="email" placeholder="email">
-          </div>
+    <h1><i class="fa-regular fa-futbol"></i> Pongámonos en contacto</h1>
+    <div class="row">
+      <form id="formularioContacto" class="w60" method="post" action="{% url 'contacto' %}">
+        {% csrf_token %}          
+        {{ formulario_contacto }}
+        <button class="boton">
+          <input type="submit" value="Enviar">
+        </button>
+      </form>
+      <div id="masInfo" class="w40">
+        <h2>+ Más información</h2>
+        <ul class="listaIconos">
+          <li>
+            <i class="fa-solid fa-house"></i>
+            <p>San Martín 1234</p>
+          </li>
+          <li>
+            <i class="fa-solid fa-street-view"></i>
+            <p>C1015ABE - CABA</p>
+          </li>
+          <li>
+            <i class="fa-brands fa-whatsapp"></i>
+            <p>+54 1234 5678</p>
+          </li>
+          <li>
+            <i class="fa-solid fa-envelope"></i>
+            <p>info@canchascancheras.com.ar</p>
+          </li>
+        </ul>
+        <img src="{% static 'web/img/logo.svg' %}" />
       </div>
-      <textarea name="mensaje" id="" cols="30" rows="10" placeholder="¿Qué querés comentarnos?"></textarea>
-      <button class="boton" type="submit">
-        <a href="{% url 'contacto' %}">Enviar</a>
-      </button>
-      <p id="error"></p>
-    </form>
-    <div id="masInfo" class="w40">
-      <h2>+ Más información</h2>
-      <p>San Martín 1234</p>
-      <p>C1015ABE - CABA</p>
-      <p>+54 1234 5678</p>
-      <p>info@canchascancheras.com.ar</p>
-      <p>¡Gracias por confiar en nosotros!</p>
-      <img src="{% static 'web/img/logo.svg' %}" />
-    </div>
-
-    
   </div>
   
 </article>
 </main>
+
+
+
+
+<!-- 
+<form id="formularioReservas" class="w60">
+  {% csrf_token %}
+  <div class="row w100">
+    <div class="w50 column">
+    {{ formulario_contacto.nombre }}
+    {{ formulario_contacto.telefono }}
+  </div>  
+  <div class="w50 column">
+    {{ formulario_contacto.dni }}
+    {{ formulario_contacto.email }}
+  </div>  
+</div>  
+{{ formulario_contacto.mensaje }}
+<button class="boton" type="submit">
+  <a href="{% url 'contacto' %}">Enviar</a>
+</button>  
+<p id="error"></p>
+</form>  
+-->
 
 
 

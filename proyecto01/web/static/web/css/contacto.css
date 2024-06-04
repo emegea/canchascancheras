@@ -20,44 +20,75 @@
   font-size:2em;
   text-transform: uppercase;
 }
-#contacto .contenedor {
-  z-index:99;
-  display:flex;
-  flex-direction:column;
-  justify-content: space-between;
-}
-#masInfo {
-  display:flex;
-  flex-direction:column;
-  justify-content: space-between;
-}
-#masInfo img {
-  margin: 20px 0 0 0 !important;  
-}
-
-
-
-
-#formularioReservas {
-  gap:15px !important;
-}
 #contacto .contenedor > .row {
   gap:40px !important;
 }
-/*
-*/
 #contacto .row, #contacto .row .w100 .w50 {
-  gap:10px !important;
+  gap:2% !important;
+}
+
+#formularioContacto {
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height:fit-content;
+  gap:20px !important;
+}
+#formularioContacto div:has(input) {
+  margin:0;
+  padding:0;
+  width:48%;
+  height:40px;
+}
+#formularioContacto div input {
+  width:90%;
+  padding:5%;
+}
+#formularioContacto div label {
+  display:none;
+}
+#formularioContacto div:has(textarea) {
+  margin:0;
+  padding:0;
+  width:100%;
+}
+#formularioContacto textarea {
+  min-height: 150px;
 }
 #contacto .boton {
-  margin:0 auto;
-  margin-top:20px 0 0 40px;
   font-size:1.2em;
+  width: 100%;
 }
 #contacto .boton a {
   color:#fafafa;
 }
 
+#masInfo {
+  display:flex;
+  flex-direction:column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.listaIconos {
+  padding:40px 0 0 0;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+.listaIconos li {
+  display:flex;
+  align-items:center;
+}
+.listaIconos li i {
+  font-size:20px;
+  color:#DC834E;
+  margin:0 15px 0 0;
+}
+#masInfo img {
+  max-height: 50px;
+}
 
 
 

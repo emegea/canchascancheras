@@ -21,9 +21,7 @@
 #reservas h1 {
   color:#fafafa;
   font-size:2em;
-}
-#formularioReservas {
-  gap:15px !important;
+  text-transform: uppercase;
 }
 #reservas .contenedor > .row {
   gap:40px !important;
@@ -31,14 +29,41 @@
 #reservas .row, #reservas .row .w100 .w50 {
   gap:10px !important;
 }
-#reservas .boton {
-  margin:0 auto;
-  margin-top:20px 0 0 40px;
-  font-size:1.2em;
+
+#formularioReservas {
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height:fit-content;
+  gap:20px !important;
 }
-#reservas .boton a {
+#formularioReservas div:has(input),
+#formularioReservas div:has(select) {
+  margin:0;
+  padding:0;
+  width:48%;
+  height:40px;
+}
+#formularioReservas div input {
+  width: 90%;
+  padding:5%;
+}
+#formularioReservas div select {
+  width:100%;
+  padding:5%;
+}
+#formularioReservas div label {
+  display:none;
+}
+#formularioReservas .boton {
+  font-size:1.2em;
+  width: 100%;
+}
+#formularioReservas .boton a {
   color:#fafafa;
 }
+
 .listaCanchas {
   flex-direction: column;
 }
