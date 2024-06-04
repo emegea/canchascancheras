@@ -34,11 +34,6 @@
             <li><a href="{% url 'reservas' %}">Reservá tu Cancha</a></li>
             <li><a href="{% url 'contacto' %}">Contacto</a></li>
         </ul>
-<<<<<<< HEAD
-        <ul>
-          <li><button class="botonDos" onclick="window.location.href='{% url 'crear_cuenta' %}'">Crear Cuenta</button></li>
-          <li><button class="boton" onclick="window.location.href='{% url 'login' %}'">Iniciar Sesión</button></li>
-=======
         <ul id="barraLogin">
           {% if user.is_authenticated %}
           <li>
@@ -52,7 +47,6 @@
               <a class="boton" href="{% url 'login' %}">Crear Cuenta</a>
           </li>
           {% endif %}
->>>>>>> ddc112c0a6b8a95e2adb1335bec8eb678052fa63
         </ul>
       </nav>
     </section>

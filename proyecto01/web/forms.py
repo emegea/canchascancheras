@@ -1,14 +1,4 @@
 from django import forms
-<<<<<<< HEAD
-from django.contrib.auth.models import User
-
-class CrearCuentaForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
-
-    class Meta:
-        model = User
-        fields = ['username', 'email', 'password']
-=======
 from django.core.exceptions import ValidationError
 
 # Formulario de la sección Contacto
@@ -166,4 +156,3 @@ class formularioLogin(forms.Form):
             attrs={'placeholder': 'Ingresá tu clave'}
         )
     )
->>>>>>> ddc112c0a6b8a95e2adb1335bec8eb678052fa63

@@ -1,18 +1,9 @@
-<<<<<<< HEAD
-from django.shortcuts import render, redirect
-from django.contrib.auth import login
-from django.contrib.auth.models import User
-from .forms import CrearCuentaForm  # Asegúrate de que esta importación esté presente
-import datetime
-from django.contrib import messages  # Para manejar mensajes de error
-=======
 from django.shortcuts import render
 from django.http import HttpResponse
 import datetime
 from .forms import *
 from django.shortcuts import redirect
 from django.contrib import messages
->>>>>>> ddc112c0a6b8a95e2adb1335bec8eb678052fa63
 
 # Vista del Index
 def index(request):
@@ -75,13 +66,8 @@ def canchas(request):
 def reservas(request):
     contexto = {
         'canchitas': [
-<<<<<<< HEAD
-            '/static/web/img/canchita-01.jpg'        
-        ]
-=======
             '/static/web/img/canchita-01.jpg'
         ]        
->>>>>>> ddc112c0a6b8a95e2adb1335bec8eb678052fa63
     }
     # En el form...
     # Si el method es un GET
@@ -106,10 +92,6 @@ def reservas(request):
 #
 # Vista de Contacto
 def contacto(request):
-<<<<<<< HEAD
-    return render(request, "web/contacto.html")
-
-=======
     contexto = {}
     # En el form...
     # Si el method es un GET
@@ -131,7 +113,6 @@ def contacto(request):
     # Renderizo web/contacto.html que viene de /templates porque /url lo dice
     return render(request, "web/contacto.html", contexto)
 #
->>>>>>> ddc112c0a6b8a95e2adb1335bec8eb678052fa63
 # Vista de Login
 def login(request):
     contexto = {}
@@ -152,37 +133,6 @@ def login(request):
             # Redirecciono
             return redirect('login')
 
-<<<<<<< HEAD
-# Vista de Lista de Canchas
-def lista_canchas(request):
-    contexto = {
-        'canchas': [
-            'Cancha de 11',
-            'Cancha de 7',
-            'Cancha de 5'            
-        ]
-    }
-    return render(request, 'web/lista_canchas.html', contexto)
-
-# Nueva vista de Crear Cuenta
-def crear_cuenta(request):
-    if request.method == 'POST':
-        form = CrearCuentaForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password'])  # Encripta la contraseña
-            user.save()
-            login(request, user)  # Autentica y loguea al usuario
-            return redirect('logeado_exito')  # Redirige a la página de inicio
-    else:
-        form = CrearCuentaForm()
-    return render(request, 'web/crear_cuenta.html', {'form': form})
-
-# Vista de Inicio de Sesión Exitoso
-def logeado_exito(request):
-    # Lógica para manejar el inicio de sesión exitoso
-    return render(request, 'logeado_exito.html')
-=======
     # Renderizo web/login.html que viene de /templates porque /url lo dice
     return render(request, "web/login.html", contexto)
 
@@ -199,4 +149,3 @@ def logout(request):
 def saludar(request, nombre):
     # Renderizo un HTML hecho por HttpResponse con parámetros
     return HttpResponse(f"<h1>Hola {nombre}</h1>")
->>>>>>> ddc112c0a6b8a95e2adb1335bec8eb678052fa63
