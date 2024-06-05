@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Canchas</title>
+</head>
+<body>
+    <h1>Listado de Canchas</h1>
+    <ul>
+        {% for cancha in canchas %}
+            <li><a href="{% url 'detalle_cancha' cancha.id %}">{{ cancha.nombre }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

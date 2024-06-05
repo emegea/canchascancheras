@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Clientes</title>
+</head>
+<body>
+    <h1>Listado de Clientes</h1>
+    <ul>
+        {% for cliente in clientes %}
+            <li><a href="{% url 'detalle_cliente' cliente.id %}">{{ cliente.nombre }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

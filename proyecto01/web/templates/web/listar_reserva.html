@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Reservas</title>
+</head>
+<body>
+    <h1>Listado de Reservas</h1>
+    <ul>
+        {% for reserva in reservas %}
+            <li><a href="{% url 'detalle_reserva' reserva.id %}">Reserva #{{ reserva.id }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

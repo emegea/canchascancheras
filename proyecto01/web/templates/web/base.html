@@ -37,14 +37,14 @@
         <ul id="barraLogin">
           {% if user.is_authenticated %}
           <li>
-            <a class="botonDos" href="{% url 'logout' %}">Cerar Sesión</a>
+            <a class="botonTres" href="{% url 'logout' %}">Cerrar Sesión</a>
           </li>
           {% else %}
           <li>
             <a class="botonDos" href="{% url 'login' %}">Iniciar Sesión</a>
           </li>
           <li>
-              <a class="boton" href="{% url 'login' %}">Crear Cuenta</a>
+            <a class="boton" href="{% url 'crear_cuenta' %}">Crear Cuenta</a>
           </li>
           {% endif %}
         </ul>

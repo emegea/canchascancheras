@@ -1,17 +1,42 @@
-<!-- web/formulario_crear_cuenta.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Cuenta</title>
-</head>
-<body>
-    <h1>Crear Cuenta</h1>
-    <form method="POST" action="{% url 'crear_cuenta' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Crear Cuenta</button>
-    </form>
-</body>
-</html>
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block titulo %}Crear Cuenta{% endblock %}
+
+{% block extra_css_js %}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block principal %}
+<div class="contenedor mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center mb-4">Crear cuenta</h2>
+            <form method="POST" novalidate>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="form-group">
+                    <label for="id_username">Nombre de usuario</label>
+                    {% render_field form.username class="form-control" %}
+                </div>
+                <div class="form-group">
+                    <label for="id_email">Correo electrónico</label>
+                    {% render_field form.email class="form-control" %}
+                </div>
+                <div class="form-group">
+                    <label for="id_password1">Contraseña</label>
+                    {% render_field form.password1 class="form-control" %}
+                </div>
+                <div class="form-group">
+                    <label for="id_password2">Confirmar contraseña</label>
+                    {% render_field form.password2 class="form-control" %}
+                </div>
+                <button type="submit" class="btn btn-primary btn-block mt-3 boton">Registrarse</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
