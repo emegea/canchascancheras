@@ -2,7 +2,7 @@
 {% load static %}
 {% block titulo %}NUESTRAS CANCHAS » Canchas Cancheras{% endblock %}
 {% block extra_css_js %}
-  <link rel="stylesheet" href="{% static 'web/css/canchas.css' %}">
+  <link rel="stylesheet" href="{% static 'web/css/chacan.css' %}">
 {% endblock %}
 
 {% block principal %}
@@ -18,7 +18,7 @@
         <li><p>No hay canchas para mostrar</p></li>
         {% endfor %}
       </ul>
-      <button class="boton"><a href="{% url 'reservas' %}">Reservá tu cancha</a></button>
+      <button class="boton"><a href="{% url 'reserv' %}">Reservá tu cancha</a></button>
     </article>
   </section>
 

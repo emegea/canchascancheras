@@ -10,7 +10,7 @@
   <article class="contenedor">
     <h1><i class="fa-regular fa-futbol"></i> Reservá tu cancha</h1>
     <div class="row">
-      <form id="formularioReservas" class="w60" method="post" action="{% url 'reservas' %}">
+      <form id="formularioReservas" class="w60" method="post" action="{% url 'reserv' %}">
         {% csrf_token %}          
         {{ formulario_reservas }}
         <button class="boton">

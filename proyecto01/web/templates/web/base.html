@@ -30,8 +30,8 @@
         <ul>
             <li><a href="{% url 'index' %}">Inicio</a></li>
             <li><a href="{% url 'somos' %}">Quienes Somos</a></li>
-            <li><a href="{% url 'canchas' %}">Nuestras Canchas</a></li>
-            <li><a href="{% url 'reservas' %}">Reservá tu Cancha</a></li>
+            <li><a href="{% url 'chacan' %}">Nuestras Canchas</a></li>
+            <li><a href="{% url 'reserv' %}">Reservá tu Cancha</a></li>
             <li><a href="{% url 'contacto' %}">Contacto</a></li>
         </ul>
         <ul id="barraLogin">
@@ -53,16 +53,17 @@
   </header>
 
   {% if messages %}
-    <ul id="alertas">
-      {% for message in messages %}
-        {% if message.tags %}
-        <li class="{{message.tags}}">
-          <p>{{ message }}</p>
-        </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  {% endif %}
+        <div class="container mt-3">
+            {% for message in messages %}
+                <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 
   {% block principal %}{% endblock %}
   

@@ -2,7 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-#formulario para crear cuenta
+
 class RegistroForm(UserCreationForm):
     email = forms.EmailField(required=True, help_text='Requerido. Ingrese una dirección de correo válida.')
 
@@ -14,35 +14,37 @@ class RegistroForm(UserCreationForm):
         email = self.cleaned_data.get('email')
         if User.objects.filter(email=email).exists():
             raise forms.ValidationError('Este correo electrónico ya está en uso.')
+        return email
 
-# Formulario de la sección Contacto
 class formularioContacto(forms.Form):
-    nombre = forms.CharField( label="Nombre", required=True,
-        widget=forms.TextInput(
-            attrs={'placeholder': 'Nombre'}
-        ))
-    dni = forms.IntegerField( label="DNI", required=True,
-        widget=forms.TextInput(
-            attrs={'placeholder': 'DNI'}
-        ),
+    nombre = forms.CharField(
+        label="Nombre", 
+        required=True,
+        widget=forms.TextInput(attrs={'placeholder': 'Nombre'})
+    )
+    dni = forms.IntegerField(
+        label="DNI", 
+        required=True,
+        widget=forms.TextInput(attrs={'placeholder': 'DNI'}),
         error_messages={'invalid': 'El campo "DNI" solo puede contener números'}
     )
-    telefono = forms.IntegerField( label="Teléfono", required=True,
-        widget=forms.TextInput(
-            attrs={'placeholder': 'Teléfono'}
-        ),
+    telefono = forms.IntegerField(
+        label="Teléfono", 
+        required=True,
+        widget=forms.TextInput(attrs={'placeholder': 'Teléfono'}),
         error_messages={'invalid': 'El campo "Teléfono" solo puede contener números'}
     )
-    email = forms.EmailField( label="Email", required=True,
-        widget=forms.TextInput(
-            attrs={'placeholder': 'Email'}
-        ),
+    email = forms.EmailField(
+        label="Email", 
+        required=True,
+        widget=forms.TextInput(attrs={'placeholder': 'Email'}),
         error_messages={'invalid': 'Ingresá una dirección de email válida. Ejemplo: nombre@email.com'}
     )
-    mensaje = forms.CharField( label="Mensaje", required=True,
-        widget=forms.Textarea(
-            attrs={'placeholder': 'Dejanos tu mensaje...'}
-        ))
+    mensaje = forms.CharField(
+        label="Mensaje", 
+        required=True,
+        widget=forms.Textarea(attrs={'placeholder': 'Dejanos tu mensaje...'})
+    )
 
     def clean_nombre(self):
         nombre = self.cleaned_data.get("nombre")
@@ -54,7 +56,7 @@ class formularioContacto(forms.Form):
         dni = str(self.cleaned_data.get("dni"))
         if not dni.isdigit():
             raise ValidationError('El campo "DNI" solo puede contener números')
-        if not len(dni) != 8:
+        if len(dni) != 8:
             raise ValidationError('El campo "DNI" debe contener 8 dígitos')
         return dni
     
@@ -67,7 +69,7 @@ class formularioContacto(forms.Form):
     def clean_email(self):
         email = self.cleaned_data.get("email")
         if "@" not in email:
-            raise ValidationError('Ingesá una dirección de email válida. Ejemplo nombre@email.com')
+            raise ValidationError('Ingresá una dirección de email válida. Ejemplo nombre@email.com')
         return email
 
     def clean_mensaje(self):
@@ -76,26 +78,11 @@ class formularioContacto(forms.Form):
             raise ValidationError('El campo "Mensaje" debe contener al menos 10 caracteres')
         return mensaje
 
-    def clean(self):
-        cleaned_data = super().clean()
-        nombre = cleaned_data.get("nombre")
-        dni = cleaned_data.get("dni")
-        telefono = cleaned_data.get("telefono")
-        email = cleaned_data.get("email")
-        mensaje = cleaned_data.get("mensaje")
-    
-        return self.cleaned_data
-
-#
-#
-# Formulario de la sección Resevas
 class formularioReservas(forms.Form):
     nombre = forms.CharField(
         label="Nombre",
         required=True,
-        widget=forms.TextInput(
-            attrs={'placeholder': 'Nombre'}
-        )
+        widget=forms.TextInput(attrs={'placeholder': 'Nombre'})
     )
 
     CANCHAS_CHOICES = [
@@ -113,10 +100,9 @@ class formularioReservas(forms.Form):
     dni = forms.IntegerField(
         label="DNI",
         required=True,
-        widget=forms.TextInput(
-            attrs={'placeholder': 'DNI'}
-        )
+        widget=forms.TextInput(attrs={'placeholder': 'DNI'})
     )
+    
     HORARIOS_CHOICES = [
         ('16:00', '16:00'),
         ('17:00', '17:00'),
@@ -137,9 +123,7 @@ class formularioReservas(forms.Form):
     telefono = forms.IntegerField(
         label="Teléfono",
         required=True,
-        widget=forms.TextInput(
-            attrs={'placeholder': 'Teléfono'}
-        )
+        widget=forms.TextInput(attrs={'placeholder': 'Teléfono'})
     )
 
     PAGO_CHOICES = [
@@ -154,19 +138,14 @@ class formularioReservas(forms.Form):
         widget=forms.Select()
     )
 
-# Formulario de Login
 class formularioLogin(forms.Form):
     nombre_usuario = forms.CharField(
-        label="Nombre",
+        label="Nombre de usuario",
         required=True,
-        widget=forms.TextInput(
-            attrs={'placeholder': 'Nombre de usuario'}
-        )
+        widget=forms.TextInput(attrs={'placeholder': 'Nombre de usuario'})
     )
     clave_usuario = forms.CharField(
-        label="Clave Usuario",
+        label="Clave de usuario",
         required=True,
-        widget=forms.TextInput(
-            attrs={'placeholder': 'Ingresá tu clave'}
-        )
+        widget=forms.PasswordInput(attrs={'placeholder': 'Ingresá tu clave'})  # Use PasswordInput for security
     )
