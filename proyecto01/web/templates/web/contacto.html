@@ -13,9 +13,7 @@
       <form id="formularioContacto" class="w60" method="post" action="{% url 'contacto' %}">
         {% csrf_token %}          
         {{ formulario_contacto }}
-        <button class="boton">
-          <input type="submit" value="Enviar">
-        </button>
+        <input type="submit" value="» Enviar" class="boton">
       </form>
       <div id="masInfo" class="w40">
         <h2>+ Más información</h2>

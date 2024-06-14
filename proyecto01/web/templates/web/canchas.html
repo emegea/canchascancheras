@@ -2,7 +2,8 @@
 {% load static %}
 {% block titulo %}NUESTRAS CANCHAS » Canchas Cancheras{% endblock %}
 {% block extra_css_js %}
-  <link rel="stylesheet" href="{% static 'web/css/canchas.css' %}">
+<link rel="stylesheet" href="{% static 'web/css/canchas.css' %}">
+<script src="{% static 'web/js/canchas.js' %}"></script>
 {% endblock %}
 
 {% block principal %}
@@ -12,14 +13,36 @@
   <section class="contenedor">    
     <h1><i class="fa-regular fa-futbol"></i> Conocé nuestras canchas</h1>
       <ul>
-        {% for canchita in canchitas %}
-        <li><img src="{{canchita}}" alt="Cancha 1"></li>
+        {% for cancha in canchas %}
+        <li>
+          <div class="cancha">
+            <img src="{% static 'web/img/canchita-01.jpg' %}" alt="">
+            <h3>{{ cancha.nombre }}</h3>
+            <button class="mostrarDetalles">» Ver detalles</button>
+            <div class="detalles" style="display: none;">
+              <p><b>Tipo de Suelo: </b>{{ cancha.get_tipo_suelo_display }}</p>
+              <p><b>Tipo de Red: </b>{{ cancha.get_tipo_red_display }}</p>
+              <p><b>Longitud: </b>{{ cancha.longitud }} m</p>
+              <p><b>Ancho: </b>{{ cancha.ancho }} m</p>
+              <p><b>Iluminación: </b>{{ cancha.iluminacion|yesno:"Sí,No" }}</p>
+              <p><b>Marcador Electrónico: </b>{{ cancha.marcador|yesno:"Sí,No" }}</p>
+              <p><b>Graderías: </b>{{ cancha.gradas|yesno:"Sí,No" }}</p>
+              <form method="post" action="{% url 'comprar_cancha' cancha.id %}">
+                {% csrf_token %}
+                <button type="submit" class="boton comprarCancha">» Comprar</button>
+              </form>
+            </div>
+          </div>                      
+        </li>
         {% empty %}
-        <li><p>No hay canchas para mostrar</p></li>
+        <li>
+          <div class="cancha">
+            <p>No hay canchas para mostrar</p>
+          </div>
+        </li>
         {% endfor %}
       </ul>
-      <button class="boton"><a href="{% url 'reservas' %}">Reservá tu cancha</a></button>
-    </article>
-  </section>
+    </section>
+</main>
 
 {% endblock %}

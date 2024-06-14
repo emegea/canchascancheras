@@ -68,11 +68,14 @@
       <h2><i class="fa-regular fa-futbol"></i> Conocé nuestras canchas</h2>
       <div class="contenedor2">
         <ul class="w45">
-          {% for canchita in canchas %}
-          <li><img src="{{canchita}}" alt="Cancha 1"></li>
+          {% for cancha in contexto %}
+          <li>
+            <h3 title="{{ cancha.nombre }}">{{ cancha.nombre }}</h3>
+            <img src="{% static 'web/img/canchita-01.jpg' %}" alt="{{ cancha.nombre }}">
+          </li>
           {% endfor %}
         </ul>
-        <iframe class="w55" width="100%" height="300" src="https://www.youtube.com/embed/_UKAVnsfDrU?start=6&autoplay=1&mute=1&controls=0&modestbranding=1" title="Canchas Cancheras" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe class="w55" width="100%" height="300" src="https://www.youtube.com/embed/_UKAVnsfDrU?start=6&autoplay=1&mute=1&controls=1&modestbranding=1&loop=1" title="Canchas Cancheras" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
       <button class="boton"><a href="{% url 'canchas' %}">» Ver todas las canchas</a></button>
     </article>
@@ -84,25 +87,37 @@
     <article class="contenedor">
       <img class="mobileImg" src="{% static '/web/img/creaTuCuenta.svg' %}" alt="">
       <ul class="listaIconos w60">
-        <h2>Creá tu cuenta y empezá a reservar tus turnos.</h2>
+        <h2>Buscás una cancha personalizada?</h2>
         <li>
           <i class="fa-solid fa-rocket"></i>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <div>
+            <h3>Medidas personalizadas.</h3>
+            <p>Diseñamos juntos la idea que tenés.</p>
+          </div>
         </li>
         <li>
           <i class="fa-solid fa-pen"></i>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <div>
+            <h3>Diferentes tipos de superficies</h3>
+            <p>Césped natural o artificial, tierra batida, cemento, parquet.</p>
+          </div>
         </li>
         <li>
           <i class="fa-regular fa-square-check"></i>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <div>
+            <h3>Instalaciones adicionales</h3>
+            <p>Graderías, asientos, iluminación, marcadores.</p>
+          </div>
         </li>
         <li>
           <i class="fa-regular fa-floppy-disk"></i>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <div>
+            <h3>Accesorios y Equipamiento</h3>
+            <p>Arcos, redes y vallas, canastas, raquetas, pelotas, etc.</p>
+          </div>
         </li>
         <li>
-          <button class="boton"><a href="{% url 'login' %}">» Quiero crear mi cuenta</a></button>
+          <button class="boton"><a href="{% url 'ventaCustom' %}">» Quiero personalizar mi cancha</a></button>
         </li>
       </ul>
       <div class="ilustracion w40"></div>
@@ -118,9 +133,9 @@
       <div class="row">
         <form id="formularioReservas" class="w50" method="post" action="{% url 'index' %}">
           {% csrf_token %}          
-          {{ formulario_reservas }}
+          {{ formulario_venta }}
           <button class="boton">
-            <input type="submit" value="Enviar">
+            <input type="submit" value="» Enviar">
           </button>
           <div id="error">* Mensaje de error !</div>
         </form>

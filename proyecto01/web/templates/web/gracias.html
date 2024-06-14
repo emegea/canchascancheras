@@ -1,0 +1,24 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block titulo %}HACÉ TU RESERVA ! » Canchas Cancheras{% endblock %}
+{% block extra_css_js %}
+  <link rel="stylesheet" href="{% static 'web/css/gracias.css' %}">
+{% endblock %}
+
+
+{% block principal %}
+<main id="gracias">
+  <article class="contenedor">
+    <h2><i class="fa-regular fa-futbol"></i> Compra tu cancha</h2>
+    <div class="row">
+      <article>
+        <h3>Operación realizada</h3>
+        <p>Muchas gracias por enviarnos tu compra. Nos pondremos en contacto a la brevedad para avanzar con tu Cancha Canchera !</p>
+      </article>
+      <ul class="listaCanchas w50">
+        <img src="{% static 'web/img/cancha_venta.jpg' %}" />
+      </ul>  
+    </div>    
+  </article>
+</main>
+{% endblock %}

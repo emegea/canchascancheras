@@ -28,6 +28,7 @@ h1, h2, h3, h4, h5, h6, a, p, button {
   font-weight:600;
   line-height:1.2em;
   border:none;
+  font-family:"Roboto Condensed", sans-serif;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family:"Roboto Condensed", sans-serif;
@@ -190,9 +191,15 @@ nav ul#barraLogin .botonDos:hover {
   background:#388e3c !important;
   padding:10px 20px;
   border-radius:5px;
+  border:none;
   cursor:pointer;
   align-content: center;
   transition:.2s ease-out;
+  font-size: 1em;
+  font-weight: 600;
+  width: 100%;
+  text-transform: uppercase;
+  font-family: "Roboto Condensed", sans-serif;
 }
 .boton:hover {
   background:#DC834E !important;
@@ -365,7 +372,7 @@ footer .contenedor {
 footer > div {
   padding:60px 0;
 }
-footer h2 {
+footer h4 {
   text-transform: uppercase;
   color:#dce5eb;
   font-size:2em;

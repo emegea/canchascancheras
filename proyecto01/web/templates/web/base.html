@@ -30,10 +30,11 @@
         <ul>
             <li><a href="{% url 'index' %}">Inicio</a></li>
             <li><a href="{% url 'somos' %}">Quienes Somos</a></li>
-            <li><a href="{% url 'canchas' %}">Nuestras Canchas</a></li>
-            <li><a href="{% url 'reservas' %}">Reservá tu Cancha</a></li>
+            <li><a href="{% url 'canchas' %}">Trabajos Realizados</a></li>
+            <li><a href="{% url 'ventaCustom' %}">Personalizá tu Cancha</a></li>
             <li><a href="{% url 'contacto' %}">Contacto</a></li>
         </ul>
+        <!-- Ocultando botón si no está logueado  -->
         <ul id="barraLogin">
           {% if user.is_authenticated %}
           <li>
@@ -69,7 +70,7 @@
   <!-- FOOTER -->
   <footer>
       <div class="contenedor">
-          <h2>Seguínos en las redes sociales</h2>
+          <h4 class="cta">Seguínos en las redes sociales</h4>
           <div class="redes">
               <ul>
                   <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>

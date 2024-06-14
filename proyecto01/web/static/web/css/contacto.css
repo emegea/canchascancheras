@@ -56,13 +56,6 @@
 #formularioContacto textarea {
   min-height: 150px;
 }
-#contacto .boton {
-  font-size:1.2em;
-  width: 100%;
-}
-#contacto .boton a {
-  color:#fafafa;
-}
 
 #masInfo {
   display:flex;

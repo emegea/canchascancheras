@@ -1,0 +1,28 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block titulo %}HACÉ TU RESERVA ! » Canchas Cancheras{% endblock %}
+{% block extra_css_js %}
+  <link rel="stylesheet" href="{% static 'web/css/venta.css' %}">
+{% endblock %}
+
+{% block principal %}
+<main id="comprarCancha">
+  <article class="contenedor">
+    <h1><i class="fa-regular fa-futbol"></i> Comprá tu cancha</h1>
+    <div class="row">
+      <form id="formularioAvanzado" class="w50" method="post" action="{% url 'venta' %}">
+        {% csrf_token %}
+        {{ cancha_form }}
+        {{ venta_form }}
+        {{ cliente_form }}
+        <button class="boton">
+          <input type="submit" value="» Enviar">
+        </button>
+      </form>
+      <ul class="listaCanchas w50">
+        <img src="{% static 'web/img/cancha_venta.jpg' %}" />
+      </ul>  
+    </div>    
+  </article>
+</main>
+{% endblock %}

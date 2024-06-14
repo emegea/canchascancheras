@@ -37,7 +37,6 @@
   transition:.2s ease-out;
 }
 #canchas .boton {
-  font-size:1.5em;
   background:#DC834E !important;
   transition:.2s ease-in;
 }
@@ -45,4 +44,41 @@
   background:#7ac143 !important;
   transition:.2s ease-out;
   text-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+
+.cancha h3 {
+  color:#fafafa;
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.8em;
+  border-bottom:1px solid;
+  max-width: fit-content;
+  margin: 0 0 10px 0;
+}
+.cancha p {
+  font-weight: 300;
+  font-size: 1em;
+  color:#fafafa;
+}
+.cancha b {
+  font-weight: 500;
+}
+.detalles {
+  display:none;
+  transition:.2s ease-in;
+}
+button.mostrarDetalles {
+  transition:.2s ease-in;
+  color:#fafafa;
+  background:none;
+  border:none;
+  margin-bottom:15px;
+}
+button.mostrarDetalles:hover {
+  margin-left:10px;
+  cursor:pointer
+}
+button.comprarCancha {
+  transition:.2s ease-in;
+  margin:15px 0;
 }
