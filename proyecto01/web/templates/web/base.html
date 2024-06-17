@@ -13,7 +13,7 @@
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
-    <link rel="shortcut icon" href="{% static 'web/img/icono.svg' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'web/img/iconoColor.svg' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'web/css/base.css' %}" />
     {% block extra_css_js %}{% endblock %}
 </head>
@@ -66,11 +66,12 @@
   {% endif %}
 
   {% block principal %}{% endblock %}
-  
+
   <!-- FOOTER -->
   <footer>
       <div class="contenedor">
-          <h4 class="cta">Seguínos en las redes sociales</h4>
+        <img src="{% static 'web/img/logo.svg' %}" alt="logo" class="logo">
+        <h4 class="cta">Seguínos en las redes sociales</h4>
           <div class="redes">
               <ul>
                   <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
@@ -81,7 +82,7 @@
           </div>
       </div>
       <div class="copyright">
-          <p>© 2023 Canchas Cancheras</p>
+          <p>© 2024 Canchas Cancheras</p>
           <p><a href="#terminos">Terminos y Condiciones</a> | <a href="#politicas">Políticas de Privacidad</a></p>
       </div>
   </footer>

@@ -11,6 +11,5 @@ urlpatterns = [
     path('logout', views.logout, name="logout"),
     path('gracias', views.gracias, name="gracias"),
     path('admin', views.admin, name="admin"),
-    path('saludar/<str:nombre>', views.saludar, name='saludar'),
     path('comprar_cancha/<int:cancha_id>/', views.comprar_cancha, name='comprar_cancha')
 ]

@@ -17,7 +17,7 @@
   left: 0;
   width: 100%;
   min-height:540px;
-  color:#fafafa;
+  color:#dce5eb;
   opacity: 0;
   transition: opacity 2s ease-in-out;
   z-index: 0;
@@ -69,7 +69,7 @@
   filter: invert(1);
 }
 #carruselPrincipal .cls-1 {
-  fill:#fafafa !important;
+  fill:#dce5eb !important;
 }
 #carruselDos {
   background:linear-gradient(45deg, #0c2955, #60bdd9);
@@ -120,7 +120,7 @@
 #botonAnterior, #botonSiguiente {
   z-index: 999;
   top:290px;
-  background:#fafafa;
+  background:#dce5eb;
   width:25px;
   height:40px;
   border:0;
@@ -152,7 +152,7 @@
   transition:.2s ease-out;
 }
 #botonAnterior:hover i, #botonSiguiente:hover i {
-  color:#fafafa;
+  color:#dce5eb;
   transition:.2s ease-out;
 }
 
@@ -185,6 +185,15 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
+#canchas ul li {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+#canchas ul li h3 {
+  color:#dce5eb;
+}
 #canchas ul li img {
   width:100%;
   opacity:0.8;
@@ -208,130 +217,77 @@
 
 /**/
 /* CREÁ TU CUENTA */
-#creaTuCuenta {
-  padding:0;
-  background:#fff;
-}
-#creaTuCuenta .contenedor {
-  flex-direction:row;
-  background-image:url("../img/creaTuCuenta.svg");
-  background-repeat:no-repeat;
-  background-position:right;
-  background-size:contain;
-}
-#creaTuCuenta h2 {
-  margin:0 0 40px 0;
-}
-#creaTuCuenta ul {
-  padding:60px 0;
-}
-#creaTuCuenta ul li {
-  display:flex;
-  align-items:center;
-}
-#creaTuCuenta ul li > .boton {
-  margin:20px 0 0
-}
-#creaTuCuenta ul li i {
-  font-size:20px;
-  color:#DC834E;
-  margin:0 15px 0 0;
-}
-#creaTuCuenta .boton {
-  margin:0 auto;
-  margin-top:20px 0 0 40px;
-  font-size:1.2em;
-}
-
-/**/
-/* RESERVA TU CANCHA */
-#reservaTuCancha {
-  background: rgb(0,0,0,0.8);
+#canchaPersonalizada {
+  background:linear-gradient(-45deg, #388e3c, #e90066);
   position: relative;
-  color:#dce5eb;
 }
-#reservaTuCancha::after {
+#canchaPersonalizada .overlay {
   position: absolute;
   content: "";
-  background-image: url("../img/bg2.jpg");
+  background-image: url("../img/icono.svg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
+  background-size: 60%;
+  background-position: 120%;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 1;
 }
-#reservaTuCancha .contenedor > .row {
-  gap:40px !important;
+#canchaPersonalizada .overlay::after {
+  position: absolute;
+  content: "";
+  background-image: url("../img/icono.svg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 60%;
+  background-position: 120%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(40px);
+  z-index:1;
 }
-
-#reservaTuCancha h2 {
+#canchaPersonalizada .contenedor {
+  flex-direction:row;
+}
+#canchaPersonalizada h2 {
+  margin:0 0 40px 0;
   text-transform: uppercase;
   color:#dce5eb;
   font-size:2em;
 }
-#formularioReservas {
-  flex-wrap: wrap;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  height:fit-content;
-  gap:20px !important;
+#canchaPersonalizada h2 i {
+  margin:0 10px 0 0;
 }
-#formularioReservas div:has(input),
-#formularioReservas div:has(select) {
-  margin:0;
-  padding:0;
-  width:48%;
-  height:40px;
-}
-#formularioReservas div input {
-  width: 90%;
-  padding:5%;
-}
-#formularioReservas div select {
-  width:100%;
-  padding:5%;
-}
-#formularioReservas div label {
-  display:none;
-}
-#formularioReservas .boton {
-  font-size:1.2em;
-  width: 100%;
-}
-#formularioReservas .boton a {
-  color:#fafafa;
-}
-
 .listaIconos {
-  align-items: flex-start;
-  flex-direction: column;
+  z-index: 9;
+  padding:60px 0;
 }
 .listaIconos li {
   display:flex;
   align-items:center;
 }
+.listaIconos h3, .listaIconos p {
+  color:#dce5eb;
+}
+.listaIconosli > .boton {
+  margin:20px 0 0
+}
 .listaIconos li i {
-  font-size:20px;
-  color:#DC834E;
-  margin:0 15px 0 0;
+  font-size:24px;
+  color:#dce5eb;
+  margin:0 25px 0 0;
+}
+#canchaPersonalizada .boton {
+  margin:0 auto;
+  margin:20px 0 0 50px;
+  font-size:1.2em;
 }
 
-/**/
-/* BANNER LOGO */
-#bannerLogo {
-  min-height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#bannerLogo img {
-  max-width: 50%;
-  margin:0 auto;
-}
+
 
 /**/
 /*  RESPONSIVE */
@@ -371,16 +327,16 @@
 
   /**/
   /* CREÁ TU CUENTA */
-  #creaTuCuenta .contenedor {
+  #canchaPersonalizada .contenedor {
     flex-direction:column;
     background:none;
     padding:60px 0;
   }
-  #creaTuCuenta ul {
+  #canchaPersonalizada ul {
     width:100%;
     padding:0;
   }
-  #creaTuCuenta h2 {
+  #canchaPersonalizada h2 {
     text-align:center;
   }
   .ilustracion { 
@@ -390,33 +346,5 @@
     display:flex;
     width:80%;
     margin:0 auto;
-  }
-
-
-  /**/
-  /* RESERVA TU CANCHA */
-  #reservaTuCancha ul {
-    display:contents;
-  }
-  #reservaTuCancha ul li {
-    width:100%;
-  }
-  #reservaTuCancha h2 {
-    text-align:center;
-  }
-  #reservaTuCancha form {
-    margin: 0 0 20px 0;
-  }
-  #reservaTuCancha .row,
-  #reservaTuCancha .row .w100 .w50,
-  #reservaTuCancha .contenedor > .row {
-    flex-direction: column;
-    gap:10px !important;
-  }
-  #reservaTuCancha .w50 {
-    width:100% !important;
-  }
-  .listaIconos li {
-    margin:0 0 10px 0 !important;
   }
 }

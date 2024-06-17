@@ -38,6 +38,10 @@
   height:fit-content;
   gap:20px !important;
 }
+#formularioAvanzado h2 {
+  width:100%;
+  margin:10px 0 0 0;
+}
 #formularioAvanzado div:has(input),
 #formularioAvanzado div:has(select) {
   margin:0;
@@ -87,6 +91,10 @@
   color: #fafafa;
 }
 
-.listaCanchas {
-  flex-direction: column;
+ul.column.w50 {
+  background-image:url("../img/canchasBg.webp");
+  background-repeat:no-repeat; 
+  background-size:cover;
+  background-position: center;
+  transition:.5s ease-in;
 }

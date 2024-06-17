@@ -1,15 +1,5 @@
 from django import forms
-from .models import Cancha, Cliente, Venta
-
-class formularioVenta(forms.ModelForm):
-    fecha = forms.DateTimeField(
-        label='Fecha de compra',  # Cambia el label del campo
-        widget=forms.DateTimeInput(attrs={'type': 'datetime-local'})
-    )
-
-    class Meta:
-        model = Venta
-        fields = ['cancha', 'cliente', 'fecha']
+from .models import *
 
 # Formulario de Login
 class formularioLogin(forms.Form):
@@ -27,35 +17,19 @@ class formularioLogin(forms.Form):
             attrs={'placeholder': 'Ingresá tu clave'}
         )
     )
-    
-# Formulario de la sección Contacto
-class formularioContacto(forms.Form):
-    nombre = forms.CharField( label="Nombre", required=True,
-        widget=forms.TextInput(
-            attrs={'placeholder': 'Nombre'}
-        ))
-    dni = forms.IntegerField( label="DNI", required=True,
-        widget=forms.TextInput(
-            attrs={'placeholder': 'DNI'}
-        ),
-        error_messages={'invalid': 'El campo "DNI" solo puede contener números'}
-    )
-    telefono = forms.IntegerField( label="Teléfono", required=True,
-        widget=forms.TextInput(
-            attrs={'placeholder': 'Teléfono'}
-        ),
-        error_messages={'invalid': 'El campo "Teléfono" solo puede contener números'}
-    )
-    email = forms.EmailField( label="Email", required=True,
-        widget=forms.TextInput(
-            attrs={'placeholder': 'Email'}
-        ),
-        error_messages={'invalid': 'Ingresá una dirección de email válida. Ejemplo: nombre@email.com'}
-    )
-    mensaje = forms.CharField( label="Mensaje", required=True,
-        widget=forms.Textarea(
-            attrs={'placeholder': 'Dejanos tu mensaje...'}
-        ))
+#
+# Formulario de Contacto basado en Modelo
+class formularioContacto(forms.ModelForm):
+    class Meta:
+        model = MensajeContacto
+        fields = ['nombre', 'dni', 'telefono', 'email', 'mensaje']
+        widgets = {
+            'nombre': forms.TextInput(attrs={'placeholder': 'Nombre'}),
+            'dni': forms.TextInput(attrs={'placeholder': 'DNI'}),
+            'telefono': forms.TextInput(attrs={'placeholder': 'Teléfono'}),
+            'email': forms.TextInput(attrs={'placeholder': 'Email'}),
+            'mensaje': forms.Textarea(attrs={'placeholder': 'Dejanos tu mensaje...'}),
+        }
 
     def clean_nombre(self):
         nombre = self.cleaned_data.get("nombre")
@@ -67,7 +41,7 @@ class formularioContacto(forms.Form):
         dni = str(self.cleaned_data.get("dni"))
         if not dni.isdigit():
             raise forms.ValidationError('El campo "DNI" solo puede contener números')
-        if not len(dni) != 8:
+        if len(dni) != 8:
             raise forms.ValidationError('El campo "DNI" debe contener 8 dígitos')
         return dni
     
@@ -80,25 +54,14 @@ class formularioContacto(forms.Form):
     def clean_email(self):
         email = self.cleaned_data.get("email")
         if "@" not in email:
-            raise forms.ValidationError('Ingesá una dirección de email válida. Ejemplo nombre@email.com')
+            raise forms.ValidationError('Ingresá una dirección de email válida. Ejemplo nombre@email.com')
         return email
 
     def clean_mensaje(self):
         mensaje = self.cleaned_data.get("mensaje")
         if len(mensaje) < 10:    
             raise forms.ValidationError('El campo "Mensaje" debe contener al menos 10 caracteres')
-        return mensaje
-
-    def clean(self):
-        cleaned_data = super().clean()
-        nombre = cleaned_data.get("nombre")
-        dni = cleaned_data.get("dni")
-        telefono = cleaned_data.get("telefono")
-        email = cleaned_data.get("email")
-        mensaje = cleaned_data.get("mensaje")
-    
-        return self.cleaned_data    
-    
+        return mensaje    
 # 
 # Form avanzado hecho con GPT
 class formularioAvanzado(forms.Form):
@@ -174,9 +137,8 @@ class formularioAvanzado(forms.Form):
         max_length=255,
         required=False
     )
-
-#  Form basado en model
-
+#
+# Forms basados en los modelos cancha, cliente y venta
 class CanchaForm(forms.ModelForm):
     class Meta:
         model = Cancha

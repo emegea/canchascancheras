@@ -1,4 +1,12 @@
 from django.db import models
+import datetime 
+
+# 1. Relación de Uno a Muchos entre Cliente y Venta,
+# Un cliente puede hacer muchas compras (Venta).
+
+# 2. Relación de Muchos a Muchos entre Venta y Cancha
+# Una venta puede incluir muchas canchas y
+# una cancha puede estar en muchas ventas.
 
 class Cancha(models.Model):
     TIPOS_SUELO = [
@@ -9,7 +17,6 @@ class Cancha(models.Model):
         ('cemento', 'Cemento'),
         ('parquet', 'Parquet'),
     ]
-
     TIPOS_RED = [
         ('', 'Seleccione el tipo de red'),
         ('standard', 'Estándar'),
@@ -38,9 +45,30 @@ class Cliente(models.Model):
         return f'{self.nombre} {self.apellido}'
 
 class Venta(models.Model):
-    cancha = models.ForeignKey(Cancha, on_delete=models.CASCADE)
+    canchas = models.ManyToManyField(Cancha)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     comentarios = models.TextField(blank=True, null=True)
+    is_custom = models.BooleanField(default=False)
+    fecha = models.DateTimeField(auto_now_add=True)
+    nombre = models.CharField(max_length=100, blank=True)
+
+    def save(self, *args, **kwargs):
+        if self.is_custom and not self.nombre:
+            total_custom_sales = Venta.objects.filter(is_custom=True).count()
+            self.nombre = f'Compra Custom - {total_custom_sales + 1}'
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'{self.cancha} - {self.cliente}'
+        return f'{self.nombre} - {self.cliente}'
+
+# Modelo para manejar mensajes del formulario de contacto
+class MensajeContacto(models.Model):
+    nombre = models.CharField(max_length=100)
+    dni = models.CharField(max_length=20)
+    telefono = models.CharField(max_length=20)
+    email = models.EmailField()
+    mensaje = models.TextField()
+    fecha_envio = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Mensaje de {self.nombre} - {self.email}'

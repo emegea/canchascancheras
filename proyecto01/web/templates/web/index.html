@@ -70,8 +70,8 @@
         <ul class="w45">
           {% for cancha in contexto %}
           <li>
-            <h3 title="{{ cancha.nombre }}">{{ cancha.nombre }}</h3>
             <img src="{% static 'web/img/canchita-01.jpg' %}" alt="{{ cancha.nombre }}">
+            <h3 title="{{ cancha.nombre }}">{{ cancha.nombre }}</h3>
           </li>
           {% endfor %}
         </ul>
@@ -82,35 +82,36 @@
   </section>
   
   
-  <!-- CREA TU CUENTA-->
-  <section id="creaTuCuenta">
+  <!-- CANCHA PERSONALIZADA -->
+  <section id="canchaPersonalizada">
+    <div class="overlay"></div>
     <article class="contenedor">
-      <img class="mobileImg" src="{% static '/web/img/creaTuCuenta.svg' %}" alt="">
+      <img class="mobileImg" src="{% static '/web/img/logo.svg' %}" alt="">
       <ul class="listaIconos w60">
-        <h2>Buscás una cancha personalizada?</h2>
+        <h2><i class="fa-regular fa-futbol"></i> Buscás una cancha personalizada?</h2>
         <li>
-          <i class="fa-solid fa-rocket"></i>
+          <i class="fa-solid fa-pen"></i>
           <div>
             <h3>Medidas personalizadas.</h3>
             <p>Diseñamos juntos la idea que tenés.</p>
           </div>
         </li>
         <li>
-          <i class="fa-solid fa-pen"></i>
+          <i class="fa-solid fa-spa"></i>
           <div>
             <h3>Diferentes tipos de superficies</h3>
             <p>Césped natural o artificial, tierra batida, cemento, parquet.</p>
           </div>
         </li>
         <li>
-          <i class="fa-regular fa-square-check"></i>
+          <i class="fa-solid fa-font-awesome"></i>
           <div>
             <h3>Instalaciones adicionales</h3>
             <p>Graderías, asientos, iluminación, marcadores.</p>
           </div>
         </li>
         <li>
-          <i class="fa-regular fa-floppy-disk"></i>
+            <i class="fa-regular fa-futbol"></i>
           <div>
             <h3>Accesorios y Equipamiento</h3>
             <p>Arcos, redes y vallas, canastas, raquetas, pelotas, etc.</p>
@@ -127,9 +128,10 @@
   
   
   <!-- reservaTuCancha -->
+  <!--
   <section id="reservaTuCancha">
     <article class="contenedor">
-      <h2><i class="fa-regular fa-futbol"></i> Reservá tu cancha</h2>
+      <h2><i class="fa-regular fa-futbol"></i> ¿Estás pensando en tu cancha personalizada?</h2>
       <div class="row">
         <form id="formularioReservas" class="w50" method="post" action="{% url 'index' %}">
           {% csrf_token %}          
@@ -168,10 +170,5 @@
       </div>    
     </article>
   </section>
-  
-  <section id="bannerLogo">
-    <article class="contenedor">
-      <img src="{% static 'web/img/logo.svg' %}" alt="logo">
-    </article>
-  </section>
-  {% endblock %}
+  -->
+{% endblock %}

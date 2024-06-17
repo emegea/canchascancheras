@@ -5,47 +5,26 @@ from django.contrib import messages
 from .forms import *
 from .models import *
 
-#
 # Vista del Index
 def index(request):
-    # Le paso los elementos de la db guardados como Canchas
-    canchas = Cancha.objects.all()
+    # Obtengo las últimas 4 canchas publicadas
+    canchas = Cancha.objects.all().order_by('-id')[:4]
+
     contexto = {
         'nombre': 'Carlos',
         'fecha_hora': datetime.datetime.now(),
-        'canchas': [
-            '/static/web/img/canchita-01.jpg',
-            '/static/web/img/canchita-02.jpg',
-            '/static/web/img/canchita-03.jpg',
-            '/static/web/img/canchita-04.jpg'
-        ]
+        'canchas': canchas
     }
-    # En el form... Si el method es un GET
-    if request.method == 'GET':
-        # Devuelvo el form vacio
-        contexto['formulario_venta'] = formularioAvanzado()
-    # Si no, o sea que es un POST
-    else:
-        # Devuelvo el form con la data que cargó el cliente
-        formulario = formularioAvanzado(request.POST)
-        contexto['formulario_venta'] = formulario
-        # Valido el form
-        if formulario.is_valid():
-            print(request.POST)
-            messages.success(request, "Tu reserva se envió correctamente")
-            # Redirecciono
-            return redirect('index')
+    return render(request, 'index.html', {'contexto': canchas})
 
-    return render(request, 'web/index.html', {'contexto': canchas})
-
-#
 # Vista de Quienes Somos
 def somos(request):
-    return render(request, "web/somos.html")
+    return render(request, "somos.html")
+
 # Vista de Canchas
 def canchas(request):
     canchas = Cancha.objects.all()
-    return render(request, 'web/canchas.html', {'canchas': canchas})
+    return render(request, 'canchas.html', {'canchas': canchas})
 
 # Vista para manejar la compra de una cancha estándar
 def comprar_cancha(request, cancha_id):
@@ -59,20 +38,19 @@ def comprar_cancha(request, cancha_id):
             cliente = cliente_form.save()
             venta = venta_form.save(commit=False)
             venta.cliente = cliente
-            venta.cancha = cancha
             venta.save()
+            venta.canchas.add(cancha)
             messages.success(request, "Compra realizada con éxito!")
             return redirect('gracias')
     else:
         cliente_form = ClienteForm()
         venta_form = VentaForm()
     
-    return render(request, 'web/comprar_cancha.html', {
+    return render(request, 'comprar_cancha.html', {
         'cancha': cancha,
         'cliente_form': cliente_form,
         'venta_form': venta_form
     })
-
 
 # Vista de Venta Personalizada
 def ventaCustom(request):
@@ -86,39 +64,25 @@ def ventaCustom(request):
             cancha = cancha_form.save()
             venta = venta_form.save(commit=False)
             venta.cliente = cliente
-            venta.cancha = cancha
+            venta.is_custom = True  # Marcar la venta como personalizada
             venta.save()
-            messages.success(request, "Venta concretada!")
-            return redirect('/web/gracias')
+            venta.canchas.add(cancha)  # Agregar la cancha a la venta
+            messages.success(request, "¡Venta concretada!")
+            return redirect('/gracias')
     else:
         cancha_form = CanchaForm()
         venta_form = VentaForm()
         cliente_form = ClienteForm()
 
-    return render(request, 'web/ventaCustom.html', {
+    return render(request, 'ventaCustom.html', {
         'cancha_form': cancha_form,
         'venta_form': venta_form,
         'cliente_form': cliente_form,
     })
 
-# Vista de Venta
-# def venta(request):
-    # contexto = {}
-    # if request.method == 'GET':
-        # contexto['formulario_venta'] = formularioAvanzado()
-    # else:
-        # formulario = formularioAvanzado(request.POST)
-        # contexto['formulario_venta'] = formulario
-        # if formulario.is_valid():
-            # formulario.save()
-            # messages.success(request, "Venta concretada !")
-            # return redirect('/web/gracias')
-
-    # return render(request, 'web/venta.html', contexto)
- 
 # Vista de Gracias
 def gracias(request):
-    return render(request, "web/gracias.html")
+    return render(request, "gracias.html")
 
 # Vista de Contacto
 def contacto(request):
@@ -129,42 +93,27 @@ def contacto(request):
         formulario = formularioContacto(request.POST)
         contexto['formulario_contacto'] = formulario
         if formulario.is_valid():
-            print(request.POST)
+            formulario.save()
             messages.success(request, "El mensaje se envió correctamente")
             return redirect('contacto')
-    return render(request, "web/contacto.html", contexto)
+    return render(request, "contacto.html", contexto)
 
 # Vista de Login
 def login(request):
-    contexto = {}
-    # En el form... Si el method es un GET
-    if request.method == 'GET':
-        # Devuelvo el form vacio
-        contexto['formulario_login'] = formularioLogin()
-    # Si no, o sea que es un POST
-    else:
-        # Devuelvo el form con la data que cargó el cliente
+    if request.method == 'POST':
         formulario = formularioLogin(request.POST)
-        contexto['formulario_login'] = formulario
-        # Valido el form
         if formulario.is_valid():
-            print(request.POST)
+            # Acá iría la lógica para autenticar al usuario
             messages.success(request, "Usuario autentificado correctamente")
-            # Redirecciono
             return redirect('login')
-    return render(request, "web/login.html", contexto)
+    else:
+        formulario = formularioLogin()
+    return render(request, 'login.html', {'formulario_login': formulario})
 
-
-# Vista de logout
+# Vista de Logout
 def logout(request):
-    contexto = {}
     messages.success(request, "El usuario cerró su sesión correctamente.")
-    return render(request, "web/logout.html", contexto)
-
-# Vista de Saludar con parámetros
-def saludar(request, nombre):
-    # Renderizo un HTML hecho por HttpResponse con parámetros
-    return HttpResponse(f"<h1>Hola {nombre}</h1>")
+    return render(request, "logout.html")
 
 # Vista de Admin
 def admin(request):

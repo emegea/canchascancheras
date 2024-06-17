@@ -9,7 +9,7 @@
 <main id="comprarCancha">
   <section class="contenedor">    
     <div class="row">
-      <form method="post" id="formularioCompra" class="w6w0">
+      <form method="post" id="formularioCompra" class="w60">
         <h1><i class="fa-regular fa-futbol"></i> Comprar {{ cancha.nombre }}</h1>
         <p>» ingresá tus datos para finalizar la compra.</p>
         {% csrf_token %}
@@ -17,16 +17,18 @@
         {{ venta_form }}
         <button type="submit" class="boton">» Comprar</button>
       </form>
-      <div class="detalles w40">
+      <div class="detalles w40 column">
         <img src="{% static 'web/img/canchita-01.jpg' %}" alt="">
-        <h2>Detalles de la Cancha</h2>
-        <p><b>Longitud: </b>{{ cancha.longitud }} m</p>
-        <p><b>Ancho: </b>{{ cancha.ancho }} m</p>
-        <p><b>Tipo de Suelo: </b>{{ cancha.get_tipo_suelo_display }}</p>
-        <p><b>Tipo de Red: </b>{{ cancha.get_tipo_red_display }}</p>
-        <p><b>Iluminación: </b>{{ cancha.iluminacion|yesno:"Sí,No" }}</p>
-        <p><b>Marcador Electrónico: </b>{{ cancha.marcador|yesno:"Sí,No" }}</p>
-        <p><b>Graderías: </b>{{ cancha.gradas|yesno:"Sí,No" }}</p>
+        <ul class="column">
+          <h2>Detalles de la Cancha</h2>
+          <li><p><b>Longitud: </b>{{ cancha.longitud }} m</p></li>
+          <li><p><b>Ancho: </b>{{ cancha.ancho }} m</p></li>
+          <li><p><b>Tipo de Suelo: </b>{{ cancha.get_tipo_suelo_display }}</p></li>
+          <li><p><b>Tipo de Red: </b>{{ cancha.get_tipo_red_display }}</p></li>
+          <li><p><b>Iluminación: </b>{{ cancha.iluminacion|yesno:"Sí,No" }}</p></li>
+          <li><p><b>Marcador Electrónico: </b>{{ cancha.marcador|yesno:"Sí,No" }}</p></li>
+          <li><p><b>Graderías: </b>{{ cancha.gradas|yesno:"Sí,No" }}</p></li>
+        </ul>
       </div>
     </div>
   </section>

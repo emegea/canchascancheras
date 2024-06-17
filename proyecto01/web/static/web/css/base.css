@@ -156,9 +156,9 @@ nav a {
   font-size:0.8em;
   font-weight:400 !important;
   text-transform: uppercase;
-  color:#fafafa;
+  color:#dce5eb;
   padding:0 0 2px 0;
-  border-bottom:2px #fafafa solid;
+  border-bottom:2px #dce5eb solid;
   transition:ease-in-out .5s;
   border-bottom:2px rgba(250,250,250,0) solid;
 }
@@ -172,22 +172,22 @@ nav ul#barraLogin {
 }
 nav ul#barraLogin .boton {
   text-transform: initial;
-  color:#fafafa;
+  color:#dce5eb;
   border:1px solid #388e3c;
   padding:0 20px;
 }
 nav ul#barraLogin .boton:hover {
-  color:#fafafa;
+  color:#dce5eb;
   border:1px solid #DC834E;
 }
 nav ul#barraLogin .botonDos:hover {
-  color:#fafafa;
+  color:#dce5eb;
   border:1px solid #388e3c;
 }
 /**/
 /* BOTONES */
 .boton {
-  color:#fafafa;
+  color:#dce5eb;
   background:#388e3c !important;
   padding:10px 20px;
   border-radius:5px;
@@ -210,7 +210,7 @@ nav ul#barraLogin .botonDos:hover {
   font-size:1.2em;
   font-weight: 500;
   cursor:pointer;
-  color:#fafafa;
+  color:#dce5eb;
   padding:0;
   margin:0;
   border:none;
@@ -225,7 +225,7 @@ nav ul#barraLogin .botonDos:hover {
   box-shadow: 0 0 0 rgba(0,0,0,0) !important;
 }
 .boton a {
-  color:#fafafa;
+  color:#dce5eb;
 }
 .botonDos {
   cursor:pointer;
@@ -240,16 +240,16 @@ nav ul#barraLogin .botonDos:hover {
 .botonDos:hover {
   background:#388e3c;
   transition:.2s ease-in;
-  color:#fafafa;
+  color:#dce5eb;
 }
 .botonDos a {
-  color:#fafafa;
+  color:#dce5eb;
   text-transform: initial;
 }
 .botonDos input:hover,
 .botonDos a:hover,
 .botonDos input a:hover {
-  color:#fafafa;
+  color:#dce5eb;
   text-decoration: none;
   border: 0px solid rgba(0,0,0,0);
 }
@@ -301,7 +301,7 @@ textarea {
   position: fixed;
   margin-top: 100px;
   width:100%;
-  color:#fafafa;
+  color:#dce5eb;
   opacity: 0; /* Inicialmente invisible */
   transform: translateY(-50px); /* Inicia fuera de la pantalla hacia arriba */
   animation: bounceInOut 5s ease-in-out forwards; /* Animación de 2 segundos */
@@ -368,6 +368,10 @@ footer::after {
 }
 footer .contenedor {
   align-items:center;
+}
+footer .logo {
+    height:150px;
+    filter: invert(1);
 }
 footer > div {
   padding:60px 0;

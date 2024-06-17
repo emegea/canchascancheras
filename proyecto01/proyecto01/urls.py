@@ -4,5 +4,5 @@ from web import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('web/', include('web.urls'))
+    path('', include('web.urls'))
 ]

@@ -12,13 +12,15 @@
     <div class="row">
       <form id="formularioAvanzado" class="w50" method="post" action="{% url 'ventaCustom' %}">
         {% csrf_token %}
+        <h2>Opciones de cosntrucción</h2>
         {{ cancha_form }}
-        {{ venta_form }}
+        <h2>Tus datos personales</h2>
         {{ cliente_form }}
-        <input type="submit" value="» Enviar" class="boton">
+        <h2>Comentarios Adicionales</h2>
+        {{ venta_form }}
+        <input type="submit" value="» Enviar cotización" class="boton">
       </form>
-      <ul class="listaCanchas w50">
-        <img src="{% static 'web/img/cancha_venta.jpg' %}" />
+      <ul class="column w50">
       </ul>  
     </div>    
   </article>
