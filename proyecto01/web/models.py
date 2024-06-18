@@ -1,6 +1,7 @@
 from django.db import models
 import datetime 
 
+
 # 1. Relación de Uno a Muchos entre Cliente y Venta,
 # Un cliente puede hacer muchas compras (Venta).
 
@@ -8,6 +9,7 @@ import datetime
 # Una venta puede incluir muchas canchas y
 # una cancha puede estar en muchas ventas.
 
+    
 class Cancha(models.Model):
     TIPOS_SUELO = [
         ('', 'Seleccione el tipo de suelo'),
@@ -45,7 +47,7 @@ class Cliente(models.Model):
         return f'{self.nombre} {self.apellido}'
 
 class Venta(models.Model):
-    canchas = models.ManyToManyField(Cancha)
+    canchas = models.ManyToManyField(Cancha, related_name='ventas')
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     comentarios = models.TextField(blank=True, null=True)
     is_custom = models.BooleanField(default=False)
@@ -59,7 +61,7 @@ class Venta(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'{self.nombre} - {self.cliente}'
+        return f'{self.nombre} - {self.cliente}'    
 
 # Modelo para manejar mensajes del formulario de contacto
 class MensajeContacto(models.Model):

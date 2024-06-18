@@ -114,77 +114,6 @@ a:hover {
   gap:40px;
 }
 /**/
-/* HEADER */
-header {
-  margin:0 auto;
-  position:fixed;
-  background: rgba(0,0,0,0.9);
-  box-shadow:0 0 10px rgba(0,0,0,0.2);
-  z-index:999;
-  top:0;
-  margin-top:0;
-}
-header section {
-  display:flex;
-  max-width:1080px;
-  height:80px;
-  margin:0 auto;
-  padding:0;
-  flex-direction:row;
-  align-items:center;
-  justify-content:space-between;
-}
-#logo img {
-  height:50px;
-  filter: invert(1);
-}
-nav {
-  display:flex;
-  align-items:center;
-}
-nav ul {
-  display:flex;
-  flex-direction:row;
-}
-nav ul:nth-child(2) li {
-  padding:0 0 0 20px;
-}
-nav li {
-  padding:15px 0 10px 20px;
-}
-nav a {
-  font-size:0.8em;
-  font-weight:400 !important;
-  text-transform: uppercase;
-  color:#dce5eb;
-  padding:0 0 2px 0;
-  border-bottom:2px #dce5eb solid;
-  transition:ease-in-out .5s;
-  border-bottom:2px rgba(250,250,250,0) solid;
-}
-nav a:hover {
-  color:#DC834E;
-  border-bottom:2px #DC834E solid;
-  transition:ease-in-out .3s;
-}
-nav ul#barraLogin {
-  margin:0 0 0 40px;
-}
-nav ul#barraLogin .boton {
-  text-transform: initial;
-  color:#dce5eb;
-  border:1px solid #388e3c;
-  padding:0 20px;
-}
-nav ul#barraLogin .boton:hover {
-  color:#dce5eb;
-  border:1px solid #DC834E;
-}
-nav ul#barraLogin .botonDos:hover {
-  color:#dce5eb;
-  border:1px solid #388e3c;
-}
-/**/
 /* BOTONES */
 .boton {
   color:#dce5eb;
@@ -254,6 +183,106 @@ nav ul#barraLogin .botonDos:hover {
   border: 0px solid rgba(0,0,0,0);
 }
 /**/
+/* HEADER */
+header {
+  margin:0 auto;
+  position:fixed;
+  background: rgba(0,0,0,0.9);
+  box-shadow:0 0 10px rgba(0,0,0,0.2);
+  z-index:999;
+  top:0;
+  margin-top:0;
+}
+header section {
+  display:flex;
+  max-width:1080px;
+  height:80px;
+  margin:0 auto;
+  padding:0;
+  flex-direction:row;
+  align-items:center;
+  justify-content:space-between;
+}
+#logo img {
+  height:50px;
+  filter: invert(1);
+}
+nav {
+  display:flex;
+  align-items:center;
+}
+nav ul {
+  display:flex;
+  flex-direction:row;
+}
+nav ul:nth-child(2) li {
+  padding:0 0 0 20px;
+}
+nav li {
+  padding:15px 0 10px 20px;
+}
+nav a {
+  font-size: 0.9em;
+  font-weight: 400 !important;
+  text-transform: uppercase;
+  color: #ddd;
+  padding: 0 0 2px 0;
+  position: relative;
+  transition: color 0.5s ease-in-out;
+  font-family: "Roboto Condensed", sans-serif;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, #184d99, #e90066);
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+}
+nav a:hover::after {
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
+nav a:hover {
+  color: #fff;
+}
+nav ul#barraLogin {
+  margin:0 0 0 40px;
+}
+nav ul#barraLogin .boton {
+  text-transform: initial;
+  padding:5px 20px;
+  border:none;
+  border-radius:0;
+  background:linear-gradient(to bottom, #184d99, #e90066) !important;
+  color:#dce5eb;
+  font-size:0.9em;
+}
+nav ul#barraLogin .boton:hover {
+  background:linear-gradient(to top, #184d99, #e90066) !important;
+}
+nav ul#barraLogin .botonDos {
+  background:none !important;
+  border:1px solid;
+  border-image: linear-gradient(to bottom, #184d99, #e90066) 1;
+}
+nav ul#barraLogin .botonDos:hover {
+  border-image: linear-gradient(to bottom, #184d99, #e90066) 1;
+  background:linear-gradient(to bottom, #184d99, #e90066) !important;
+}
+nav ul#barraLogin .botonDos:focus {
+  outline: none;
+}
+#barraLogin a::after {
+  background: none;
+}
+
+/**/
+
 /* FORMULARIOS */
 form {
   gap:15px !important;

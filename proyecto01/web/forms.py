@@ -171,3 +171,4 @@ class ClienteForm(forms.ModelForm):
             'nombre': forms.TextInput(attrs={'placeholder': 'Nombre'}),
             'email': forms.EmailInput(attrs={'placeholder': 'Email'}),
         }
+        

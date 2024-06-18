@@ -56,8 +56,8 @@ def comprar_cancha(request, cancha_id):
 def ventaCustom(request):
     if request.method == 'POST':
         cancha_form = CanchaForm(request.POST)
-        venta_form = VentaForm(request.POST)
         cliente_form = ClienteForm(request.POST)
+        venta_form = VentaForm(request.POST)
         
         if cancha_form.is_valid() and venta_form.is_valid() and cliente_form.is_valid():
             cliente = cliente_form.save()
@@ -79,6 +79,8 @@ def ventaCustom(request):
         'venta_form': venta_form,
         'cliente_form': cliente_form,
     })
+
+
 
 # Vista de Gracias
 def gracias(request):

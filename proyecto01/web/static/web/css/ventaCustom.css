@@ -25,6 +25,7 @@
 }
 #comprarCancha .contenedor > .row {
   gap:40px !important;
+  z-index: 9;
 }
 #comprarCancha .row, #comprarCancha .row .w100 .w50 {
   gap:10px !important;
