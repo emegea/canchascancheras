@@ -9,7 +9,7 @@
     <h1>Listado de Canchas</h1>
     <ul>
         {% for cancha in canchas %}
-            <li><a href="{% url 'detalle_cancha' cancha.id %}">{{ cancha.nombre }}</a></li>
+            <li><a href="{% url 'detalle_cancha' chacan.id %}">{{ cancha.nombre }}</a></li>
         {% endfor %}
     </ul>
 </body>

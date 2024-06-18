@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from .forms import RegistroForm, formularioReservas, formularioContacto, formularioLogin
 from .models import Cancha, Cliente, Reserva
 import datetime
 
+def chacan(request):
+    return render(request, 'web/chacan.html')
 
 def registro(request):
     if request.method == 'POST':
@@ -16,7 +18,7 @@ def registro(request):
             user = authenticate(username=username, password=raw_password)
             login(request, user)
             messages.success(request, 'Tu cuenta ha sido creada exitosamente')
-            return redirect('home')  # Reemplaza 'home' con la vista a la que quieres redirigir después del registro
+            return redirect('contacto')  # Reemplaza 'home' con la vista a la que quieres redirigir después del registro
         else:
             messages.error(request, 'Por favor corrige los errores a continuación.')
     else:
@@ -24,9 +26,6 @@ def registro(request):
     return render(request, 'web/registro.html', {'form': form})
 
 
-
-def chacan(request):
-    return render(request, 'web/chachan.html')
 
 def reserv(request):
     return render(request, 'web/reserv.html')    
@@ -55,18 +54,6 @@ def detalle_reserva(request, id):
     reserva = get_object_or_404(Reserva, id=id)
     return render(request, 'detalle_reserva.html', {'reserva': reserva})
 
-def crear_cuenta(request):
-    if request.method == 'POST':
-        form = RegistroForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Cuenta creada para {username}')
-            login(request, user)
-            return redirect('index')  # Redirige a la página de inicio u otra página después de la creación exitosa de la cuenta
-    else:
-        form = RegistroForm()
-    return render(request, 'web/crear_cuenta.html', {'form': form})
 
 def index(request):
     contexto = {
