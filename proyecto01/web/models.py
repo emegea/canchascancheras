@@ -58,6 +58,10 @@ class Venta(models.Model):
         if self.is_custom and not self.nombre:
             total_custom_sales = Venta.objects.filter(is_custom=True).count()
             self.nombre = f'Compra Custom - {total_custom_sales + 1}'
+        else:
+            total_custom_sales = Venta.objects.filter(is_custom=True).count()
+            self.nombre = f'Compra - {total_custom_sales + 1}'
+            
         super().save(*args, **kwargs)
 
     def __str__(self):
