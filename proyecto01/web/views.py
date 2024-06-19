@@ -61,14 +61,14 @@ def ventaCustom(request):
         
         if cancha_form.is_valid() and venta_form.is_valid() and cliente_form.is_valid():
             cliente = cliente_form.save()
-            cancha = cancha_form.save()
+            # cancha = cancha_form.save()
             venta = venta_form.save(commit=False)
             venta.cliente = cliente
             venta.is_custom = True  # Marcar la venta como personalizada
             venta.save()
-            venta.canchas.add(cancha)  # Agregar la cancha a la venta
+            venta.canchas.add()  # Agregar la cancha a la venta
             messages.success(request, "¡Venta concretada!")
-            return redirect('/gracias')
+        return redirect('/gracias')
     else:
         cancha_form = CanchaForm()
         venta_form = VentaForm()

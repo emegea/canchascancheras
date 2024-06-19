@@ -11,7 +11,7 @@ class ClienteAdmin(admin.ModelAdmin):
 
 class VentaAdmin(admin.ModelAdmin):
     list_display = ['nombre', 'get_cliente_nombre', 'get_canchas', 'comentarios', 'fecha']
-    search_fields = ['nombre', 'cliente__apellido', 'cliente__nombre']
+    search_fields = ['cancha', 'nombre', 'cliente__apellido', 'cliente__nombre']
 
     def get_cliente_nombre(self, obj):
         return f"{obj.cliente.nombre} {obj.cliente.apellido}" if obj.cliente else None
