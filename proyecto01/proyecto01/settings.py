@@ -129,7 +129,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'canchascancheras',
         'USER': 'postgres',
-        'PASSWORD': 'CONTRASEÑA',
+        'PASSWORD': 'CLAVE',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
