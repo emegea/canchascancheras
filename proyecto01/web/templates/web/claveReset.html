@@ -1,0 +1,42 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block titulo %}ACCESO AL SISTEMA » Canchas Cancheras{% endblock %}
+{% block extra_css_js %}
+  <link rel="stylesheet" href="{% static 'web/css/login.css' %}">
+{% endblock %}
+
+{% block principal %}
+<main id="login">
+  <article class="contenedor">    
+    <h1>Acceso a Clientes</h1>
+    <form
+      id="formularioLogin"
+      class="w40 column"
+      method="POST"
+      action="{% url 'index' %}"
+    >
+      {% csrf_token %}          
+      {{ formulario_login }}
+      <div id="recordarme">
+        <input type="checkbox" value="recordarme">
+        <label>Recordarme</label>
+      </div>
+      <button class="boton">
+        <input type="submit" value="Enviar">
+      </button>
+    </form>
+    <p id="ayudaForm">¿Olvidaste tu clave? Hacé click <a href="#">acá</a></p>
+  </article>
+  </main>
+<!--
+  <form class="w50">
+    <input type="email" id="email" placeholder="nombre@ejemplo.com">
+    <input type="password" id="password" placeholder="Ingresá tu clave">  
+    <div id="recordarme">
+      <input type="checkbox" value="recordarme">
+      <label>Recordarme</label>
+    </div>
+    <button class="boton" type="submit">Ingresar</button>
+  </form>
+-->
+{% endblock %}

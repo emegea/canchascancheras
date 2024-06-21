@@ -2,6 +2,7 @@ from django.http import HttpResponse
 import datetime
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth import login, logout
 from .forms import *
 from .models import *
 
@@ -80,8 +81,6 @@ def ventaCustom(request):
         'cliente_form': cliente_form,
     })
 
-
-
 # Vista de Gracias
 def gracias(request):
     return render(request, "gracias.html")
@@ -101,23 +100,25 @@ def contacto(request):
     return render(request, "contacto.html", contexto)
 
 # Vista de Login
-def login(request):
+def vistaLogin(request):
     if request.method == 'POST':
         formulario = formularioLogin(request.POST)
         if formulario.is_valid():
             # Acá iría la lógica para autenticar al usuario
-            messages.success(request, "Usuario autentificado correctamente")
-            return redirect('login')
+            messages.success(request, f"Hola {Cliente.nombre}, Bienvenid@ !")
+            return redirect('index')
     else:
         formulario = formularioLogin()
     return render(request, 'login.html', {'formulario_login': formulario})
 
 # Vista de Logout
-def logout(request):
+def vistaLogout(request):
+    #Llamo al logout de django
+    logout(request)
     messages.success(request, "El usuario cerró su sesión correctamente.")
-    return render(request, "logout.html")
+    return redirect('index')
 
-# Vista de Admin
-def admin(request):
-    return redirect('/admin')
-
+# Vista de claveReset
+def claveReset(request):
+    messages.success(request, "La clave fue reseteada correctamente.")
+    return render(request, "claveReset.html")

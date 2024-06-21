@@ -38,7 +38,10 @@
         <ul id="barraLogin">
           {% if user.is_authenticated %}
           <li>
-            <a class="boton" href="{% url 'logout' %}">Cerar Sesión</a>
+            <p>Bienvenid@ {{user.username}}</p>
+          </li>
+          <li>
+            <a class="boton" href="{% url 'logout' %}">Cerrar Sesión</a>
           </li>
           {% else %}
           <li>
