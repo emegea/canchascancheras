@@ -1,0 +1,36 @@
+#gracias {
+    background:linear-gradient(120deg, #184d99, #e90066);
+    position: relative;
+    color:#dce5eb;
+    padding:80px 0 0 0;
+  }
+  #gracias:before {
+    content:"";
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background-image:url("../img/lineas.svg");
+    mix-blend-mode:multiply;
+    background-size:cover;
+    background-repeat:no-repeat;
+    transition:.5s ease-in;
+    background-attachment: fixed;
+  }
+  #gracias h1 {
+    color:#fafafa;
+    font-size:2em;
+    text-transform: uppercase;
+  }
+  #gracias .contenedor > .row {
+    gap:40px !important;
+  }
+  #gracias .row, #gracias .row .w100 .w50 {
+    gap:10px !important;
+  }
+  
+  .listaCanchas {
+    flex-direction: column;
+  }
+  

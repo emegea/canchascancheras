@@ -13,9 +13,9 @@
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
-    <link rel="shortcut icon" href="{% static 'web/img/icono.svg' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'web/img/iconoColor.svg' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'web/css/base.css' %}" />
-    {% block extra_css %}{% endblock %}
+    {% block extra_css_js %}{% endblock %}
 </head>
 <body>
 <!-- HEADER -->
@@ -30,24 +30,48 @@
         <ul>
             <li><a href="{% url 'index' %}">Inicio</a></li>
             <li><a href="{% url 'somos' %}">Quienes Somos</a></li>
-            <li><a href="{% url 'canchas' %}">Nuestras Canchas</a></li>
-            <li><a href="{% url 'reservas' %}">Reservá tu Cancha</a></li>
+            <li><a href="{% url 'canchas' %}">Canchas</a></li>
+            <li><a href="{% url 'ventaCustom' %}">Personalizá tu Cancha</a></li>
             <li><a href="{% url 'contacto' %}">Contacto</a></li>
         </ul>
-        <ul>
-          <li><button class="botonDos">Crear Cuenta</button></li>
-          <li><button class="boton">Iniciar Sesión</button></li>
+        <!-- Ocultando botón si no está logueado  -->
+        <ul id="barraLogin">
+          {% if user.is_authenticated %}
+          <li>
+            <a class="boton" href="{% url 'logout' %}">Cerar Sesión</a>
+          </li>
+          {% else %}
+          <li>
+              <a class="boton botonDos" href="{% url 'login' %}">Crear Cuenta</a>
+          </li>
+          <li>
+            <a class="boton" href="{% url 'login' %}">Iniciar Sesión</a>
+          </li>
+          {% endif %}
         </ul>
       </nav>
     </section>
   </header>
 
+  {% if messages %}
+    <ul id="alertas">
+      {% for message in messages %}
+        {% if message.tags %}
+        <li class="{{message.tags}}">
+          <p>{{ message }}</p>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+
   {% block principal %}{% endblock %}
-  
+
   <!-- FOOTER -->
   <footer>
       <div class="contenedor">
-          <h2>Seguínos en las redes sociales</h2>
+        <img src="{% static 'web/img/logo.svg' %}" alt="logo" class="logo">
+        <h4 class="cta">Seguínos en las redes sociales</h4>
           <div class="redes">
               <ul>
                   <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
@@ -58,12 +82,9 @@
           </div>
       </div>
       <div class="copyright">
-          <p>© 2023 Canchas Cancheras</p>
+          <p>© 2024 Canchas Cancheras</p>
           <p><a href="#terminos">Terminos y Condiciones</a> | <a href="#politicas">Políticas de Privacidad</a></p>
       </div>
   </footer>
-  <!-- ACÁ CARGAMOS LOS JS -->
-  <script src="{% static 'web/js/cositas.js' %}"></script>
-
 </body>
 </html>

@@ -1,68 +1,123 @@
-from django.shortcuts import render
-# from django.http import HttpResponse
+from django.http import HttpResponse
 import datetime
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
+from .forms import *
+from .models import *
 
 # Vista del Index
 def index(request):
+    # Obtengo las últimas 4 canchas publicadas
+    canchas = Cancha.objects.all().order_by('-id')[:4]
+
     contexto = {
         'nombre': 'Carlos',
         'fecha_hora': datetime.datetime.now(),
-        'canchas': [
-            '/static/web/img/canchita-01.jpg',
-            '/static/web/img/canchita-02.jpg',
-            '/static/web/img/canchita-03.jpg',
-            '/static/web/img/canchita-04.jpg'
-        ]
+        'canchas': canchas
     }
-    return render(request, "web/index.html", contexto)
+    return render(request, 'index.html', {'contexto': canchas})
 
 # Vista de Quienes Somos
 def somos(request):
-    return render(request, "web/somos.html")
+    return render(request, "somos.html")
 
 # Vista de Canchas
 def canchas(request):
-    contexto = {
-        'canchitas': [
-            '/static/web/img/canchita-01.jpg',
-            '/static/web/img/canchita-02.jpg',
-            '/static/web/img/canchita-03.jpg',
-            '/static/web/img/canchita-04.jpg',
-            '/static/web/img/canchita-04.jpg',
-            '/static/web/img/canchita-01.jpg',
-            '/static/web/img/canchita-02.jpg',
-            '/static/web/img/canchita-03.jpg'
-        ]
-    }
-    return render(request, "web/canchas.html", contexto)
+    canchas = Cancha.objects.all()
+    return render(request, 'canchas.html', {'canchas': canchas})
 
-# Vista de Reservas
-def reservas(request):
-    contexto = {
-        'canchitas': [
-            '/static/web/img/canchita-01.jpg'        ]
-    }
-    return render(request, "web/reservas.html", contexto)
+# Vista para manejar la compra de una cancha estándar
+def comprar_cancha(request, cancha_id):
+    cancha = get_object_or_404(Cancha, id=cancha_id)
+    
+    if request.method == 'POST':
+        cliente_form = ClienteForm(request.POST)
+        venta_form = VentaForm(request.POST)
+        
+        if cliente_form.is_valid() and venta_form.is_valid():
+            cliente = cliente_form.save()
+            venta = venta_form.save(commit=False)
+            venta.cliente = cliente
+            venta.save()
+            venta.canchas.add(cancha)
+            messages.success(request, "Compra realizada con éxito!")
+            return redirect('gracias')
+    else:
+        cliente_form = ClienteForm()
+        venta_form = VentaForm()
+    
+    return render(request, 'comprar_cancha.html', {
+        'cancha': cancha,
+        'cliente_form': cliente_form,
+        'venta_form': venta_form
+    })
+
+# Vista de Venta Personalizada
+def ventaCustom(request):
+    if request.method == 'POST':
+        cancha_form = CanchaForm(request.POST)
+        cliente_form = ClienteForm(request.POST)
+        venta_form = VentaForm(request.POST)
+        
+        if cancha_form.is_valid() and venta_form.is_valid() and cliente_form.is_valid():
+            cliente = cliente_form.save()
+            # cancha = cancha_form.save()
+            venta = venta_form.save(commit=False)
+            venta.cliente = cliente
+            venta.is_custom = True  # Marcar la venta como personalizada
+            venta.save()
+            venta.canchas.add()  # Agregar la cancha a la venta
+            messages.success(request, "¡Venta concretada!")
+        return redirect('/gracias')
+    else:
+        cancha_form = CanchaForm()
+        venta_form = VentaForm()
+        cliente_form = ClienteForm()
+
+    return render(request, 'ventaCustom.html', {
+        'cancha_form': cancha_form,
+        'venta_form': venta_form,
+        'cliente_form': cliente_form,
+    })
+
+
+
+# Vista de Gracias
+def gracias(request):
+    return render(request, "gracias.html")
 
 # Vista de Contacto
 def contacto(request):
-    return render(request, "web/contacto.html")
+    contexto = {}
+    if request.method == 'GET':
+        contexto['formulario_contacto'] = formularioContacto()
+    else:
+        formulario = formularioContacto(request.POST)
+        contexto['formulario_contacto'] = formulario
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, "El mensaje se envió correctamente")
+            return redirect('contacto')
+    return render(request, "contacto.html", contexto)
 
-# Vista de Reservas
+# Vista de Login
 def login(request):
-    return render(request, "web/login.html")
+    if request.method == 'POST':
+        formulario = formularioLogin(request.POST)
+        if formulario.is_valid():
+            # Acá iría la lógica para autenticar al usuario
+            messages.success(request, "Usuario autentificado correctamente")
+            return redirect('login')
+    else:
+        formulario = formularioLogin()
+    return render(request, 'login.html', {'formulario_login': formulario})
 
-# Vista de Lista de Canchas
-# (por si se necesita hacer un listado para luego cargarlo o algo así)
-def lista_canchas(request):
-    contexto = {
-        'canchas': [
-            'Cancha de 11',
-            'Cancha de 7',
-            'Cancha de 5'            
-        ]
-    }
-    return render(request, 'web/lista_canchas.html', contexto)
+# Vista de Logout
+def logout(request):
+    messages.success(request, "El usuario cerró su sesión correctamente.")
+    return render(request, "logout.html")
 
-# def saludar(request, nombre):
-#     return HttpResponse(f"<h1>Hola {nombre}</h1>")
+# Vista de Admin
+def admin(request):
+    return redirect('/admin')
+

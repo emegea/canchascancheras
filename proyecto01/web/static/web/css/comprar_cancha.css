@@ -1,0 +1,115 @@
+#comprarCancha {
+  background:linear-gradient(45deg, #e90066, #388e3c);
+  position: relative;
+  color:#dce5eb;
+  padding:80px 0 0 0;
+}
+#comprarCancha:before {
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  background-image:url("../img/lineas.svg");
+  mix-blend-mode:multiply;
+  background-size:cover;
+  background-repeat:no-repeat;
+  transition:.5s ease-in;
+  background-attachment: fixed;
+}
+#comprarCancha h1 {
+  color:#fafafa;
+  font-size:2em;
+  text-transform: uppercase;
+}
+#comprarCancha .contenedor > .row {
+  gap:60px !important;
+}
+#comprarCancha .row, #comprarCancha .row .w100 .w50 {
+  gap:10px !important;
+}
+
+#formularioCompra {
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height:fit-content;
+  gap:20px !important;
+}
+#formularioCompra div:has(input),
+#formularioCompra div:has(select) {
+  margin:0;
+  padding:0;
+  width:48%;
+  min-height:40px;
+}
+#formularioCompra div input {
+  width: 90%;
+  padding:5%;
+}
+#formularioCompra div select {
+  width:100%;
+  padding:5%;
+}
+#formularioCompra div label {
+  display:none;
+}
+#formularioCompra div:has(textarea) {
+  margin:0;
+  padding:0;
+  width:100%;
+}
+#formularioCompra textarea {
+  min-height: 150px;
+}
+#formularioCompra .boton {
+  font-size:1em;
+  font-weight: 600;
+  width: 100%;
+  text-transform: uppercase;
+}
+#formularioCompra .boton a {
+  color:#fafafa;
+}
+.placeholderCustom {
+  margin-right: 10px; /* Añadir espacio entre el checkbox y el texto */
+}
+.placeholderCustom::after {
+  content: attr(placeholder);
+  color: #fafafa;
+  font-size: 14px;
+  vertical-align: middle;
+}
+.select-placeholder {
+  color: #fafafa;
+}
+
+.errorlist {
+  line-height:2em; 
+}
+
+.detalles {
+  z-index:9;
+  gap:30px;
+}
+.detalles img {
+}
+.detalles h2 {
+  border-bottom:1px solid;
+  margin:0 0 15px 0;
+  padding:0 0 2px 0;
+}
+.detalles ul {
+  justify-content: flex-start;
+  margin:0;
+  padding:20px 25px;
+  border:1px rgba(250,250,250,0.3) solid;
+  border-radius: 5px;
+  background: rgba(250,250,250,0.2);
+}
+.detalles li {
+  margin:0;
+  padding:0;
+}

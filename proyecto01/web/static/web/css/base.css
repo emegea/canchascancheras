@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 .paletaDeColores {
-color:#0c2955;
-color:#60bdd9;
-color:#184d99;
-color:#a6deef;
-color:#e90066;
-color:#7ac143;
-color:#DC834E;
+color:#0c2955, rgba(12, 41, 85,1);
+color:#184d99, rgba(24, 77, 153,1);
+color:#60bdd9, rgba(96, 189, 217,1);
+color:#a6deef, rgba(166,222,239,1);
+color:#e90066, rgba(200,10,100,1);
+color:#DC834E, rgba(220,131,78,1);
+color:#388e3c, rgba(56,142,60,1);
 }
 
 body {
@@ -28,6 +28,7 @@ h1, h2, h3, h4, h5, h6, a, p, button {
   font-weight:600;
   line-height:1.2em;
   border:none;
+  font-family:"Roboto Condensed", sans-serif;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family:"Roboto Condensed", sans-serif;
@@ -54,7 +55,7 @@ a {
 }
 a:hover {
   text-decoration:none;
-  color:#7ac143;
+  color:#388e3c;
 }
 .mobileImg {
   display:none;
@@ -112,96 +113,81 @@ a:hover {
   flex-direction: row;
   gap:40px;
 }
+/**/
+/* BOTONES */
 .boton {
-  padding:8px 20px;
+  color:#dce5eb;
+  background:#388e3c !important;
+  padding:10px 20px;
   border-radius:5px;
-  color:#fafafa;
-  background:#7ac143 !important;
-  text-shadow:0 0 10px rgba(0,0,0,0.5);
+  border:none;
+  cursor:pointer;
+  align-content: center;
   transition:.2s ease-out;
+  font-size: 1em;
+  font-weight: 600;
+  width: 100%;
+  text-transform: uppercase;
+  font-family: "Roboto Condensed", sans-serif;
 }
 .boton:hover {
   background:#DC834E !important;
   transition:.2s ease-in;
   text-shadow: none;
 }
+.boton input, .boton a, .boton input a {
+  font-size:1.2em;
+  font-weight: 500;
+  cursor:pointer;
+  color:#dce5eb;
+  padding:0;
+  margin:0;
+  border:none;
+  background:none;
+  line-height: 1.5em;
+  font-size: 0.9em;
+}
+.boton input:hover,
+.boton a:hover,
+.boton input a:hover {
+  background:rgba(0,0,0,0) !important;
+  box-shadow: 0 0 0 rgba(0,0,0,0) !important;
+}
 .boton a {
-  color:#fafafa;
+  color:#dce5eb;
 }
 .botonDos {
-  border:1px solid #e90066;
-  background:#fafafa;
-  color:#e90066;
+  cursor:pointer;
+  border:1px solid #388e3c;
+  background: rgba(0,0,0,0);
+  color:#388e3c;
   padding:8px 20px;
   border-radius:5px;
   transition:.2s ease-out;
+  text-transform: initial;
 }
 .botonDos:hover {
-  background:#e90066;
+  background:#388e3c;
   transition:.2s ease-in;
-  color:#fafafa;
+  color:#dce5eb;
 }
-.listaIconos {
-  align-items:center;
-  flex-wrap:wrap;
+.botonDos a {
+  color:#dce5eb;
+  text-transform: initial;
 }
-.listaIconos li {
-  display:flex;
-  align-items:center;
-  margin:0 0 20px 0;
+.botonDos input:hover,
+.botonDos a:hover,
+.botonDos input a:hover {
+  color:#dce5eb;
+  text-decoration: none;
+  border: 0px solid rgba(0,0,0,0);
 }
-.listaIconos li i {
-  font-size:20px;
-  color:#7ac143;
-  margin:0 15px 0 0;
-}
-form {
-  gap:15px !important;
-  border:0px solid;
-  z-index:99;
-  display:flex;
-  flex-direction:column;
-  align-items:stretch;
-}
-form .arriba, form .abajo {
-  width:100%;
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  justify-content: space-between;
-}
-form input, form select {
-  padding:10px 20px;
-  border-radius:4px;
-  border:1px solid #ccc;
-  transition:ease-in-out .3s;
-}
-form h1 {
-  align-self:flex-start;
-}
-textarea {
-  width:100%;
-  border-radius:4px;
-  border:1px solid #ccc;
-}
-textarea::placeholder {
-  padding:15px;
-}
-form input:focus, select:focus, textarea:focus {
-  outline: none !important;
-  box-shadow:0 0 10px #df2f34;
-  transition:ease-in-out .3s;
-}
-#error {
-  padding:5px 15px;
-}
-
 /**/
 /* HEADER */
 header {
   margin:0 auto;
   position:fixed;
-  background: rgba(250,250,250,0.9);
+  background: rgba(0,0,0,0.9);
   box-shadow:0 0 10px rgba(0,0,0,0.2);
   z-index:999;
   top:0;
@@ -219,6 +205,7 @@ header section {
 }
 #logo img {
   height:50px;
+  filter: invert(1);
 }
 nav {
   display:flex;
@@ -228,23 +215,166 @@ nav ul {
   display:flex;
   flex-direction:row;
 }
+nav ul:nth-child(2) li {
+  padding:0 0 0 20px;
+}
 nav li {
-  padding:10px 0 10px 20px;
+  padding:15px 0 10px 20px;
 }
 nav a {
-  font-size:0.9em;
-  font-weight:400 !important;
-  color:#666;
-  padding:0 0 2px 0;
-  border-bottom:2px #fafafa solid;
-  transition:ease-in-out .5s;
-  border-bottom:2px rgba(250,250,250,0) solid;
+  font-size: 0.9em;
+  font-weight: 400 !important;
+  text-transform: uppercase;
+  color: #ddd;
+  padding: 0 0 2px 0;
+  position: relative;
+  transition: color 0.5s ease-in-out;
+  font-family: "Roboto Condensed", sans-serif;
 }
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, #184d99, #e90066);
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+}
+nav a:hover::after {
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
 nav a:hover {
-  color:#000;
-  border-bottom:2px #fbb03b solid;
+  color: #fff;
+}
+nav ul#barraLogin {
+  margin:0 0 0 40px;
+}
+nav ul#barraLogin .boton {
+  text-transform: initial;
+  padding:5px 20px;
+  border:none;
+  border-radius:0;
+  background:linear-gradient(to bottom, #184d99, #e90066) !important;
+  color:#dce5eb;
+  font-size:0.9em;
+}
+nav ul#barraLogin .boton:hover {
+  background:linear-gradient(to top, #184d99, #e90066) !important;
+}
+nav ul#barraLogin .botonDos {
+  background:none !important;
+  border:1px solid;
+  border-image: linear-gradient(to bottom, #184d99, #e90066) 1;
+}
+nav ul#barraLogin .botonDos:hover {
+  border-image: linear-gradient(to bottom, #184d99, #e90066) 1;
+  background:linear-gradient(to bottom, #184d99, #e90066) !important;
+}
+nav ul#barraLogin .botonDos:focus {
+  outline: none;
+}
+#barraLogin a::after {
+  background: none;
+}
+
+/**/
+
+/* FORMULARIOS */
+form {
+  gap:15px !important;
+  border:0px solid;
+  z-index:99;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+form h1 {
+  align-self:flex-start;
+}
+form input, form select, form textarea {
+  background:rgba(250,250,250,0.8);
+  font-weight: 400;
+  border-radius:4px;
+  border:1px solid #ccc;
   transition:ease-in-out .3s;
 }
+form input:hover, select:hover, textarea:hover {
+  background:rgba(250,250,250,1);
+  box-shadow:0 0 30px -10px rgba(0,0,0,0.5);
+  outline: none !important;
+  transition:ease-in-out .05s;
+}
+form input:focus, select:focus, textarea:focus {
+  background:rgba(250,250,250,1);
+  box-shadow:0 0 30px -10px #388e3c;
+  outline: none !important;
+  transition:ease-in-out .05s;
+}
+textarea {
+  width:94%;
+  border-radius:4px;
+  border:1px solid #ccc;
+  padding:3%;
+}
+#error {
+  padding:5px 15px;
+}
+/**/
+/* MENSAJES DE ALERTA */
+#alertas {
+  z-index: 999;
+  position: fixed;
+  margin-top: 100px;
+  width:100%;
+  color:#dce5eb;
+  opacity: 0; /* Inicialmente invisible */
+  transform: translateY(-50px); /* Inicia fuera de la pantalla hacia arriba */
+  animation: bounceInOut 5s ease-in-out forwards; /* Animación de 2 segundos */
+}
+@keyframes bounceInOut {
+  0%, 100% {
+      opacity: 0;
+      transform: translateY(-50px); /* Inicia y termina fuera de la pantalla hacia arriba */
+  }
+  10%, 90% {
+      opacity: 1;
+      transform: translateY(0); /* Llega a su posición final */
+  }
+}
+
+#alertas li {
+  margin-right: 40px;
+  padding:20px 40px;
+  box-shadow: 10px 10px 20px -10px rgba(0,0,0,0.5);
+}
+#alertas .error {
+  background: rgba(200,10,100,0.8);
+}
+#alertas .success {
+  background: rgba(56,142,60,0.8);
+}
+
+/**/
+/* LISTAS*/
+.listaIconos {
+  align-items:center;
+  flex-wrap:wrap;
+}
+.listaIconos li {
+  display:flex;
+  align-items:center;
+  margin:0 0 20px 0;
+}
+.listaIconos li i {
+  font-size:20px;
+  color:#388e3c;
+  margin:0 15px 0 0;
+}
+
 
 /**/
 /* FOOTER */
@@ -268,10 +398,14 @@ footer::after {
 footer .contenedor {
   align-items:center;
 }
+footer .logo {
+    height:150px;
+    filter: invert(1);
+}
 footer > div {
   padding:60px 0;
 }
-footer h2 {
+footer h4 {
   text-transform: uppercase;
   color:#dce5eb;
   font-size:2em;
