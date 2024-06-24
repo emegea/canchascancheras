@@ -138,6 +138,35 @@ class formularioAvanzado(forms.Form):
         required=False
     )
 #
+#formulario para vista parametrizada
+class CanchaFilterForm(forms.Form):
+    tipo_suelo = forms.ChoiceField(
+        label='Tipo de Suelo',
+        choices=Cancha.TIPOS_SUELO,
+        required=False,
+        widget=forms.Select(attrs={'placeholder': 'Seleccione el tipo de suelo'})
+    )
+    tipo_red = forms.ChoiceField(
+        label='Tipo de Red',
+        choices=Cancha.TIPOS_RED,
+        required=False,
+        widget=forms.Select(attrs={'placeholder': 'Seleccione el tipo de red'})
+    )
+    iluminacion = forms.BooleanField(
+        label='Iluminación',
+        required=False,
+        widget=forms.CheckboxInput()
+    )
+    marcador = forms.BooleanField(
+        label='Marcador Electrónico',
+        required=False,
+        widget=forms.CheckboxInput()
+    )
+    gradas = forms.BooleanField(
+        label='Graderías',
+        required=False,
+        widget=forms.CheckboxInput()
+    )
 # Forms basados en los modelos cancha, cliente y venta
 class CanchaForm(forms.ModelForm):
     class Meta:
