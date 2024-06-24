@@ -11,5 +11,6 @@ urlpatterns = [
     path('logout', views.logout, name="logout"),
     path('gracias', views.gracias, name="gracias"),
     path('admin', views.admin, name="admin"),
-    path('comprar_cancha/<int:cancha_id>/', views.comprar_cancha, name='comprar_cancha')
+    path('comprar_cancha/<int:cancha_id>/', views.comprar_cancha, name='comprar_cancha'),
+    path('filtrar_canchas/', views.filtrar_canchas, name='filtrar_canchas')
 ]
