@@ -121,3 +121,30 @@ def logout(request):
 def admin(request):
     return redirect('/admin')
 
+#vista parametrizada(filtrando)
+
+def filtrar_canchas(request):
+    canchas = Cancha.objects.all()
+    if request.method == 'GET':
+        form = CanchaFilterForm(request.GET)
+        if form.is_valid():
+            tipo_suelo = form.cleaned_data.get('tipo_suelo')
+            tipo_red = form.cleaned_data.get('tipo_red')
+            iluminacion = form.cleaned_data.get('iluminacion')
+            marcador = form.cleaned_data.get('marcador')
+            gradas = form.cleaned_data.get('gradas')
+            
+            if tipo_suelo:
+                canchas = canchas.filter(tipo_suelo=tipo_suelo)
+            if tipo_red:
+                canchas = canchas.filter(tipo_red=tipo_red)
+            if iluminacion is not None:
+                canchas = canchas.filter(iluminacion=iluminacion)
+            if marcador is not None:
+                canchas = canchas.filter(marcador=marcador)
+            if gradas is not None:
+                canchas = canchas.filter(gradas=gradas)
+    else:
+        form = CanchaFilterForm()
+    
+    return render(request, 'filtrar_canchas.html', {'form': form, 'canchas': canchas})
