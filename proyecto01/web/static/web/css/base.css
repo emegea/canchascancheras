@@ -194,15 +194,17 @@ header {
   top:0;
   margin-top:0;
 }
-header section {
+.contenedorHeader {
   display:flex;
-  max-width:1080px;
+/*
+max-width:1080px;
+*/
   height:80px;
   margin:0 auto;
   padding:0;
   flex-direction:row;
   align-items:center;
-  justify-content:space-between;
+  justify-content:space-evenly;
 }
 #logo img {
   height:50px;
