@@ -146,6 +146,7 @@ a:hover {
   background:none;
   line-height: 1.5em;
   font-size: 0.9em;
+  font-family: "Roboto Condensed", sans-serif;
 }
 .boton input:hover,
 .boton a:hover,
@@ -220,6 +221,7 @@ nav ul:nth-child(2) li {
 }
 nav li {
   padding:15px 0 10px 20px;
+  align-items: center;
 }
 nav a {
   font-size: 0.9em;
@@ -280,6 +282,12 @@ nav ul#barraLogin .botonDos:focus {
 #barraLogin a::after {
   background: none;
 }
+#barraLogin p {
+  font-size: 0.8em;
+  font-weight: 400 !important;
+  color: #ddd;
+}
+
 
 /**/
 

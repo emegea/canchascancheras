@@ -2,6 +2,11 @@ from django.http import HttpResponse
 import datetime
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import Group
+from django.contrib.auth.decorators import login_required, user_passes_test
+
 from .forms import *
 from .models import *
 
@@ -25,6 +30,35 @@ def somos(request):
 def canchas(request):
     canchas = Cancha.objects.all()
     return render(request, 'canchas.html', {'canchas': canchas})
+
+#Vista parametrizada(filtrando)
+@login_required
+def filtrar_canchas(request):
+    canchas = Cancha.objects.all()
+
+    if request.method == 'GET':
+        form = CanchaFilterForm(request.GET)
+        if form.is_valid():
+            tipo_suelo = form.cleaned_data.get('tipo_suelo')
+            tipo_red = form.cleaned_data.get('tipo_red')
+            iluminacion = form.cleaned_data.get('iluminacion')
+            marcador = form.cleaned_data.get('marcador')
+            gradas = form.cleaned_data.get('gradas')
+            
+            if tipo_suelo:
+                canchas = canchas.filter(tipo_suelo=tipo_suelo)
+            if tipo_red:
+                canchas = canchas.filter(tipo_red=tipo_red)
+            if iluminacion is not None:
+                canchas = canchas.filter(iluminacion=iluminacion)
+            if marcador is not None:
+                canchas = canchas.filter(marcador=marcador)
+            if gradas is not None:
+                canchas = canchas.filter(gradas=gradas)
+    else:
+        form = CanchaFilterForm()
+    
+    return render(request, 'filtrar_canchas.html', {'form': form, 'canchas': canchas})
 
 # Vista para manejar la compra de una cancha estándar
 def comprar_cancha(request, cancha_id):
@@ -80,8 +114,6 @@ def ventaCustom(request):
         'cliente_form': cliente_form,
     })
 
-
-
 # Vista de Gracias
 def gracias(request):
     return render(request, "gracias.html")
@@ -101,50 +133,27 @@ def contacto(request):
     return render(request, "contacto.html", contexto)
 
 # Vista de Login
-def login(request):
+def login_view(request):
     if request.method == 'POST':
-        formulario = formularioLogin(request.POST)
-        if formulario.is_valid():
-            # Acá iría la lógica para autenticar al usuario
-            messages.success(request, "Usuario autentificado correctamente")
-            return redirect('login')
+        form = AuthenticationForm(request, request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            messages.success(request, 'Inicio de sesión exitoso.')
+            return redirect('/admin/')  # Redirige a la página admin después del login
     else:
-        formulario = formularioLogin()
-    return render(request, 'login.html', {'formulario_login': formulario})
+        form = AuthenticationForm()
+    
+    return render(request, 'web/login.html', {'formulario_login': form})
 
 # Vista de Logout
-def logout(request):
+def vistaLogout(request):
+    #Llamo al logout de django
+    logout(request)
     messages.success(request, "El usuario cerró su sesión correctamente.")
-    return render(request, "logout.html")
+    return redirect('index')
 
-# Vista de Admin
-def admin(request):
-    return redirect('/admin')
-
-#vista parametrizada(filtrando)
-
-def filtrar_canchas(request):
-    canchas = Cancha.objects.all()
-    if request.method == 'GET':
-        form = CanchaFilterForm(request.GET)
-        if form.is_valid():
-            tipo_suelo = form.cleaned_data.get('tipo_suelo')
-            tipo_red = form.cleaned_data.get('tipo_red')
-            iluminacion = form.cleaned_data.get('iluminacion')
-            marcador = form.cleaned_data.get('marcador')
-            gradas = form.cleaned_data.get('gradas')
-            
-            if tipo_suelo:
-                canchas = canchas.filter(tipo_suelo=tipo_suelo)
-            if tipo_red:
-                canchas = canchas.filter(tipo_red=tipo_red)
-            if iluminacion is not None:
-                canchas = canchas.filter(iluminacion=iluminacion)
-            if marcador is not None:
-                canchas = canchas.filter(marcador=marcador)
-            if gradas is not None:
-                canchas = canchas.filter(gradas=gradas)
-    else:
-        form = CanchaFilterForm()
-    
-    return render(request, 'filtrar_canchas.html', {'form': form, 'canchas': canchas})
+# Vista de claveReset
+def claveReset(request):
+    messages.success(request, "La clave fue reseteada correctamente.")
+    return render(request, "claveReset.html")

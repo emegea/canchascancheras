@@ -9,34 +9,42 @@
 <main id="login">
   <article class="contenedor">    
     <h1>Acceso a Clientes</h1>
-    <form
-      id="formularioLogin"
-      class="w40 column"
-      method="POST"
-      action="{% url 'index' %}"
-    >
-      {% csrf_token %}          
-      {{ formulario_login }}
+
+    {% if form.errors %}
+    <p>* Tu nombre de usuario y contraseña no coinciden. Intentalo de nuevo.</p>
+    {% endif %}
+    
+    {% if next %}
+        {% if user.is_authenticated %}
+        <p>* Tu cuenta no tiene acceso a esta página. Iniciá sesión con una cuenta que tenga permisos de acceso.</p>
+        {% else %}
+        <p>* Iniciá sesión para ver esta página.</p>
+        {% endif %}
+    {% endif %}
+
+    <form id="formularioLogin" class="w40 column"
+      method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      <div>
+        {{ form.username.label_tag }}
+        {{ form.username }}
+      </div>
+      <div>
+        {{ form.password.label_tag }}
+        {{ form.password }}
+      </div>
       <div id="recordarme">
         <input type="checkbox" value="recordarme">
         <label>Recordarme</label>
       </div>
       <button class="boton">
         <input type="submit" value="Enviar">
+        <input type="hidden" name="next" value="{{ next }}">
       </button>
     </form>
-    <p id="ayudaForm">¿Olvidaste tu clave? Hacé click <a href="#">acá</a></p>
+
+    <p id="ayudaForm">¿Olvidaste tu clave? Hacé click <a href="{% url 'claveReset' %}"><b>acá</b></a></p>
+  
   </article>
-  </main>
-<!--
-  <form class="w50">
-    <input type="email" id="email" placeholder="nombre@ejemplo.com">
-    <input type="password" id="password" placeholder="Ingresá tu clave">  
-    <div id="recordarme">
-      <input type="checkbox" value="recordarme">
-      <label>Recordarme</label>
-    </div>
-    <button class="boton" type="submit">Ingresar</button>
-  </form>
--->
+</main>
 {% endblock %}
