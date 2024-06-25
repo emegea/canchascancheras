@@ -18,7 +18,7 @@ class formularioLogin(forms.Form):
         )
     )
 #
-# Formulario de Contacto basado en Modelo
+# Formulario de Contacto basado en Modelo MensajeContacto
 class formularioContacto(forms.ModelForm):
     class Meta:
         model = MensajeContacto

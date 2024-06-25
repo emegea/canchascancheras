@@ -272,6 +272,9 @@ nav .buscar a {
   margin:0;
   padding:5px
 }
+nav li.buscar {
+  margin:0 0 0 20px;
+}
 nav .buscar i {
   background: linear-gradient(135deg, #184d99 0%, #e90066 100%);
   -webkit-background-clip: text;
@@ -305,7 +308,6 @@ nav ul#barraLogin .boton {
   color:#dce5eb;
   font-size:0.9em;
 }
-
 nav ul#barraLogin .boton:hover {
   background:linear-gradient(to top, #184d99, #e90066) !important;
 }

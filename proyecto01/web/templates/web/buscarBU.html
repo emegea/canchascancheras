@@ -1,6 +1,6 @@
 {% extends "web/base.html" %}
 {% load static %}
-{% block titulo %}ENCONTRÁ TU CANCHA » Canchas Cancheras{% endblock %}
+{% block titulo %}COMPRA DE CANCHA » Canchas Cancheras{% endblock %}
 {% block extra_css_js %}
   <link rel="stylesheet" href="{% static 'web/css/buscar.css' %}">
   <script src="{% static 'web/js/canchas.js' %}"></script>
@@ -10,11 +10,38 @@
 <main id="buscar">
   <div class="contenedor">
     <h1><i class="fa-regular fa-futbol"></i> Encontrá tu cancha</h1>
-    <form id="buscarForm" method="GET" action="{% url 'buscar' %}">
-      {% csrf_token %}
-      {{ formulario }}
-      <br>
-      <button type="submit" class="boton w100">Filtrar</button>
+    <form method="GET" action="{% url 'buscar' %}">
+      <div class="form-group w50">
+        <label for="longitud">Longitud (m):</label>
+        <input type="number" id="longitud" name="longitud" min="10" max="120" step="0.01" placeholder="Largo (m)">
+        <label for="ancho">Ancho (m):</label>
+        <input type="number" id="ancho" name="ancho" min="10" max="90" step="0.01" placeholder="Ancho (m)">
+        <label for="tipo_suelo">Tipo de Suelo:</label>
+        <select id="tipo_suelo" name="tipo_suelo">
+          <option value="">Seleccione el tipo de suelo</option>
+          <option value="cesped_natural">Césped Natural</option>
+          <option value="cesped_artificial">Césped Artificial</option>
+          <option value="arcilla">Arcilla</option>
+          <option value="cemento">Cemento</option>
+          <option value="parquet">Parquet</option>
+        </select>
+        <label for="tipo_red">Tipo de Red:</label>
+        <select id="tipo_red" name="tipo_red">
+          <option value="">Seleccione el tipo de red</option>
+          <option value="standard">Estándar</option>
+          <option value="reinforced">Reforzada</option>
+        </select>
+      </div>
+      <div class="form-group w50">
+        <input type="checkbox" id="iluminacion" name="iluminacion">
+        <label for="iluminacion">Iluminación</label>
+        <input type="checkbox" id="marcador" name="marcador">
+        <label for="marcador">Marcador Electrónico</label>
+        <input type="checkbox" id="gradas" name="gradas">
+        <label for="gradas">Graderías</label>
+        <br>
+        <button type="submit" class="boton w100">Filtrar</button>
+      </div>
     </form>
   </div>
 

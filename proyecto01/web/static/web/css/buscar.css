@@ -77,6 +77,70 @@
   background-color: #DC834E;
 }
 
+
+
+
+/* ------------------- */
+#buscarForm {
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height:fit-content;
+  gap:20px !important;
+}
+#buscarForm h2 {
+  width:100%;
+  margin:10px 0 0 0;
+}
+#buscarForm div:has(input),
+#buscarForm div:has(select) {
+  margin:0;
+  padding:0;
+  width:48%;
+  height:40px;
+}
+#buscarForm div input {
+  width: 90%;
+  padding:5%;
+}
+#buscarForm div select {
+  width:100%;
+  padding:5%;
+}
+#buscarForm div label {
+  display:none;
+}
+#buscarForm div:has(textarea) {
+  margin:0;
+  padding:0;
+  width:100%;
+}
+#formularioContacto textarea {
+  min-height: 150px;
+}
+#buscarForm .boton {
+  color:#fafafa;
+  width: 100%;
+}
+#buscarForm > div:nth-of-type(5),
+#buscarForm > div:nth-of-type(6),
+#buscarForm > div:nth-of-type(7){
+  width:100% !important;
+  height:20px;
+}
+.placeholderCustom {
+  margin-right: 10px; /* Añadir espacio entre el checkbox y el texto */
+}
+.placeholderCustom::after {
+  content: attr(placeholder);
+  font-size: 14px;
+  vertical-align: middle;
+}
+/* ------------------- */
+
+
+
 /* Estilos para los resultados */
 #buscar h3 {
   color:#fafafa;

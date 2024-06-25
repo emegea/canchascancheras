@@ -33,16 +33,18 @@ def canchas(request):
 #Vista parametrizada(filtrando)
 @login_required
 def buscar(request):
-    canchas = Cancha.objects.all()
+    canchas = Cancha.objects.all()  
 
-    if request.method == 'GET':
-        form = CanchaFilterForm(request.GET)
-        if form.is_valid():
-            tipo_suelo = form.cleaned_data.get('tipo_suelo')
-            tipo_red = form.cleaned_data.get('tipo_red')
-            iluminacion = form.cleaned_data.get('iluminacion')
-            marcador = form.cleaned_data.get('marcador')
-            gradas = form.cleaned_data.get('gradas')
+    if request.method == "POST":
+        formulario = CanchaForm()
+    else:
+        formulario = CanchaForm(request.GET)
+        if formulario.is_valid():
+            tipo_suelo = formulario.cleaned_data.get('tipo_suelo')
+            tipo_red = formulario.cleaned_data.get('tipo_red')
+            iluminacion = formulario.cleaned_data.get('iluminacion')
+            marcador = formulario.cleaned_data.get('marcador')
+            gradas = formulario.cleaned_data.get('gradas')
             
             if tipo_suelo:
                 canchas = canchas.filter(tipo_suelo=tipo_suelo)
@@ -54,10 +56,11 @@ def buscar(request):
                 canchas = canchas.filter(marcador=marcador)
             if gradas is not None:
                 canchas = canchas.filter(gradas=gradas)
-    else:
-        form = CanchaFilterForm()
-    
-    return render(request, 'buscar.html', {'form': form, 'canchas': canchas})
+
+    return render(request, 'buscar.html', {
+        'canchas': canchas,
+        'formulario': formulario
+    })
 
 # Vista para manejar la compra de una cancha estándar
 def comprar_cancha(request, cancha_id):
