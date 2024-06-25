@@ -9,34 +9,16 @@
 <main id="login">
   <article class="contenedor">    
     <h1>Acceso a Clientes</h1>
-    <form
-      id="formularioLogin"
-      class="w40 column"
-      method="POST"
-      action="{% url 'index' %}"
-    >
-      {% csrf_token %}          
-      {{ formulario_login }}
+    <form id="formularioLogin" class="w50" method="POST" action="{% url 'login' %}">
+      {% csrf_token %}
+      {{ formulario_login.as_p }}
       <div id="recordarme">
-        <input type="checkbox" value="recordarme">
-        <label>Recordarme</label>
+        <input type="checkbox" name="remember_me" id="remember_me">
+        <label for="remember_me">Recordarme</label>
       </div>
-      <button class="boton">
-        <input type="submit" value="Enviar">
-      </button>
+      <button class="boton" type="submit">Ingresar</button>
     </form>
     <p id="ayudaForm">¿Olvidaste tu clave? Hacé click <a href="#">acá</a></p>
   </article>
-  </main>
-<!--
-  <form class="w50">
-    <input type="email" id="email" placeholder="nombre@ejemplo.com">
-    <input type="password" id="password" placeholder="Ingresá tu clave">  
-    <div id="recordarme">
-      <input type="checkbox" value="recordarme">
-      <label>Recordarme</label>
-    </div>
-    <button class="boton" type="submit">Ingresar</button>
-  </form>
--->
+</main>
 {% endblock %}

@@ -127,9 +127,9 @@ DATABASES = {
 #        'NAME': BASE_DIR / 'db.sqlite3',
 
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'canchascancheras',
+        'NAME': 'cancha',
         'USER': 'postgres',
-        'PASSWORD': '1234',
+        'PASSWORD': 'codoacodo',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }

@@ -4,6 +4,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .forms import *
 from .models import *
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
+from django.contrib.auth.models import Group
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 # Vista del Index
 def index(request):
@@ -101,30 +106,33 @@ def contacto(request):
     return render(request, "contacto.html", contexto)
 
 # Vista de Login
-def login(request):
+def login_view(request):
     if request.method == 'POST':
-        formulario = formularioLogin(request.POST)
-        if formulario.is_valid():
-            # Acá iría la lógica para autenticar al usuario
-            messages.success(request, "Usuario autentificado correctamente")
-            return redirect('login')
+        form = AuthenticationForm(request, request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            messages.success(request, 'Inicio de sesión exitoso.')
+            return redirect('/admin/')  # Redirige a la página admin después del login
     else:
-        formulario = formularioLogin()
-    return render(request, 'login.html', {'formulario_login': formulario})
+        form = AuthenticationForm()
+    
+    return render(request, 'web/login.html', {'formulario_login': form})
 
 # Vista de Logout
-def logout(request):
-    messages.success(request, "El usuario cerró su sesión correctamente.")
-    return render(request, "logout.html")
+def logout_view(request):
+    logout(request)
+    return redirect('index')  # Redirige a la página principal después del logout
 
 # Vista de Admin
 def admin(request):
     return redirect('/admin')
 
 #vista parametrizada(filtrando)
-
+@login_required
 def filtrar_canchas(request):
     canchas = Cancha.objects.all()
+
     if request.method == 'GET':
         form = CanchaFilterForm(request.GET)
         if form.is_valid():
