@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+{% block titulo %}
+Filtrar Canchas
+{% endblock %}
+
+{% block extra_css_js %}
+<link rel="stylesheet" href="{% static 'web/css/filtrar_canchas.css' %}">
+{% endblock %}
+
+{% block principal %}
+<section class="filtrar-canchas">
+    <div class="contenedor">
+        <h1>Filtrar Canchas</h1>
+        <form method="GET" action="{% url 'filtrar_canchas' %}">
+            <div class="form-group">
+                <label for="longitud">Longitud (m):</label>
+                <input type="number" id="longitud" name="longitud" min="10" max="120" step="0.01" placeholder="Largo (m)">
+            </div>
+            <div class="form-group">
+                <label for="ancho">Ancho (m):</label>
+                <input type="number" id="ancho" name="ancho" min="10" max="90" step="0.01" placeholder="Ancho (m)">
+            </div>
+            <div class="form-group">
+                <label for="tipo_suelo">Tipo de Suelo:</label>
+                <select id="tipo_suelo" name="tipo_suelo">
+                    <option value="">Seleccione el tipo de suelo</option>
+                    <option value="cesped_natural">Césped Natural</option>
+                    <option value="cesped_artificial">Césped Artificial</option>
+                    <option value="arcilla">Arcilla</option>
+                    <option value="cemento">Cemento</option>
+                    <option value="parquet">Parquet</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="tipo_red">Tipo de Red:</label>
+                <select id="tipo_red" name="tipo_red">
+                    <option value="">Seleccione el tipo de red</option>
+                    <option value="standard">Estándar</option>
+                    <option value="reinforced">Reforzada</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="iluminacion" name="iluminacion">
+                <label for="iluminacion">Iluminación</label>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="marcador" name="marcador">
+                <label for="marcador">Marcador Electrónico</label>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="gradas" name="gradas">
+                <label for="gradas">Graderías</label>
+            </div>
+            <button type="submit" class="boton">Filtrar</button>
+        </form>
+    </div>
+
+    {% if canchas %}
+    <div class="resultados">
+        <h2>Resultados de la búsqueda</h2>
+        <ul>
+            {% for cancha in canchas %}
+            <li>
+                <h3>{{ cancha.nombre }}</h3>
+                <p>Longitud: {{ cancha.longitud }} m</p>
+                <p>Ancho: {{ cancha.ancho }} m</p>
+                <p>Tipo de Suelo: {{ cancha.get_tipo_suelo_display }}</p>
+                <p>Tipo de Red: {{ cancha.get_tipo_red_display }}</p>
+                <p>Iluminación: {{ cancha.iluminacion|yesno:"Sí,No" }}</p>
+                <p>Marcador Electrónico: {{ cancha.marcador|yesno:"Sí,No" }}</p>
+                <p>Graderías: {{ cancha.gradas|yesno:"Sí,No" }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% else %}
+    <div class="no-resultados">
+        <p>No se encontraron resultados con los criterios de búsqueda seleccionados.</p>
+    </div>
+    {% endif %}
+</section>
+{% endblock %}

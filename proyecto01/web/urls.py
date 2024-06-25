@@ -8,6 +8,7 @@ urlpatterns = [
     path('canchas', views.canchas, name="canchas"),
     path('contacto', views.contacto, name="contacto"),
     #Compras
+    path('filtrar_canchas/', views.filtrar_canchas, name='filtrar_canchas'),
     path('comprar_cancha/<int:cancha_id>/', views.comprar_cancha, name='comprar_cancha'),
     path('ventaCustom', views.ventaCustom, name="ventaCustom"),
     path('gracias', views.gracias, name="gracias"),

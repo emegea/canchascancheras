@@ -1,0 +1,130 @@
+/* filtrar_canchas.css */
+
+/* Contenedor principal de la sección de filtrar canchas */
+.filtrar-canchas {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.filtrar-canchas .contenedor {
+    max-width: 1080px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Título principal */
+.filtrar-canchas h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #0c2955;
+}
+
+/* Estilos para el formulario */
+.filtrar-canchas .form-group {
+    margin-bottom: 15px;
+}
+
+.filtrar-canchas label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.filtrar-canchas input[type="number"],
+.filtrar-canchas select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+.filtrar-canchas input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.filtrar-canchas .boton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #388e3c;
+    color: #fff;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1em;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.filtrar-canchas .boton:hover {
+    background-color: #DC834E;
+}
+
+/* Estilos para los resultados */
+.filtrar-canchas .resultados {
+    margin-top: 20px;
+}
+
+.filtrar-canchas .resultados h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #333;
+}
+
+.filtrar-canchas .resultados ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.filtrar-canchas .resultados li {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.filtrar-canchas .resultados li h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #184d99;
+}
+
+.filtrar-canchas .resultados li p {
+    margin: 5px 0;
+    color: #555;
+}
+
+/* Mensaje de no resultados */
+.filtrar-canchas .no-resultados {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 20px;
+    color: #555;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 480px) {
+    .filtrar-canchas .contenedor {
+        padding: 10px;
+    }
+
+    .filtrar-canchas .boton {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
