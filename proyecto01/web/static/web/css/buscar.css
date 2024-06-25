@@ -1,0 +1,156 @@
+#buscar {
+  background: rgb(0,0,0,0.8);
+  position: relative;
+  padding:80px 0 0 0;
+}
+#buscar::after {
+  position: absolute;
+  content: "";
+  background-image: url("../img/canchasBg.webp");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#buscar h1, #buscar h2 {
+  text-transform: uppercase;
+  color:#dce5eb;
+  font-size:2em;
+}
+
+/* Estilos para el formulario */
+#buscar form {
+  background: #ffffff;
+  padding: 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  display:flex;
+  flex-direction: row;
+  gap:40px !important;
+}
+#buscar .form-group {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#buscar label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+#buscar input[type="number"],
+#buscar select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+#buscar input[type="checkbox"] {
+  margin-right: 10px; 
+}
+#buscar .boton {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #388e3c;
+  color: #fff;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+#buscar .boton:hover {
+  background-color: #DC834E;
+}
+
+/* Estilos para los resultados */
+#buscar h3 {
+  color:#fafafa;
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.8em;
+  border-bottom:1px solid;
+  max-width: fit-content;
+  margin: 0 0 10px 0;
+}
+#buscar ul { 
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+#buscar ul li img {
+  width:100%;
+  opacity:0.8;
+  transition:.2s ease-in;
+}
+#buscar ul li img:hover {
+  opacity:1;
+  box-shadow:0 0 30px rgb(255, 255, 0, 0.5) !important;
+  transition:.2s ease-out;
+}
+#buscar .boton {
+  background:#DC834E !important;
+  transition:.2s ease-in;
+}
+#buscar .boton:hover {
+  background:#7ac143 !important;
+  transition:.2s ease-out;
+  text-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+.botonCancha {
+  background:none !important;
+  padding:20px 0 0 0 !important;
+}
+.detalles {
+  display:none;
+  transition:.2s ease-in;
+}
+button.mostrarDetalles {
+  transition:.2s ease-in;
+  color:#fafafa;
+  background:none;
+  border:none;
+  margin-bottom:15px;
+}
+button.mostrarDetalles:hover {
+  margin-left:10px;
+  cursor:pointer
+}
+
+/* Mensaje de no resultados */
+#no-resultados {
+  text-align: center;
+  background: #fff;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+#no-resultados p {
+  color: #111 !important;
+  font-weight: 400;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 480px) {
+  #buscar .contenedor {
+      padding: 10px;
+  }
+
+  #buscar .boton {
+      width: 100%;
+      margin-top: 10px;
+  }
+}

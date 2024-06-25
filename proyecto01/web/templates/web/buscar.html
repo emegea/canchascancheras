@@ -1,0 +1,82 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block titulo %}COMPRA DE CANCHA » Canchas Cancheras{% endblock %}
+{% block extra_css_js %}
+  <link rel="stylesheet" href="{% static 'web/css/buscar.css' %}">
+  <script src="{% static 'web/js/canchas.js' %}"></script>
+{% endblock %}
+
+{% block principal %}
+<main id="buscar">
+  <div class="contenedor">
+    <h1><i class="fa-regular fa-futbol"></i> Encontrá tu cancha</h1>
+    <form method="GET" action="{% url 'buscar' %}">
+      <div class="form-group w50">
+        <label for="longitud">Longitud (m):</label>
+        <input type="number" id="longitud" name="longitud" min="10" max="120" step="0.01" placeholder="Largo (m)">
+        <label for="ancho">Ancho (m):</label>
+        <input type="number" id="ancho" name="ancho" min="10" max="90" step="0.01" placeholder="Ancho (m)">
+        <label for="tipo_suelo">Tipo de Suelo:</label>
+        <select id="tipo_suelo" name="tipo_suelo">
+          <option value="">Seleccione el tipo de suelo</option>
+          <option value="cesped_natural">Césped Natural</option>
+          <option value="cesped_artificial">Césped Artificial</option>
+          <option value="arcilla">Arcilla</option>
+          <option value="cemento">Cemento</option>
+          <option value="parquet">Parquet</option>
+        </select>
+        <label for="tipo_red">Tipo de Red:</label>
+        <select id="tipo_red" name="tipo_red">
+          <option value="">Seleccione el tipo de red</option>
+          <option value="standard">Estándar</option>
+          <option value="reinforced">Reforzada</option>
+        </select>
+      </div>
+      <div class="form-group w50">
+        <input type="checkbox" id="iluminacion" name="iluminacion">
+        <label for="iluminacion">Iluminación</label>
+        <input type="checkbox" id="marcador" name="marcador">
+        <label for="marcador">Marcador Electrónico</label>
+        <input type="checkbox" id="gradas" name="gradas">
+        <label for="gradas">Graderías</label>
+        <br>
+        <button type="submit" class="boton w100">Filtrar</button>
+      </div>
+    </form>
+  </div>
+
+  {% if canchas %}
+  <div id="resultados" class="contenedor">
+    <h2><i class="fa-regular fa-futbol"></i> Resultados de la búsqueda</h2>
+    <ul>
+      {% for cancha in canchas %}
+      <li>
+        <div id="{{ cancha.id }}">
+          <img src="{% static 'web/img/canchita-01.jpg' %}" alt="">
+          <h3>{{ cancha.nombre }}</h3>
+          <button class="mostrarDetalles">» Ver detalles</button>
+          <div class="detalles" style="display: none;">
+            <p><b>Tipo de Suelo: </b>{{ cancha.get_tipo_suelo_display }}</p>
+            <p><b>Tipo de Red: </b>{{ cancha.get_tipo_red_display }}</p>
+            <p><b>Longitud: </b>{{ cancha.longitud }} m</p>
+            <p><b>Ancho: </b>{{ cancha.ancho }} m</p>
+            <p><b>Iluminación: </b>{{ cancha.iluminacion|yesno:"Sí,No" }}</p>
+            <p><b>Marcador Electrónico: </b>{{ cancha.marcador|yesno:"Sí,No" }}</p>
+            <p><b>Graderías: </b>{{ cancha.gradas|yesno:"Sí,No" }}</p>
+            <form class="botonCancha" method="post" action="{% url 'comprar_cancha' cancha.id %}">
+              {% csrf_token %}
+              <button type="submit" class="boton">» Comprar</button>
+            </form>
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% else %}
+  <div id="no-resultados" class="contenedor">
+    <p>No se encontraron resultados con los criterios de búsqueda seleccionados.</p>
+  </div>
+  {% endif %}
+</main>
+{% endblock %}

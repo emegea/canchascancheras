@@ -1,3 +1,5 @@
+from .forms import *
+from .models import *
 from django.http import HttpResponse
 import datetime
 from django.shortcuts import render, redirect, get_object_or_404
@@ -6,9 +8,6 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required, user_passes_test
-
-from .forms import *
-from .models import *
 
 # Vista del Index
 def index(request):
@@ -33,7 +32,7 @@ def canchas(request):
 
 #Vista parametrizada(filtrando)
 @login_required
-def filtrar_canchas(request):
+def buscar(request):
     canchas = Cancha.objects.all()
 
     if request.method == 'GET':
@@ -58,7 +57,7 @@ def filtrar_canchas(request):
     else:
         form = CanchaFilterForm()
     
-    return render(request, 'filtrar_canchas.html', {'form': form, 'canchas': canchas})
+    return render(request, 'buscar.html', {'form': form, 'canchas': canchas})
 
 # Vista para manejar la compra de una cancha estándar
 def comprar_cancha(request, cancha_id):
@@ -133,7 +132,7 @@ def contacto(request):
     return render(request, "contacto.html", contexto)
 
 # Vista de Login
-def login_view(request):
+def vistaLogin(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
         if form.is_valid():
@@ -152,6 +151,10 @@ def vistaLogout(request):
     logout(request)
     messages.success(request, "El usuario cerró su sesión correctamente.")
     return redirect('index')
+
+# Vista de Admin
+def admin(request):
+    return redirect('/admin')
 
 # Vista de claveReset
 def claveReset(request):

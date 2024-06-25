@@ -63,17 +63,26 @@ a:hover {
 .w100 {
   width:100%;
 }
+.w80 {
+  width:80%;
+}
+.w75 {
+  width:75%;
+}
+.w70 {
+  width:70%;
+}
+.w65 {
+  width:65%;
+}
 .w60 {
   width:60%;
 }
-.w60 {
-  width:65%;
+.w55 {
+  width:55%;
 }
 .w50 {
   width:50%;
-}
-.w55 {
-  width:55%;
 }
 .w45 {
   width:45%;
@@ -85,6 +94,12 @@ a:hover {
   width:35%;
 }
 .w30 {
+  width:30%;
+}
+.w25 {
+  width:25%;
+}
+.w20 {
   width:30%;
 }
 .row {
@@ -222,7 +237,7 @@ nav ul:nth-child(2) li {
   padding:0 0 0 20px;
 }
 nav li {
-  padding:15px 0 10px 20px;
+  padding:0;
   align-items: center;
 }
 nav a {
@@ -230,7 +245,7 @@ nav a {
   font-weight: 400 !important;
   text-transform: uppercase;
   color: #ddd;
-  padding: 0 0 2px 0;
+  padding: 10px;
   position: relative;
   transition: color 0.5s ease-in-out;
   font-family: "Roboto Condensed", sans-serif;
@@ -250,10 +265,34 @@ nav a:hover::after {
   opacity: 1;
   transition: opacity 0.2s ease-in-out;
 }
-
 nav a:hover {
   color: #fff;
 }
+nav .buscar a {
+  margin:0;
+  padding:5px
+}
+nav .buscar i {
+  background: linear-gradient(135deg, #184d99 0%, #e90066 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 20px;
+  margin:0;
+  padding: 5px;
+}
+nav .buscar:hover i {
+  background: #000;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+nav .buscar a::after {
+  background:none;
+}
+nav .buscar:hover {
+  background: linear-gradient(135deg, #184d99 0%, #e90066 100%);
+}
+
 nav ul#barraLogin {
   margin:0 0 0 40px;
 }
@@ -266,6 +305,7 @@ nav ul#barraLogin .boton {
   color:#dce5eb;
   font-size:0.9em;
 }
+
 nav ul#barraLogin .boton:hover {
   background:linear-gradient(to top, #184d99, #e90066) !important;
 }

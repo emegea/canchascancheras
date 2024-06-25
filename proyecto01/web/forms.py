@@ -63,7 +63,7 @@ class formularioContacto(forms.ModelForm):
             raise forms.ValidationError('El campo "Mensaje" debe contener al menos 10 caracteres')
         return mensaje    
 # 
-# Form avanzado hecho con GPT
+# Form avanzado
 class formularioAvanzado(forms.Form):
     longitud = forms.DecimalField(
         label='Largo (m)',
@@ -170,8 +170,7 @@ class ClienteForm(forms.ModelForm):
             'apellido': forms.TextInput(attrs={'placeholder': 'Apellido'}),
             'nombre': forms.TextInput(attrs={'placeholder': 'Nombre'}),
             'email': forms.EmailInput(attrs={'placeholder': 'Email'}),
-        }
-        
+        }       
 #
 #Form para vista parametrizada
 class CanchaFilterForm(forms.Form):
