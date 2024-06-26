@@ -8,15 +8,17 @@
 
 {% block principal %}
 <main id="buscar">
+  {% if not request.GET %}
   <div class="contenedor">
     <h1><i class="fa-regular fa-futbol"></i> Encontrá tu cancha</h1>
     <form id="buscarForm" method="GET" action="{% url 'buscar' %}">
       {% csrf_token %}
       {{ formulario }}
       <br>
-      <button type="submit" class="boton w100">Filtrar</button>
+      <button type="submit" class="boton w100">Buscar</button>
     </form>
   </div>
+  {% endif %}
 
   {% if canchas %}
   <div id="resultados" class="contenedor">
@@ -24,8 +26,8 @@
     <ul>
       {% for cancha in canchas %}
       <li>
-        <div id="{{ cancha.id }}">
-          <img src="{% static 'web/img/canchita-01.jpg' %}" alt="">
+        <div class="cancha" id="{{ cancha.id }}">
+          <img src="https://picsum.photos/240/150?query='{{ cancha.nombre }}'?quality=50" alt="">
           <h3>{{ cancha.nombre }}</h3>
           <button class="mostrarDetalles">» Ver detalles</button>
           <div class="detalles" style="display: none;">
@@ -47,9 +49,11 @@
     </ul>
   </div>
   {% else %}
-  <div id="no-resultados" class="contenedor">
-    <p>No se encontraron resultados con los criterios de búsqueda seleccionados.</p>
-  </div>
+    {% if request.GET %}
+    <div id="no-resultados" class="contenedor">
+      <p>No se encontraron resultados con los criterios de búsqueda seleccionados.</p>
+    </div>
+    {% endif %}
   {% endif %}
 </main>
 {% endblock %}

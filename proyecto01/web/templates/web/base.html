@@ -33,8 +33,10 @@
             <li><a href="{% url 'canchas' %}">Canchas</a></li>
             <li><a href="{% url 'ventaCustom' %}">Personalizá tu Cancha</a></li>
             <li><a href="{% url 'contacto' %}">Contacto</a></li>
+            {% if user.is_authenticated %}
             <li class="buscar"><a href="{% url 'buscar' %}" title="BUSCAR"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-        </ul>
+            {% endif %}
+          </ul>
         <!-- Ocultando botón si no está logueado  -->
         <ul id="barraLogin">
           {% if user.is_authenticated %}

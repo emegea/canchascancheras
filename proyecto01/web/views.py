@@ -30,12 +30,12 @@ def canchas(request):
     canchas = Cancha.objects.all()
     return render(request, 'canchas.html', {'canchas': canchas})
 
-#Vista parametrizada(filtrando)
+#Vista de búsqueda parametrizada filtrando
 @login_required
 def buscar(request):
-    canchas = Cancha.objects.all()  
+    canchas = []
 
-    if request.method == "POST":
+    if request.method == "GET" and not request.GET:
         formulario = CanchaForm()
     else:
         formulario = CanchaForm(request.GET)
@@ -45,7 +45,8 @@ def buscar(request):
             iluminacion = formulario.cleaned_data.get('iluminacion')
             marcador = formulario.cleaned_data.get('marcador')
             gradas = formulario.cleaned_data.get('gradas')
-            
+
+            canchas = Cancha.objects.all()  
             if tipo_suelo:
                 canchas = canchas.filter(tipo_suelo=tipo_suelo)
             if tipo_red:
@@ -58,8 +59,8 @@ def buscar(request):
                 canchas = canchas.filter(gradas=gradas)
 
     return render(request, 'buscar.html', {
-        'canchas': canchas,
-        'formulario': formulario
+        'formulario': formulario,
+        'canchas': canchas
     })
 
 # Vista para manejar la compra de una cancha estándar

@@ -23,30 +23,28 @@
 }
 
 /* Estilos para el formulario */
-#buscar form {
-  background: #ffffff;
-  padding: 40px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  display:flex;
-  flex-direction: row;
-  gap:40px !important;
-}
-#buscar .form-group {
-  margin-bottom: 15px;
+#buscarForm {
   display: flex;
-  justify-content: space-evenly;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height:fit-content;
+  gap:40px !important;
+  padding: 40px;
+  border-radius: 5px;
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-#buscar label {
+
+#buscarForm label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
   color: #555;
 }
-#buscar input[type="number"],
-#buscar select {
+#buscarForm input[type="number"],
+#buscarForm select {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -54,41 +52,10 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
-#buscar input[type="checkbox"] {
+#buscarForm input[type="checkbox"] {
   margin-right: 10px; 
 }
-#buscar .boton {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #388e3c;
-  color: #fff;
-  text-align: center;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  font-size: 1em;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-family: "Roboto Condensed", sans-serif;
-}
 
-#buscar .boton:hover {
-  background-color: #DC834E;
-}
-
-
-
-
-/* ------------------- */
-#buscarForm {
-  flex-wrap: wrap;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  height:fit-content;
-  gap:20px !important;
-}
 #buscarForm h2 {
   width:100%;
   margin:10px 0 0 0;
@@ -102,11 +69,11 @@
 }
 #buscarForm div input {
   width: 90%;
-  padding:5%;
+  padding:2%;
 }
 #buscarForm div select {
   width:100%;
-  padding:5%;
+  padding:2%;
 }
 #buscarForm div label {
   display:none;
@@ -119,10 +86,8 @@
 #formularioContacto textarea {
   min-height: 150px;
 }
-#buscarForm .boton {
-  color:#fafafa;
-  width: 100%;
-}
+
+
 #buscarForm > div:nth-of-type(5),
 #buscarForm > div:nth-of-type(6),
 #buscarForm > div:nth-of-type(7){
@@ -130,16 +95,29 @@
   height:20px;
 }
 .placeholderCustom {
-  margin-right: 10px; /* Añadir espacio entre el checkbox y el texto */
+  margin-right: 10px;
 }
 .placeholderCustom::after {
   content: attr(placeholder);
   font-size: 14px;
   vertical-align: middle;
 }
-/* ------------------- */
 
-
+#buscarForm .boton, .botonCancha .boton {
+  width: 100%;
+  padding:20px;
+  border:none;
+  border-radius:0;
+  color:#dce5eb;
+  font-size:1em;
+  text-transform: uppercase;
+  background:linear-gradient(to bottom, #184d99, #e90066) !important;
+  transition: ease-in 0.3s;
+}
+#buscarForm .boton:hover,  .botonCancha .boton:hover {
+  background:linear-gradient(to top, #184d99, #e90066) !important;
+  transition: ease-out 0.5s;
+}
 
 /* Estilos para los resultados */
 #buscar h3 {
@@ -156,32 +134,23 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 40px;
 }
-#buscar ul li img {
+.cancha img {
   width:100%;
   opacity:0.8;
   transition:.2s ease-in;
+  box-shadow:0 0 30px rgb(0, 0, 0, 0.5),
+    inset 0 0 0 10px rgba(255, 255, 255, 1);
 }
-#buscar ul li img:hover {
+.cancha img:hover {
   opacity:1;
-  box-shadow:0 0 30px rgb(255, 255, 0, 0.5) !important;
+  box-shadow:0 0 30px rgb(0, 0, 0, 0.5),
+    inset 0 0 0 10px rgba(255, 255, 255, 1);
   transition:.2s ease-out;
-}
-#buscar .boton {
-  background:#DC834E !important;
-  transition:.2s ease-in;
-}
-#buscar .boton:hover {
-  background:#7ac143 !important;
-  transition:.2s ease-out;
-  text-shadow:0 0 10px rgba(0,0,0,0.5);
-}
-.botonCancha {
-  background:none !important;
-  padding:20px 0 0 0 !important;
 }
 .detalles {
   display:none;
   transition:.2s ease-in;
+  color:#fafafa;
 }
 button.mostrarDetalles {
   transition:.2s ease-in;
@@ -193,6 +162,10 @@ button.mostrarDetalles {
 button.mostrarDetalles:hover {
   margin-left:10px;
   cursor:pointer
+}
+.botonCancha {
+  background:none !important;
+  padding:20px 0 0 0 !important;
 }
 
 /* Mensaje de no resultados */

@@ -31,5 +31,5 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('botonAnterior').addEventListener('click', anterior);
 
   carrusel();
-  setInterval(siguiente, 3000); // Cambiar de diapositiva cada 5 segundos
+  setInterval(siguiente, 5000); // Cambiar de diapositiva cada 5 segundos
 });
