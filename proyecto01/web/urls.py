@@ -1,6 +1,8 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
+from .views import *
+
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -17,4 +19,6 @@ urlpatterns = [
     # path('login', views.vistaLogin, name="login"),
     path('logout', views.vistaLogout, name="logout"),
     path('claveReset', auth_views.PasswordResetView.as_view(template_name='web/claveReset.html') , name="claveReset"),
+    path('registro', views.registro, name='registro')
+
 ]

@@ -1,0 +1,21 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block titulo %}CREAR CUENTA » Canchas Cancheras{% endblock %}
+{% block extra_css_js %}
+  <link rel="stylesheet" href="{% static 'web/css/registro.css' %}">
+{% endblock %}
+
+{% block principal %}
+<main id="comprarCancha">
+  <article class="contenedor">
+    <h1><i class="fa-regular fa-futbol"></i> Registrate en Canchas Cancheras</h1>
+    <div class="row">
+      <form method="post">
+        {% csrf_token %}
+        {{ formulario_registro }}
+        <button type="submit">Registrar</button>
+      </form>
+    </div>    
+  </article>
+</main>
+{% endblock %}

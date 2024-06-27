@@ -197,6 +197,10 @@
   position: relative;
   z-index: 2;
 }
+video .video-stream .html5-main-video {
+  width:100% !important;
+}
+
 #canchas::after {
   position: absolute;
   content: "";

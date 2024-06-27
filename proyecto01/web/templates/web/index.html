@@ -62,12 +62,19 @@
         <ul class="w45">
           {% for cancha in contexto %}
           <li>
-            <img src="https://picsum.photos/240/150?query='{{ cancha.nombre }}'?quality=50" alt="">
+            <img src="https://picsum.photos/240/150?random={{ cancha.id }}.webp" alt="">
             <h3 title="{{ cancha.nombre }}">{{ cancha.nombre }}</h3>
           </li>
           {% endfor %}
         </ul>
-        <iframe class="w55" width="100%" height="300" src="https://www.youtube.com/embed/_UKAVnsfDrU?start=6&autoplay=1&mute=1&controls=1&modestbranding=1&loop=1" title="Canchas Cancheras" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe class="w55" width="100%" height="320"
+          src="https://www.youtube.com/embed/cIZfkEOfRFc?si=dPbeBSmIG-pocL3j?start=6&autoplay=1&mute=1&controls=0&modestbranding=1&loop=1"
+          title="Canchas Cancheras"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+      </iframe>
       </div>
       <button class="boton"><a href="{% url 'canchas' %}">» Ver todas las canchas</a></button>
     </article>

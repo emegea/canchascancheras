@@ -164,3 +164,20 @@ def admin(request):
 def claveReset(request):
     messages.success(request, "La clave fue reseteada correctamente.")
     return render(request, "claveReset.html")
+
+# Vista de Registro de Usuarios
+def registro(request):
+    if request.method == 'POST':
+        formulario_registro = formularioRegistro(request.POST)
+        if formulario_registro.is_valid():
+            user = formulario_registro.save()
+            # Asigna el nuevo usuario a un grupo específico si es necesario
+            # group = Group.objects.get(name='Clientes')
+            # user.groups.add(group)
+            login(request, user)
+            messages.success(request, "Usuario registrado correctamente.")
+            return redirect('index')
+
+    else:
+        formulario_registro = formularioRegistro()
+    return render(request, 'registro.html', {'formulario_registro': formulario_registro})
