@@ -1,8 +1,8 @@
 #canchas {
-    background: rgb(0,0,0,0.8);
-    position: relative;
-    padding:80px 0 0 0;
-  }
+  background: rgb(0,0,0,0.8);
+  position: relative;
+  padding:80px 0 0 0;
+}
 #canchas::after {
   position: absolute;
   content: "";
@@ -26,26 +26,17 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 40px;
 }
-#canchas ul li img {
+.cancha img {
+  position: relative;
   width:100%;
   opacity:0.8;
   transition:.2s ease-in;
 }
-#canchas ul li img:hover {
+.cancha img:hover {
   opacity:1;
-  box-shadow:0 0 30px rgb(255, 255, 0, 0.5) !important;
+  box-shadow:0 0 30px rgb(0, 0, 0, 0.5) !important;
   transition:.2s ease-out;
 }
-#canchas .boton {
-  background:#DC834E !important;
-  transition:.2s ease-in;
-}
-#canchas .boton:hover {
-  background:#7ac143 !important;
-  transition:.2s ease-out;
-  text-shadow:0 0 10px rgba(0,0,0,0.5);
-}
-
 .cancha h3 {
   color:#fafafa;
   font-weight: 700;
@@ -63,6 +54,7 @@
 .cancha b {
   font-weight: 500;
 }
+
 .detalles {
   display:none;
   transition:.2s ease-in;
@@ -81,4 +73,22 @@ button.mostrarDetalles:hover {
 button.comprarCancha {
   transition:.2s ease-in;
   margin:15px 0;
+}
+
+
+
+button.comprarCancha {
+  width: 100%;
+  padding:20px;
+  border:none;
+  border-radius:0;
+  color:#dce5eb;
+  font-size:1em;
+  text-transform: uppercase;
+  background:linear-gradient(to bottom, #184d99, #e90066) !important;
+  transition: ease-in 0.3s;
+}
+button.comprarCancha:hover {
+  background:linear-gradient(to top, #184d99, #e90066) !important;
+  transition: ease-out 0.5s;
 }

@@ -18,6 +18,7 @@ body {
   line-height:1.5em;
   display:flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 /* GENÉRICOS */
 * {
@@ -63,17 +64,26 @@ a:hover {
 .w100 {
   width:100%;
 }
+.w80 {
+  width:80%;
+}
+.w75 {
+  width:75%;
+}
+.w70 {
+  width:70%;
+}
+.w65 {
+  width:65%;
+}
 .w60 {
   width:60%;
 }
-.w60 {
-  width:65%;
+.w55 {
+  width:55%;
 }
 .w50 {
   width:50%;
-}
-.w55 {
-  width:55%;
 }
 .w45 {
   width:45%;
@@ -85,6 +95,12 @@ a:hover {
   width:35%;
 }
 .w30 {
+  width:30%;
+}
+.w25 {
+  width:25%;
+}
+.w20 {
   width:30%;
 }
 .row {
@@ -194,15 +210,20 @@ header {
   top:0;
   margin-top:0;
 }
-header section {
+.contenedorHeader {
   display:flex;
-  max-width:1080px;
+/*
+max-width:1080px;
+*/
   height:80px;
   margin:0 auto;
   padding:0;
   flex-direction:row;
   align-items:center;
-  justify-content:space-between;
+  justify-content:space-evenly;
+}
+#logo a {
+  display: flex;
 }
 #logo img {
   height:50px;
@@ -220,7 +241,11 @@ nav ul:nth-child(2) li {
   padding:0 0 0 20px;
 }
 nav li {
+<<<<<<< HEAD
   padding:15px 0 10px 20px;
+=======
+  padding:0;
+>>>>>>> marto
   align-items: center;
 }
 nav a {
@@ -228,7 +253,7 @@ nav a {
   font-weight: 400 !important;
   text-transform: uppercase;
   color: #ddd;
-  padding: 0 0 2px 0;
+  padding: 10px;
   position: relative;
   transition: color 0.5s ease-in-out;
   font-family: "Roboto Condensed", sans-serif;
@@ -248,10 +273,37 @@ nav a:hover::after {
   opacity: 1;
   transition: opacity 0.2s ease-in-out;
 }
-
 nav a:hover {
   color: #fff;
 }
+nav .buscar a {
+  margin:0;
+  padding:5px
+}
+nav li.buscar {
+  margin:0 0 0 20px;
+}
+nav .buscar i {
+  background: linear-gradient(135deg, #184d99 0%, #e90066 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 20px;
+  margin:0;
+  padding: 5px;
+}
+nav .buscar:hover i {
+  background: #000;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+nav .buscar a::after {
+  background:none;
+}
+nav .buscar:hover {
+  background: linear-gradient(135deg, #184d99 0%, #e90066 100%);
+}
+
 nav ul#barraLogin {
   margin:0 0 0 40px;
 }
@@ -430,10 +482,25 @@ footer h4 {
   padding:10px;
 }
 .redes ul li i {
-  font-size:24px;
+  font-size:32px !important;
+  background: linear-gradient(135deg, #184d99 0%, #e90066 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 20px;
+  margin:0 15px 0 0;
+  padding: 5px;
 }
+.redes ul li i:hover {
+  background: linear-gradient(-45deg, #184d99 0%, #e90066 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+
 .copyright {
-  background:#333;
+  background: linear-gradient(to right, #184d99, #e90066);
   color:#dce5eb;
   padding:10px 20px;
   font-size:0.9em;
@@ -442,7 +509,9 @@ footer h4 {
   align-items:center;
   justify-content:space-between;
 }
-
+.copyright a {
+  color:#dce5eb;
+}
 /**/
 /* RESPONSIVE */
 @media(max-width:480px){

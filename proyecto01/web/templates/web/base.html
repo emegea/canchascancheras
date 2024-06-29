@@ -34,7 +34,10 @@
             <li><a href="{% url 'filtrar_canchas' %}">Buscar Canchas</a></li>
             <li><a href="{% url 'ventaCustom' %}">Personalizá tu Cancha</a></li>
             <li><a href="{% url 'contacto' %}">Contacto</a></li>
-        </ul>
+            {% if user.is_authenticated %}
+            <li class="buscar"><a href="{% url 'buscar' %}" title="BUSCAR"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+            {% endif %}
+          </ul>
         <!-- Ocultando botón si no está logueado  -->
         <ul id="barraLogin">
           {% if user.is_authenticated %}
@@ -46,7 +49,7 @@
           </li>
           {% else %}
           <li>
-              <a class="boton botonDos" href="{% url 'login' %}">Crear Cuenta</a>
+              <a class="boton botonDos" href="{% url 'registro' %}">Crear Cuenta</a>
           </li>
           <li>
             <a class="boton" href="{% url 'login' %}">Iniciar Sesión</a>

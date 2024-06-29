@@ -22,6 +22,7 @@
 }
 #contacto .contenedor > .row {
   gap:40px !important;
+  z-index: 1;
 }
 #contacto .row, #contacto .row .w100 .w50 {
   gap:2% !important;
@@ -57,6 +58,23 @@
   min-height: 150px;
 }
 
+#formularioContacto .boton {
+  width: 100%;
+  padding:20px;
+  border:none;
+  border-radius:0;
+  color:#dce5eb;
+  font-size:1em;
+  text-transform: uppercase;
+  background:linear-gradient(to bottom, #184d99, #e90066) !important;
+  transition: ease-in 0.3s;
+}
+#formularioContacto .boton:hover {
+  background:linear-gradient(to top, #184d99, #e90066) !important;
+  transition: ease-out 0.5s;
+}
+
+
 #masInfo {
   display:flex;
   flex-direction:column;
@@ -75,10 +93,16 @@
   align-items:center;
 }
 .listaIconos li i {
-  font-size:20px;
-  color:#DC834E;
+  background: linear-gradient(135deg, #184d99 0%, #e90066 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 20px;
   margin:0 15px 0 0;
+  padding: 5px;
+
 }
+
 #masInfo img {
   max-height: 50px;
 }

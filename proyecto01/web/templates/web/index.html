@@ -8,12 +8,6 @@
 {% endblock %}
 
 {% block principal %}
-<!-- 
-  <h1>Hola Shango</h1>
-  <p>Bienvenido {{ nombre }}</p>
-  <p>Hora actual: {{ fecha_hora }}</p>
--->
-
   <!-- MAIN -->
   <main id="novedades">
     <ul id="carrusel" class="w100">
@@ -22,14 +16,12 @@
         <div class="contenedor">
           <h1>Bienvenido a <span>Canchas Cancheras</span></h1>
           <img src="{% static '/web/img/logo.svg' %}">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec
-            mi sed odio tristique aliquet. 
           </p>
         </div>
       </li>
       <li id="carruselDos" class="carruseles w100">
         <div class="contenedor">
-          <p class="titulo">Título motivador 1</p>
+          <p class="titulo">Conocé nuestras canchas</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec
             mi sed odio tristique aliquet. 
           </p>
@@ -37,7 +29,7 @@
       </li>
       <li id="carruselTres" class="carruseles w100">
         <div class="contenedor">
-          <p class="titulo">Título motivador 2</p>
+          <p class="titulo">Personalizá tu cancha !</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec
             mi sed odio tristique aliquet.
           </p>
@@ -45,7 +37,7 @@
       </li>
       <li id="carruselCuatro" class="carruseles w100">
         <div class="contenedor">
-          <p class="titulo">Título motivador 3</p>
+          <p class="titulo">¡La cancha que siempre soñaste!</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec
             mi sed odio tristique aliquet.
           </p>
@@ -66,16 +58,23 @@
   <section id="canchas">
     <article class="contenedor">
       <h2><i class="fa-regular fa-futbol"></i> Conocé nuestras canchas</h2>
-      <div class="contenedor2">
+      <div class="contenedor2 cancha">
         <ul class="w45">
           {% for cancha in contexto %}
           <li>
-            <img src="{% static 'web/img/canchita-01.jpg' %}" alt="{{ cancha.nombre }}">
+            <img src="https://picsum.photos/240/150?random={{ cancha.id }}.webp" alt="">
             <h3 title="{{ cancha.nombre }}">{{ cancha.nombre }}</h3>
           </li>
           {% endfor %}
         </ul>
-        <iframe class="w55" width="100%" height="300" src="https://www.youtube.com/embed/_UKAVnsfDrU?start=6&autoplay=1&mute=1&controls=1&modestbranding=1&loop=1" title="Canchas Cancheras" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe class="w55" width="100%" height="320"
+          src="https://www.youtube.com/embed/cIZfkEOfRFc?si=dPbeBSmIG-pocL3j?start=6&autoplay=1&mute=1&controls=0&modestbranding=1&loop=1"
+          title="Canchas Cancheras"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+      </iframe>
       </div>
       <button class="boton"><a href="{% url 'canchas' %}">» Ver todas las canchas</a></button>
     </article>
@@ -88,7 +87,7 @@
     <article class="contenedor">
       <img class="mobileImg" src="{% static '/web/img/logo.svg' %}" alt="">
       <ul class="listaIconos w60">
-        <h2><i class="fa-regular fa-futbol"></i> Buscás una cancha personalizada?</h2>
+        <h2><i class="fa-regular fa-futbol"></i> ¿Buscás una cancha personalizada?</h2>
         <li>
           <i class="fa-solid fa-pen"></i>
           <div>

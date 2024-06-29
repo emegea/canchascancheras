@@ -1,14 +1,22 @@
+from .forms import *
+from .models import *
 from django.http import HttpResponse
 import datetime
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
+<<<<<<< HEAD
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 from .forms import *
 from .models import *
+=======
+from django.contrib.auth import login, logout
+from django.contrib.auth.models import Group
+from django.contrib.auth.decorators import login_required
+>>>>>>> marto
 
 # Vista del Index
 def index(request):
@@ -31,6 +39,7 @@ def canchas(request):
     canchas = Cancha.objects.all()
     return render(request, 'canchas.html', {'canchas': canchas})
 
+<<<<<<< HEAD
 #Vista parametrizada(filtrando)
 @login_required
 def filtrar_canchas(request):
@@ -45,6 +54,28 @@ def filtrar_canchas(request):
             marcador = form.cleaned_data.get('marcador')
             gradas = form.cleaned_data.get('gradas')
             
+=======
+#Vista de búsqueda parametrizada filtrando
+@login_required(login_url='/login/')
+def buscar(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    
+    canchas = []
+
+    if request.method == "GET" and not request.GET:
+        formulario = CanchaForm()
+    else:
+        formulario = CanchaForm(request.GET)
+        if formulario.is_valid():
+            tipo_suelo = formulario.cleaned_data.get('tipo_suelo')
+            tipo_red = formulario.cleaned_data.get('tipo_red')
+            iluminacion = formulario.cleaned_data.get('iluminacion')
+            marcador = formulario.cleaned_data.get('marcador')
+            gradas = formulario.cleaned_data.get('gradas')
+
+            canchas = Cancha.objects.all()  
+>>>>>>> marto
             if tipo_suelo:
                 canchas = canchas.filter(tipo_suelo=tipo_suelo)
             if tipo_red:
@@ -55,10 +86,18 @@ def filtrar_canchas(request):
                 canchas = canchas.filter(marcador=marcador)
             if gradas is not None:
                 canchas = canchas.filter(gradas=gradas)
+<<<<<<< HEAD
     else:
         form = CanchaFilterForm()
     
     return render(request, 'filtrar_canchas.html', {'form': form, 'canchas': canchas})
+=======
+
+    return render(request, 'buscar.html', {
+        'formulario': formulario,
+        'canchas': canchas
+    })
+>>>>>>> marto
 
 # Vista para manejar la compra de una cancha estándar
 def comprar_cancha(request, cancha_id):
@@ -132,15 +171,38 @@ def contacto(request):
             return redirect('contacto')
     return render(request, "contacto.html", contexto)
 
+
+### VISTAS AUTH
+
+# Redirigir usuarios autenticados (decorador custom)
+def redirigirAutenticados(view_func):
+    def _wrapped_view(request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('/')
+        return view_func(request, *args, **kwargs)
+    return _wrapped_view
+
 # Vista de Login
+<<<<<<< HEAD
 def login_view(request):
+=======
+@redirigirAutenticados
+def vistaLogin(request):
+    if request.user.is_authenticated:
+        return redirect('index')
+>>>>>>> marto
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
         if form.is_valid():
             user = form.get_user()
             login(request, user)
             messages.success(request, 'Inicio de sesión exitoso.')
+<<<<<<< HEAD
             return redirect('/admin/')  # Redirige a la página admin después del login
+=======
+            # Redirige a la página admin después del login
+            return redirect('/admin/') 
+>>>>>>> marto
     else:
         form = AuthenticationForm()
     
@@ -152,8 +214,36 @@ def vistaLogout(request):
     logout(request)
     messages.success(request, "El usuario cerró su sesión correctamente.")
     return redirect('index')
+<<<<<<< HEAD
+=======
+
+# Vista de Admin
+def admin(request):
+    return redirect('/admin')
+>>>>>>> marto
 
 # Vista de claveReset
 def claveReset(request):
     messages.success(request, "La clave fue reseteada correctamente.")
     return render(request, "claveReset.html")
+<<<<<<< HEAD
+=======
+
+# Vista de Registro de Usuarios
+@redirigirAutenticados
+def registro(request):
+    if request.method == 'POST':
+        formulario_registro = formularioRegistro(request.POST)
+        if formulario_registro.is_valid():
+            user = formulario_registro.save()
+            # Asigna el nuevo usuario al grupo Clientes
+            group = Group.objects.get(name='Clientes')
+            user.groups.add(group)
+            login(request, user)
+            messages.success(request, "Usuario registrado correctamente.")
+            return redirect('index')
+
+    else:
+        formulario_registro = formularioRegistro()
+    return render(request, 'registro.html', {'formulario_registro': formulario_registro})
+>>>>>>> marto

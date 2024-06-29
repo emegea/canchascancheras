@@ -1,0 +1,59 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block titulo %}ENCONTRÁ TU CANCHA » Canchas Cancheras{% endblock %}
+{% block extra_css_js %}
+  <link rel="stylesheet" href="{% static 'web/css/buscar.css' %}">
+  <script src="{% static 'web/js/canchas.js' %}"></script>
+{% endblock %}
+
+{% block principal %}
+<main id="buscar">
+  {% if not request.GET %}
+  <div class="contenedor">
+    <h1><i class="fa-regular fa-futbol"></i> Encontrá tu cancha</h1>
+    <form id="buscarForm" method="GET" action="{% url 'buscar' %}">
+      {% csrf_token %}
+      {{ formulario }}
+      <br>
+      <button type="submit" class="boton w100">Buscar</button>
+    </form>
+  </div>
+  {% endif %}
+
+  {% if canchas %}
+  <div id="resultados" class="contenedor">
+    <h2><i class="fa-regular fa-futbol"></i> Resultados de la búsqueda</h2>
+    <ul>
+      {% for cancha in canchas %}
+      <li>
+        <div class="cancha" id="{{ cancha.id }}">
+          <img src="https://picsum.photos/240/150?query='{{ cancha.nombre }}'?quality=50" alt="">
+          <h3>{{ cancha.nombre }}</h3>
+          <button class="mostrarDetalles">» Ver detalles</button>
+          <div class="detalles" style="display: none;">
+            <p><b>Tipo de Suelo: </b>{{ cancha.get_tipo_suelo_display }}</p>
+            <p><b>Tipo de Red: </b>{{ cancha.get_tipo_red_display }}</p>
+            <p><b>Longitud: </b>{{ cancha.longitud }} m</p>
+            <p><b>Ancho: </b>{{ cancha.ancho }} m</p>
+            <p><b>Iluminación: </b>{{ cancha.iluminacion|yesno:"Sí,No" }}</p>
+            <p><b>Marcador Electrónico: </b>{{ cancha.marcador|yesno:"Sí,No" }}</p>
+            <p><b>Graderías: </b>{{ cancha.gradas|yesno:"Sí,No" }}</p>
+            <form class="botonCancha" method="post" action="{% url 'comprar_cancha' cancha.id %}">
+              {% csrf_token %}
+              <button type="submit" class="boton">» Comprar</button>
+            </form>
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% else %}
+    {% if request.GET %}
+    <div id="no-resultados" class="contenedor">
+      <p>No se encontraron resultados con los criterios de búsqueda seleccionados.</p>
+    </div>
+    {% endif %}
+  {% endif %}
+</main>
+{% endblock %}

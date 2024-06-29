@@ -1,0 +1,110 @@
+#registroUsuario {
+  background:linear-gradient(120deg, #184d99, #e90066);
+  position: relative;
+  color:#dce5eb;
+  padding:80px 0 0 0;
+}
+#registroUsuario:before {
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  background-image:url("../img/lineas.svg");
+  mix-blend-mode:multiply;
+  background-size:cover;
+  background-repeat:no-repeat;
+  transition:.5s ease-in;
+  background-attachment: fixed;
+}
+#registroUsuario h1 {
+  color:#fafafa;
+  font-size:2em;
+  text-transform: uppercase;
+  text-align: center;
+}
+#registroUsuario .contenedor > .row {
+  gap:40px !important;
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+}
+#registroUsuario .row, #registroUsuario .row .w100 .w50 {
+  gap:10px !important;
+}
+
+#formularioRegistro {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height:fit-content;
+  gap:20px !important;
+}
+#formularioRegistro h2 {
+  width:100%;
+  margin:10px 0 0 0;
+}
+#formularioRegistro div:has(input),
+#formularioRegistro div:has(select) {
+  height:40px;
+  /*
+  margin:0;
+  padding:0;
+  width:48%;
+  */
+}
+#formularioRegistro div input {
+  width:94%;
+  padding:2% 3%;
+}
+#formularioRegistro div select {
+  width:100%;
+  padding:5%;
+}
+#formularioRegistro div label {
+  display:none;
+}
+#formularioRegistro div:has(textarea) {
+  margin:0;
+  padding:0;
+  width:100%;
+}
+#formularioContacto textarea {
+  min-height: 150px;
+}
+#formularioRegistro .boton {
+  color:#fafafa;
+  width: 100%;
+}
+/*
+#formularioRegistro > div:nth-of-type(6),
+#formularioRegistro > div:nth-of-type(7),
+#formularioRegistro > div:nth-of-type(8),
+#formularioRegistro > div:nth-of-type(9) {
+  height:20px;
+  width:100% !important;
+  display:none;
+}
+*/
+
+.placeholderCustom {
+  margin-right: 10px; /* Añadir espacio entre el checkbox y el texto */
+}
+.placeholderCustom::after {
+  content: attr(placeholder);
+  color: #fafafa;
+  font-size: 14px;
+  vertical-align: middle;
+}
+.select-placeholder {
+  color: #fafafa;
+}
+
+ul.column.w50 {
+  background-image:url("../img/canchasBg.webp");
+  background-repeat:no-repeat; 
+  background-size:cover;
+  background-position: center;
+  transition:.5s ease-in;
+}
