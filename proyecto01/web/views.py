@@ -5,9 +5,9 @@ import datetime
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import login, logout
 from django.contrib.auth.models import Group
-from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.decorators import login_required
 
 # Vista del Index
 def index(request):
@@ -31,8 +31,11 @@ def canchas(request):
     return render(request, 'canchas.html', {'canchas': canchas})
 
 #Vista de búsqueda parametrizada filtrando
-@login_required
+@login_required(login_url='/login/')
 def buscar(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    
     canchas = []
 
     if request.method == "GET" and not request.GET:
@@ -135,15 +138,30 @@ def contacto(request):
             return redirect('contacto')
     return render(request, "contacto.html", contexto)
 
+
+### VISTAS AUTH
+
+# Redirigir usuarios autenticados (decorador custom)
+def redirigirAutenticados(view_func):
+    def _wrapped_view(request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('/')
+        return view_func(request, *args, **kwargs)
+    return _wrapped_view
+
 # Vista de Login
+@redirigirAutenticados
 def vistaLogin(request):
+    if request.user.is_authenticated:
+        return redirect('index')
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
         if form.is_valid():
             user = form.get_user()
             login(request, user)
             messages.success(request, 'Inicio de sesión exitoso.')
-            return redirect('/admin/')  # Redirige a la página admin después del login
+            # Redirige a la página admin después del login
+            return redirect('/admin/') 
     else:
         form = AuthenticationForm()
     
@@ -166,14 +184,15 @@ def claveReset(request):
     return render(request, "claveReset.html")
 
 # Vista de Registro de Usuarios
+@redirigirAutenticados
 def registro(request):
     if request.method == 'POST':
         formulario_registro = formularioRegistro(request.POST)
         if formulario_registro.is_valid():
             user = formulario_registro.save()
-            # Asigna el nuevo usuario a un grupo específico si es necesario
-            # group = Group.objects.get(name='Clientes')
-            # user.groups.add(group)
+            # Asigna el nuevo usuario al grupo Clientes
+            group = Group.objects.get(name='Clientes')
+            user.groups.add(group)
             login(request, user)
             messages.success(request, "Usuario registrado correctamente.")
             return redirect('index')

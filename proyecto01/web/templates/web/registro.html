@@ -6,14 +6,14 @@
 {% endblock %}
 
 {% block principal %}
-<main id="comprarCancha">
+<main id="registroUsuario">
   <article class="contenedor">
     <h1><i class="fa-regular fa-futbol"></i> Registrate en Canchas Cancheras</h1>
     <div class="row">
-      <form method="post">
+      <form id="formularioRegistro" class="w50" method="post">
         {% csrf_token %}
         {{ formulario_registro }}
-        <button type="submit">Registrar</button>
+        <button type="submit" class="boton">Registrarme</button>
       </form>
     </div>    
   </article>

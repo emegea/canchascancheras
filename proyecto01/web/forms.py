@@ -175,6 +175,10 @@ class ClienteForm(forms.ModelForm):
 #   
 # Formulario de registro de usuarios
 class formularioRegistro(forms.ModelForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Nombre de usuario'}))
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Nombre'}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Apellido'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': 'Correo electrónico'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Contraseña'}))
     password_confirm = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Confirmar Contraseña'}))
 
@@ -195,31 +199,3 @@ class formularioRegistro(forms.ModelForm):
         if commit:
             user.save()
         return user
-    
-    tipo_suelo = forms.ChoiceField(
-        label='Tipo de Suelo',
-        choices=Cancha.TIPOS_SUELO,
-        required=False,
-        widget=forms.Select(attrs={'placeholder': 'Seleccione el tipo de suelo'})
-    )
-    tipo_red = forms.ChoiceField(
-        label='Tipo de Red',
-        choices=Cancha.TIPOS_RED,
-        required=False,
-        widget=forms.Select(attrs={'placeholder': 'Seleccione el tipo de red'})
-    )
-    iluminacion = forms.BooleanField(
-        label='Iluminación',
-        required=False,
-        widget=forms.CheckboxInput()
-    )
-    marcador = forms.BooleanField(
-        label='Marcador Electrónico',
-        required=False,
-        widget=forms.CheckboxInput()
-    )
-    gradas = forms.BooleanField(
-        label='Graderías',
-        required=False,
-        widget=forms.CheckboxInput()
-    )
