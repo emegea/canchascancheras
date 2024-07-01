@@ -1,0 +1,15 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block titulo %}INSTRUCCIONES ENVIADAS » Canchas Cancheras{% endblock %}
+{% block extra_css_js %}
+  <link rel="stylesheet" href="{% static 'web/css/login.css' %}">
+{% endblock %}
+
+{% block principal %}
+<main id="login">
+  <article class="contenedor">    
+    <h1>Instrucciones Enviadas</h1>
+    <p>Por favor, revisa tu correo electrónico para seguir las instrucciones de restablecimiento de tu Clave.</p>
+  </article>
+  </main>
+{% endblock %}

@@ -1,0 +1,221 @@
+.administrar {
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    margin:0;
+    padding:80px 0 0 0;
+    background:linear-gradient(120deg, #184d99, #e90066);
+    color:#444;
+}
+.administrar:before {
+    content:"";
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background-image:url("../img/lineas.svg");
+    mix-blend-mode:multiply;
+    background-size:cover;
+    background-repeat:no-repeat;
+    transition:.5s ease-in;
+    background-attachment: fixed;
+}
+.administrar .contenedor > .row {
+    gap:40px !important;
+    z-index: 9;
+  }
+.administrar h1 {
+    color:#fafafa;
+    font-size:2em;
+    text-transform: uppercase;
+}
+.administrar .contenedor {
+    z-index:99;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+footer {
+    width: 100%;
+}
+
+/* TABLAS */
+tbody, td, tfoot, th, thead, tr {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px #ccc solid;
+}
+table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    unicode-bidi: isolate;
+    border-spacing: 0;
+    border-color: #e90066;
+    caption-side: bottom;
+    border-collapse: collapse;
+}
+.tabla {
+    width:100%;
+    margin:1rem 0;
+    vertical-align: top;
+    border-color: rgba(200,10,100,1);
+    border-radius: 10px;
+}
+.tabla>thead {
+    vertical-align: bottom;
+    background-color: #fff;
+}
+.tabla>tbody {
+    vertical-align: inherit;
+}
+.tabla>tfoot {
+    vertical-align: bottom;
+    background-color: #000;
+    padding:20px;
+}
+.tabla tbody tr:nth-child(odd) {
+    background-color: #dce5eb;
+}
+.tabla tbody tr:nth-child(odd):hover {
+    box-shadow: inset 0 0 30px rgba(200, 10, 100, 0.2);
+}
+.tabla tbody tr:nth-child(even) {
+    background-color: #fff;
+}
+.tabla tbody tr:nth-child(even):hover {
+    box-shadow: inset 0 0 30px rgba(200, 10, 100, 0.3);
+}
+
+.actualizar, .agregar, .eliminar {
+    padding:5px 15px;
+    border-radius:20px;
+    font-size:0.9em;
+    font-weight:600;
+    text-transform: uppercase;
+}
+.actualizar:hover, .agregar:hover, .eliminar:hover {
+    color:#dce5eb;
+}
+.agregar {
+    background:rgba(56,142,60,1);
+    padding:10px 25px;
+    display:flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 30%;
+}
+.agregar:hover {
+    background:rgba(56,142,60,0.8);
+}
+.agregar i {
+    font-size: 30px;
+}
+.actualizar {
+    background:rgba(96, 189, 217,0.65);
+    margin:0 10px 0 0;
+}
+.actualizar:hover {
+    background:rgba(96, 189, 217,1);
+}
+.eliminar {
+    background:rgba(220,52,69,0.65);   
+}
+.eliminar:hover {
+    background:rgba(220,52,69,1);   
+}
+
+
+/* Formulario Crear Cancha */
+
+#formularioCrearCancha {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height:fit-content;
+    gap:20px !important;
+}
+#formularioCrearCancha h2 {
+    width:100%;
+    margin:10px 0 0 0;
+    color:#dce5eb;
+}
+#formularioCrearCancha p {
+    color:#dce5eb;
+}
+#formularioCrearCancha a {
+    margin:10px 0 0 0;
+    color:#dce5eb;
+    padding:10px;
+    border-bottom:4px solid rgba(220,52,69,0);   
+    transition:.2s ease-out;
+}
+#formularioCrearCancha a:hover {
+    border-bottom:4px solid rgba(220,52,69,1);
+    margin:10px 0 0 10px;
+    transition:.2s ease-in;
+}
+#formularioCrearCancha div:has(input),
+#formularioCrearCancha div:has(select) {
+    margin:0;
+    padding:0;
+    width:48%;
+    height:40px;
+}
+#formularioCrearCancha div input {
+    width: 90%;
+    padding:5%;
+}
+#formularioCrearCancha div select {
+    width:100%;
+    padding:5%;
+}
+#formularioCrearCancha div label {
+    display:none;
+}
+#formularioCrearCancha div:has(textarea) {
+    margin:0;
+    padding:0;
+    width:100%;
+}
+#formularioContacto textarea {
+    min-height: 150px;
+}
+#formularioCrearCancha .boton {
+    color:#fafafa;
+    width: 100%;
+}
+#formularioCrearCancha > div:nth-of-type(5),
+#formularioCrearCancha > div:nth-of-type(6),
+#formularioCrearCancha > div:nth-of-type(7){
+    width:100% !important;
+    height:20px;
+}
+.placeholderCustom {
+    margin-right: 10px; /* Añadir espacio entre el checkbox y el texto */
+}
+.placeholderCustom::after {
+    content: attr(placeholder);
+    color: #fafafa;
+    font-size: 14px;
+    vertical-align: middle;
+}
+.select-placeholder {
+    color: #fafafa;
+}
+
+ul.column.w50 {
+    background-image:url("../img/canchasBg.webp");
+    background-repeat:no-repeat; 
+    background-size:cover;
+    background-position: center;
+    transition:.5s ease-in;
+}

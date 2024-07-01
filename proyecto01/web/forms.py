@@ -2,22 +2,6 @@ from django import forms
 from .models import *
 from django.contrib.auth.models import User
 
-# Formulario de Login
-class formularioLogin(forms.Form):
-    nombre_usuario = forms.CharField(
-        label="Nombre",
-        required=True,
-        widget=forms.TextInput(
-            attrs={'placeholder': 'Nombre de usuario'}
-        )
-    )
-    clave_usuario = forms.CharField(
-        label="Clave Usuario",
-        required=True,
-        widget=forms.PasswordInput(
-            attrs={'placeholder': 'Ingresá tu clave'}
-        )
-    )
 #
 # Formulario de Contacto basado en Modelo MensajeContacto
 class formularioContacto(forms.ModelForm):
@@ -172,7 +156,26 @@ class ClienteForm(forms.ModelForm):
             'nombre': forms.TextInput(attrs={'placeholder': 'Nombre'}),
             'email': forms.EmailInput(attrs={'placeholder': 'Email'}),
         }       
-#   
+
+
+### FORMS AUTH
+
+# Formulario de Login
+class formularioLogin(forms.Form):
+    nombre_usuario = forms.CharField(
+        label="Nombre",
+        required=True,
+        widget=forms.TextInput(
+            attrs={'placeholder': 'Nombre de usuario'}
+        )
+    )
+    clave_usuario = forms.CharField(
+        label="Clave Usuario",
+        required=True,
+        widget=forms.PasswordInput(
+            attrs={'placeholder': 'Ingresá tu clave'}
+        )
+    )
 # Formulario de registro de usuarios
 class formularioRegistro(forms.ModelForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Nombre de usuario'}))

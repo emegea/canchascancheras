@@ -5,7 +5,7 @@
     <meta
         comisión:="24309"
         grupo:="19"
-        integrantes:="Martín, Martín, Cristian, Damian, G Briceño" >
+        integrantes:="Martín, Martín, Cristian, Juan" >
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block titulo %}{% endblock %}</title>
@@ -31,7 +31,7 @@
             <li><a href="{% url 'index' %}">Inicio</a></li>
             <li><a href="{% url 'somos' %}">Quienes Somos</a></li>
             <li><a href="{% url 'canchas' %}">Canchas</a></li>
-            <li><a href="{% url 'ventaCustom' %}">Personalizá tu Cancha</a></li>
+            <li><a href="{% url 'cancha_personalizada' %}">Personalizá tu Cancha</a></li>
             <li><a href="{% url 'contacto' %}">Contacto</a></li>
             {% if user.is_authenticated %}
             <li class="buscar"><a href="{% url 'buscar' %}" title="BUSCAR"><i class="fa-solid fa-magnifying-glass"></i></a></li>
@@ -42,6 +42,9 @@
           {% if user.is_authenticated %}
           <li>
             <p>Bienvenid@ {{user.username}}</p>
+          </li>
+          <li>
+            <a class="boton botonDos" href="{% url 'listar_canchas' %}">Administrar</a>
           </li>
           <li>
             <a class="boton" href="{% url 'logout' %}">Cerrar Sesión</a>

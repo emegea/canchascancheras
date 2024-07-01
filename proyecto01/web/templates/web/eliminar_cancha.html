@@ -1,0 +1,26 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block titulo %}ELIMINAR CANCHA ! » Canchas Cancheras{% endblock %}
+{% block extra_css_js %}
+  <link rel="stylesheet" href="{% static 'web/css/administrar.css' %}">
+{% endblock %}
+
+{% block principal %}
+
+<!-- LISTAR CANCHAS -->
+<main id="eliminarCancha" class="administrar">
+    <section class="contenedor">    
+        <h1><i class="fa-regular fa-futbol"></i> Eliminar Cancha</h1>
+        <div class="row">
+            <form id="formularioCrearCancha" class="w50" method="post">
+                <h2>Eliminar Cancha</h2>
+                <p>¿Está seguro que desea eliminar la cancha "{{ cancha.nombre }}"?</p>
+                {% csrf_token %}
+                <button type="submit" class="boton">Eliminar Cancha</button>
+                <a href="{% url 'listar_canchas' %}" class="">» Volver a la lista de canchas</a>
+            </form>
+            <ul class="column w50"></ul>  
+        </div>
+    </section>
+</div>
+{% endblock %}
