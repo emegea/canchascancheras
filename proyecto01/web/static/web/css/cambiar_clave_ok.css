@@ -1,0 +1,80 @@
+#login {
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  margin:0;
+  background:linear-gradient(45deg, #0c2955, #60bdd9);
+}
+#login:before {
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  background-image:url("../img/lineas.svg");
+  mix-blend-mode:multiply;
+  background-size:cover;
+  background-repeat:no-repeat;
+  transition:.5s ease-in;
+}
+#login h1 {
+  color:#fafafa;
+  font-size:2em;
+}
+#login .contenedor {
+  z-index:99;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+#formularioLogin {
+  background:#fafafa;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height:fit-content;
+  gap:20px !important;
+  box-shadow:0 0 20px rgba(0,0,0,0.1);
+  padding:40px 30px;
+  border-radius:8px;
+  border:0px solid;
+}
+#formularioLogin div label {
+  display:none;
+}
+#formularioLogin div:has(input) {
+  margin:0;
+  padding:0;
+  width:100%;
+}
+#formularioLogin div input {
+  width:90%;
+  padding:3% 5%;
+}
+#formularioLogin div input[type="checkbox" i] {
+  width:5%;
+}
+#login form #recordarme {
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  gap:10px;
+}
+#recordarme label {
+  display: block !important;
+  font-size: 0.8em;
+}
+#formularioLogin .boton {
+  font-size:1.2em;
+  width: 100%;
+}
+#formularioLogin .boton a, #ayudaForm, #ayudaForm a {
+  color:#fafafa;
+}
+#ayudaForm a:hover {
+  color:#fafafa;
+  text-decoration: underline;
+}

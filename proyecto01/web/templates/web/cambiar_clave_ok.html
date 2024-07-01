@@ -1,0 +1,21 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block titulo %}CLAVE RESTABLECIDA » Canchas Cancheras{% endblock %}
+{% block extra_css_js %}
+  <link rel="stylesheet" href="{% static 'web/css/login.css' %}">
+{% endblock %}
+
+{% block principal %}
+<main id="login">
+  <article class="contenedor">    
+    {% block content %}
+    <h1>Clave Restablecida</h1>
+    <p>
+      Tu contraseña ha sido restablecida exitosamente.
+      <br>
+      Ahora podés <a href="{% url 'login' %}">iniciar sesión</a> con tu nueva clave.
+    </p>
+    {% endblock %}
+  </article>
+</main>
+{% endblock %}

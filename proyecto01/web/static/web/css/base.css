@@ -133,7 +133,7 @@ a:hover {
 /* BOTONES */
 .boton {
   color:#dce5eb;
-  background:#388e3c !important;
+  background:#388e3c;
   padding:10px 20px;
   border-radius:5px;
   border:none;
@@ -147,7 +147,7 @@ a:hover {
   font-family: "Roboto Condensed", sans-serif;
 }
 .boton:hover {
-  background:#DC834E !important;
+  background:#DC834E;
   transition:.2s ease-in;
   text-shadow: none;
 }
@@ -167,8 +167,8 @@ a:hover {
 .boton input:hover,
 .boton a:hover,
 .boton input a:hover {
-  background:rgba(0,0,0,0) !important;
-  box-shadow: 0 0 0 rgba(0,0,0,0) !important;
+  background:rgba(0,0,0,0) ;
+  box-shadow: 0 0 0 rgba(0,0,0,0) ;
 }
 .boton a {
   color:#dce5eb;
@@ -241,16 +241,12 @@ nav ul:nth-child(2) li {
   padding:0 0 0 20px;
 }
 nav li {
-<<<<<<< HEAD
-  padding:15px 0 10px 20px;
-=======
   padding:0;
->>>>>>> marto
   align-items: center;
 }
 nav a {
   font-size: 0.9em;
-  font-weight: 400 !important;
+  font-weight: 400 ;
   text-transform: uppercase;
   color: #ddd;
   padding: 10px;
@@ -312,21 +308,21 @@ nav ul#barraLogin .boton {
   padding:5px 20px;
   border:none;
   border-radius:0;
-  background:linear-gradient(to bottom, #184d99, #e90066) !important;
+  background:linear-gradient(to bottom, #184d99, #e90066) ;
   color:#dce5eb;
   font-size:0.9em;
 }
 nav ul#barraLogin .boton:hover {
-  background:linear-gradient(to top, #184d99, #e90066) !important;
+  background:linear-gradient(to top, #184d99, #e90066) ;
 }
 nav ul#barraLogin .botonDos {
-  background:none !important;
+  background:none ;
   border:1px solid;
   border-image: linear-gradient(to bottom, #184d99, #e90066) 1;
 }
 nav ul#barraLogin .botonDos:hover {
   border-image: linear-gradient(to bottom, #184d99, #e90066) 1;
-  background:linear-gradient(to bottom, #184d99, #e90066) !important;
+  background:linear-gradient(to bottom, #184d99, #e90066) ;
 }
 nav ul#barraLogin .botonDos:focus {
   outline: none;
@@ -336,7 +332,7 @@ nav ul#barraLogin .botonDos:focus {
 }
 #barraLogin p {
   font-size: 0.8em;
-  font-weight: 400 !important;
+  font-weight: 400 ;
   color: #ddd;
 }
 
@@ -345,7 +341,7 @@ nav ul#barraLogin .botonDos:focus {
 
 /* FORMULARIOS */
 form {
-  gap:15px !important;
+  gap:15px ;
   border:0px solid;
   z-index:99;
   display:flex;
@@ -365,13 +361,13 @@ form input, form select, form textarea {
 form input:hover, select:hover, textarea:hover {
   background:rgba(250,250,250,1);
   box-shadow:0 0 30px -10px rgba(0,0,0,0.5);
-  outline: none !important;
+  outline: none ;
   transition:ease-in-out .05s;
 }
 form input:focus, select:focus, textarea:focus {
   background:rgba(250,250,250,1);
   box-shadow:0 0 30px -10px #388e3c;
-  outline: none !important;
+  outline: none ;
   transition:ease-in-out .05s;
 }
 textarea {
@@ -482,7 +478,7 @@ footer h4 {
   padding:10px;
 }
 .redes ul li i {
-  font-size:32px !important;
+  font-size:32px ;
   background: linear-gradient(135deg, #184d99 0%, #e90066 100%);
   -webkit-background-clip: text;
   background-clip: text;

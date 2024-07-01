@@ -1,10 +1,10 @@
-#comprarCancha {
+#cancha_personalizada {
   background:linear-gradient(120deg, #184d99, #e90066);
   position: relative;
   color:#dce5eb;
   padding:80px 0 0 0;
 }
-#comprarCancha:before {
+#cancha_personalizada:before {
   content:"";
   position:absolute;
   top:0;
@@ -18,20 +18,20 @@
   transition:.5s ease-in;
   background-attachment: fixed;
 }
-#comprarCancha h1 {
+#cancha_personalizada h1 {
   color:#fafafa;
   font-size:2em;
   text-transform: uppercase;
 }
-#comprarCancha .contenedor > .row {
+#cancha_personalizada .contenedor > .row {
   gap:40px !important;
   z-index: 9;
 }
-#comprarCancha .row, #comprarCancha .row .w100 .w50 {
+#cancha_personalizada .row, #cancha_personalizada .row .w100 .w50 {
   gap:10px !important;
 }
 
-#formularioAvanzado {
+#formulario_cancha_personalizada {
   flex-wrap: wrap;
   display: flex;
   flex-direction: row;
@@ -39,29 +39,29 @@
   height:fit-content;
   gap:20px !important;
 }
-#formularioAvanzado h2 {
+#formulario_cancha_personalizada h2 {
   width:100%;
   margin:10px 0 0 0;
 }
-#formularioAvanzado div:has(input),
-#formularioAvanzado div:has(select) {
+#formulario_cancha_personalizada div:has(input),
+#formulario_cancha_personalizada div:has(select) {
   margin:0;
   padding:0;
   width:48%;
   height:40px;
 }
-#formularioAvanzado div input {
+#formulario_cancha_personalizada div input {
   width: 90%;
   padding:5%;
 }
-#formularioAvanzado div select {
+#formulario_cancha_personalizada div select {
   width:100%;
   padding:5%;
 }
-#formularioAvanzado div label {
+#formulario_cancha_personalizada div label {
   display:none;
 }
-#formularioAvanzado div:has(textarea) {
+#formulario_cancha_personalizada div:has(textarea) {
   margin:0;
   padding:0;
   width:100%;
@@ -69,13 +69,13 @@
 #formularioContacto textarea {
   min-height: 150px;
 }
-#formularioAvanzado .boton {
+#formulario_cancha_personalizada .boton {
   color:#fafafa;
   width: 100%;
 }
-#formularioAvanzado > div:nth-of-type(5),
-#formularioAvanzado > div:nth-of-type(6),
-#formularioAvanzado > div:nth-of-type(7){
+#formulario_cancha_personalizada > div:nth-of-type(5),
+#formulario_cancha_personalizada > div:nth-of-type(6),
+#formulario_cancha_personalizada > div:nth-of-type(7){
   width:100% !important;
   height:20px;
 }

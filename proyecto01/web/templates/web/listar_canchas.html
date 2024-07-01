@@ -1,0 +1,53 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block titulo %}ADMINSTRACIÓN DE CANCHAS ! » Canchas Cancheras{% endblock %}
+{% block extra_css_js %}
+  <link rel="stylesheet" href="{% static 'web/css/administrar.css' %}">
+{% endblock %}
+
+{% block principal %}
+
+<!-- LISTAR CANCHAS -->
+<main id="listarCanchas" class="administrar">
+  <section class="contenedor">    
+    <h1><i class="fa-regular fa-futbol"></i> Administrar Canchas</h1>
+    <article class="w80">
+      <a href="{% url 'crear_cancha' %}" class="boton agregar">
+        <i class="fa-solid fa-circle-plus"></i> Agregar nueva cancha
+      </a>
+      <table class="tabla">
+        <thead>
+          <tr>                    
+            <th>Numero</th>
+            <th>Suelo</th>
+            <th>Red</th>
+            <th>Largo</th>
+            <th>Ancho</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for cancha in canchas %}
+          <tr>
+            <td>{{ cancha.id }}</td>
+            <td>{{ cancha.tipo_suelo }}</td>
+            <td>{{ cancha.tipo_red }}</td>
+            <td>{{ cancha.longitud }}</td>
+            <td>{{ cancha.ancho }}</td>
+            <td>
+              <a href="{% url 'actualizar_cancha' cancha.id %}" class="boton actualizar">
+                <i class="fa-solid fa-pen-to-square"></i> Actualizar
+              </a>
+              <a href="{% url 'eliminar_cancha' cancha.id %}" class="boton eliminar">
+                <i class="fa-solid fa-trash"></i> Eliminar
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        <tfoot><tr></tr></tfoot>
+      </table>
+    </article>
+  </section>
+</div>
+{% endblock %}
