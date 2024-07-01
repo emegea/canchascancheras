@@ -1,24 +1,9 @@
 from django import forms
 from .models import *
+from django.contrib.auth.models import User
 
-# Formulario de Login
-class formularioLogin(forms.Form):
-    nombre_usuario = forms.CharField(
-        label="Nombre",
-        required=True,
-        widget=forms.TextInput(
-            attrs={'placeholder': 'Nombre de usuario'}
-        )
-    )
-    clave_usuario = forms.CharField(
-        label="Clave Usuario",
-        required=True,
-        widget=forms.PasswordInput(
-            attrs={'placeholder': 'Ingresá tu clave'}
-        )
-    )
 #
-# Formulario de Contacto basado en Modelo
+# Formulario de Contacto basado en Modelo MensajeContacto
 class formularioContacto(forms.ModelForm):
     class Meta:
         model = MensajeContacto
@@ -63,7 +48,7 @@ class formularioContacto(forms.ModelForm):
             raise forms.ValidationError('El campo "Mensaje" debe contener al menos 10 caracteres')
         return mensaje    
 # 
-# Form avanzado hecho con GPT
+# Form avanzado
 class formularioAvanzado(forms.Form):
     longitud = forms.DecimalField(
         label='Largo (m)',
@@ -138,35 +123,6 @@ class formularioAvanzado(forms.Form):
         required=False
     )
 #
-#formulario para vista parametrizada
-class CanchaFilterForm(forms.Form):
-    tipo_suelo = forms.ChoiceField(
-        label='Tipo de Suelo',
-        choices=Cancha.TIPOS_SUELO,
-        required=False,
-        widget=forms.Select(attrs={'placeholder': 'Seleccione el tipo de suelo'})
-    )
-    tipo_red = forms.ChoiceField(
-        label='Tipo de Red',
-        choices=Cancha.TIPOS_RED,
-        required=False,
-        widget=forms.Select(attrs={'placeholder': 'Seleccione el tipo de red'})
-    )
-    iluminacion = forms.BooleanField(
-        label='Iluminación',
-        required=False,
-        widget=forms.CheckboxInput()
-    )
-    marcador = forms.BooleanField(
-        label='Marcador Electrónico',
-        required=False,
-        widget=forms.CheckboxInput()
-    )
-    gradas = forms.BooleanField(
-        label='Graderías',
-        required=False,
-        widget=forms.CheckboxInput()
-    )
 # Forms basados en los modelos cancha, cliente y venta
 class CanchaForm(forms.ModelForm):
     class Meta:
@@ -199,5 +155,50 @@ class ClienteForm(forms.ModelForm):
             'apellido': forms.TextInput(attrs={'placeholder': 'Apellido'}),
             'nombre': forms.TextInput(attrs={'placeholder': 'Nombre'}),
             'email': forms.EmailInput(attrs={'placeholder': 'Email'}),
-        }
-        
+        }       
+
+
+### FORMS AUTH
+
+# Formulario de Login
+class formularioLogin(forms.Form):
+    nombre_usuario = forms.CharField(
+        label="Nombre",
+        required=True,
+        widget=forms.TextInput(
+            attrs={'placeholder': 'Nombre de usuario'}
+        )
+    )
+    clave_usuario = forms.CharField(
+        label="Clave Usuario",
+        required=True,
+        widget=forms.PasswordInput(
+            attrs={'placeholder': 'Ingresá tu clave'}
+        )
+    )
+# Formulario de registro de usuarios
+class formularioRegistro(forms.ModelForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Nombre de usuario'}))
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Nombre'}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Apellido'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': 'Correo electrónico'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Contraseña'}))
+    password_confirm = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Confirmar Contraseña'}))
+
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email', 'password']
+
+    def clean_password_confirm(self):
+        password = self.cleaned_data.get('password')
+        password_confirm = self.cleaned_data.get('password_confirm')
+        if password and password_confirm and password != password_confirm:
+            raise forms.ValidationError('Las contraseñas no coinciden')
+        return password_confirm
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data['password'])
+        if commit:
+            user.save()
+        return user

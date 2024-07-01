@@ -1,0 +1,26 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block titulo %}ACTUALIZAR CANCHA ! » Canchas Cancheras{% endblock %}
+{% block extra_css_js %}
+  <link rel="stylesheet" href="{% static 'web/css/administrar.css' %}">
+{% endblock %}
+
+{% block principal %}
+
+<!-- LISTAR CANCHAS -->
+<main id="actualizarCancha" class="administrar">
+    <section class="contenedor">    
+        <h1><i class="fa-regular fa-futbol"></i> Actualizar Canchas</h1>
+        <div class="row">
+            <form id="formularioCrearCancha" class="w50" method="post">
+                {% csrf_token %}
+                <h2>Opciones cosntrucción</h2>
+                {{ form }}
+                <button type="submit" class="boton">Actualizar</button>
+                <a href="{% url 'listar_canchas' %}" class="">» Volver a la lista de canchas</a>
+            </form>
+            <ul class="column w50"></ul>  
+        </div>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,101 @@
+#cancha_personalizada {
+  background:linear-gradient(120deg, #184d99, #e90066);
+  position: relative;
+  color:#dce5eb;
+  padding:80px 0 0 0;
+}
+#cancha_personalizada:before {
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  background-image:url("../img/lineas.svg");
+  mix-blend-mode:multiply;
+  background-size:cover;
+  background-repeat:no-repeat;
+  transition:.5s ease-in;
+  background-attachment: fixed;
+}
+#cancha_personalizada h1 {
+  color:#fafafa;
+  font-size:2em;
+  text-transform: uppercase;
+}
+#cancha_personalizada .contenedor > .row {
+  gap:40px !important;
+  z-index: 9;
+}
+#cancha_personalizada .row, #cancha_personalizada .row .w100 .w50 {
+  gap:10px !important;
+}
+
+#formulario_cancha_personalizada {
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height:fit-content;
+  gap:20px !important;
+}
+#formulario_cancha_personalizada h2 {
+  width:100%;
+  margin:10px 0 0 0;
+}
+#formulario_cancha_personalizada div:has(input),
+#formulario_cancha_personalizada div:has(select) {
+  margin:0;
+  padding:0;
+  width:48%;
+  height:40px;
+}
+#formulario_cancha_personalizada div input {
+  width: 90%;
+  padding:5%;
+}
+#formulario_cancha_personalizada div select {
+  width:100%;
+  padding:5%;
+}
+#formulario_cancha_personalizada div label {
+  display:none;
+}
+#formulario_cancha_personalizada div:has(textarea) {
+  margin:0;
+  padding:0;
+  width:100%;
+}
+#formularioContacto textarea {
+  min-height: 150px;
+}
+#formulario_cancha_personalizada .boton {
+  color:#fafafa;
+  width: 100%;
+}
+#formulario_cancha_personalizada > div:nth-of-type(5),
+#formulario_cancha_personalizada > div:nth-of-type(6),
+#formulario_cancha_personalizada > div:nth-of-type(7){
+  width:100% !important;
+  height:20px;
+}
+.placeholderCustom {
+  margin-right: 10px; /* Añadir espacio entre el checkbox y el texto */
+}
+.placeholderCustom::after {
+  content: attr(placeholder);
+  color: #fafafa;
+  font-size: 14px;
+  vertical-align: middle;
+}
+.select-placeholder {
+  color: #fafafa;
+}
+
+ul.column.w50 {
+  background-image:url("../img/canchasBg.webp");
+  background-repeat:no-repeat; 
+  background-size:cover;
+  background-position: center;
+  transition:.5s ease-in;
+}

@@ -1,0 +1,193 @@
+#buscar {
+  background: rgb(0,0,0,0.8);
+  position: relative;
+  padding:80px 0 0 0;
+}
+#buscar::after {
+  position: absolute;
+  content: "";
+  background-image: url("../img/canchasBg.webp");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#buscar h1, #buscar h2 {
+  text-transform: uppercase;
+  color:#dce5eb;
+  font-size:2em;
+}
+
+/* Estilos para el formulario */
+#buscarForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height:fit-content;
+  gap:40px !important;
+  padding: 40px;
+  border-radius: 5px;
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#buscarForm label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+#buscarForm input[type="number"],
+#buscarForm select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+#buscarForm input[type="checkbox"] {
+  margin-right: 10px; 
+}
+
+#buscarForm h2 {
+  width:100%;
+  margin:10px 0 0 0;
+}
+#buscarForm div:has(input),
+#buscarForm div:has(select) {
+  margin:0;
+  padding:0;
+  width:48%;
+  height:40px;
+}
+#buscarForm div input {
+  width: 90%;
+  padding:2%;
+}
+#buscarForm div select {
+  width:100%;
+  padding:2%;
+}
+#buscarForm div label {
+  display:none;
+}
+#buscarForm div:has(textarea) {
+  margin:0;
+  padding:0;
+  width:100%;
+}
+#formularioContacto textarea {
+  min-height: 150px;
+}
+
+
+#buscarForm > div:nth-of-type(5),
+#buscarForm > div:nth-of-type(6),
+#buscarForm > div:nth-of-type(7){
+  width:100% !important;
+  height:20px;
+}
+.placeholderCustom {
+  margin-right: 10px;
+}
+.placeholderCustom::after {
+  content: attr(placeholder);
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+#buscarForm .boton, .botonCancha .boton {
+  width: 100%;
+  padding:20px;
+  border:none;
+  border-radius:0;
+  color:#dce5eb;
+  font-size:1em;
+  text-transform: uppercase;
+  background:linear-gradient(to bottom, #184d99, #e90066) !important;
+  transition: ease-in 0.3s;
+}
+#buscarForm .boton:hover,  .botonCancha .boton:hover {
+  background:linear-gradient(to top, #184d99, #e90066) !important;
+  transition: ease-out 0.5s;
+}
+
+/* Estilos para los resultados */
+#buscar h3 {
+  color:#fafafa;
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.8em;
+  border-bottom:1px solid;
+  max-width: fit-content;
+  margin: 0 0 10px 0;
+}
+#buscar ul { 
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+.cancha img {
+  width:100%;
+  opacity:0.8;
+  transition:.2s ease-in;
+  box-shadow:0 0 30px rgb(0, 0, 0, 0.5),
+    inset 0 0 0 10px rgba(255, 255, 255, 1);
+}
+.cancha img:hover {
+  opacity:1;
+  box-shadow:0 0 30px rgb(0, 0, 0, 0.5),
+    inset 0 0 0 10px rgba(255, 255, 255, 1);
+  transition:.2s ease-out;
+}
+.detalles {
+  display:none;
+  transition:.2s ease-in;
+  color:#fafafa;
+}
+button.mostrarDetalles {
+  transition:.2s ease-in;
+  color:#fafafa;
+  background:none;
+  border:none;
+  margin-bottom:15px;
+}
+button.mostrarDetalles:hover {
+  margin-left:10px;
+  cursor:pointer
+}
+.botonCancha {
+  background:none !important;
+  padding:20px 0 0 0 !important;
+}
+
+/* Mensaje de no resultados */
+#no-resultados {
+  text-align: center;
+  background: #fff;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+#no-resultados p {
+  color: #111 !important;
+  font-weight: 400;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 480px) {
+  #buscar .contenedor {
+      padding: 10px;
+  }
+
+  #buscar .boton {
+      width: 100%;
+      margin-top: 10px;
+  }
+}

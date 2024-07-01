@@ -1,13 +1,11 @@
 #login {
-  min-height:100vh;
+  height:100vh;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   margin:0;
-  padding:80px 0 0 0;
   background:linear-gradient(45deg, #0c2955, #60bdd9);
-  color:#fafafa;
 }
 #login:before {
   content:"";
@@ -36,7 +34,7 @@
   background:#fafafa;
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: center;
   height:fit-content;
   gap:20px !important;
   box-shadow:0 0 20px rgba(0,0,0,0.1);
@@ -44,28 +42,21 @@
   border-radius:8px;
   border:0px solid;
 }
-#formularioLogin div:has(input):nth-child(2),
-#formularioLogin div:has(input):nth-child(3) {
+#formularioLogin div label {
+  display:none;
+}
+#formularioLogin div:has(input) {
   margin:0;
   padding:0;
   width:100%;
-}
-#formularioLogin div label {
-  color:#333;
-  display: flex;
-  flex-direction: column;
-  margin:0 auto;
-  padding:10px 0;
 }
 #formularioLogin div input {
   width:90%;
   padding:3% 5%;
 }
-/*
 #formularioLogin div input[type="checkbox" i] {
   width:5%;
 }
-*/
 #login form #recordarme {
   display:flex;
   flex-direction:row;
@@ -75,12 +66,10 @@
 #recordarme label {
   display: block !important;
   font-size: 0.8em;
-  padding:0 !important;
 }
-#formularioLogin .boton input {
+#formularioLogin .boton {
   font-size:1.2em;
   width: 100%;
-  text-transform: uppercase;
 }
 #formularioLogin .boton a, #ayudaForm, #ayudaForm a {
   color:#fafafa;
