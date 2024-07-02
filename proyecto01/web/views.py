@@ -12,10 +12,6 @@ from django.urls import reverse_lazy
 from django.views import View
 from .models import *
 from .forms import *
-from .models import Sugerencia
-from .forms import SugerenciaForm
-from .models import MensajeAgradecimiento
-
 
 # Vista del Index
 def index(request):
@@ -51,6 +47,26 @@ def contacto(request):
             messages.success(request, "El mensaje se envió correctamente")
             return redirect('contacto')
     return render(request, "contacto.html", contexto)
+
+# Vista de Sugerencia (excepciones)
+def enviar_sugerencia(request):
+    if request.method == 'POST':
+        form = SugerenciaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('gracias')
+    else:
+        form = SugerenciaForm()
+
+    return render(request, 'enviar_sugerencia.html', {'form': form})
+
+# Vista de Gracias
+def gracias(request):
+    contenido = "Mensaje de agradecimiento personalizado"
+    MensajeAgradecimiento.objects.create(contenido=contenido)
+    return render(request, 'gracias.html')
+
+
 
 ### VISTAS DE COMPRAS
 
@@ -144,10 +160,6 @@ def cancha_personalizada(request):
         'cliente_form': cliente_form,
     })
 
-# Vista de Gracias
-def gracias(request):
-    return render(request, "gracias.html")
-
 
 ### VISTAS AUTH
 
@@ -201,11 +213,6 @@ def vistaLogout(request):
     logout(request)
     messages.success(request, "El usuario cerró su sesión correctamente.")
     return redirect('index')
-
-# Vista de claveReset
-def cambiar_clave(request):
-    messages.success(request, "La clave fue reseteada correctamente.")
-    return render(request, "cambiar_clave.html")
 
 ### VISTAS DE ADMINISTRACIÓN (Vistas basadas en clases)
 
@@ -264,39 +271,3 @@ class EliminarCancha(View):
         cancha.delete()
         messages.success(request, "Cancha eliminada correctamente")
         return redirect('listar_canchas')
-
-#vista sugerencia (excepciones)
-def enviar_sugerencia(request):
-    if request.method == 'POST':
-        form = SugerenciaForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('gracias')  # Redirige a la URL con nombre 'gracias'
-    else:
-        form = SugerenciaForm()
-
-    return render(request, 'enviar_sugerencia.html', {'form': form})
-
-
-
-def gracias(request):
-    contenido = "Mensaje de agradecimiento personalizado"
-    MensajeAgradecimiento.objects.create(contenido=contenido)
-    return render(request, 'gracias.html')
-
-
-
-  
-# def enviar_sugerencia(request):
-#     if request.method == 'POST':
-#         form = SugerenciaForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('gracias')
-#     else:
-#         form = SugerenciaForm()
-
-#     return render(request, 'enviar_sugerencia.html', {'form': form})
-
-# def gracias(request):
-#     return render(request, 'gracias.html')

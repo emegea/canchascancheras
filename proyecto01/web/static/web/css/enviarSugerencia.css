@@ -1,0 +1,131 @@
+#enviarSugerencia {
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    margin:0;
+    padding:80px 0 0 0;
+    background:linear-gradient(120deg, #184d99, #e90066);
+    color:#444;
+}
+#enviarSugerencia:before {
+    content:"";
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background-image:url("../img/lineas.svg");
+    mix-blend-mode:multiply;
+    background-size:cover;
+    background-repeat:no-repeat;
+    transition:.5s ease-in;
+    background-attachment: fixed;
+}
+#enviarSugerencia .contenedor > .row {
+    gap:40px !important;
+    z-index: 9;
+  }
+#enviarSugerencia h1 {
+    color:#fafafa;
+    font-size:2em;
+    text-transform: uppercase;
+}
+#enviarSugerencia .contenedor {
+    z-index:99;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+footer {
+    width: 100%;
+}
+
+/* Formulario */
+#formulario_sugerencia {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height:fit-content;
+    gap:20px !important;
+}
+#formulario_sugerencia h2 {
+    width:100%;
+    margin:10px 0 0 0;
+    color:#dce5eb;
+}
+#formulario_sugerencia p {
+    color:#dce5eb;
+}
+#formulario_sugerencia a {
+    margin:10px 0 0 0;
+    color:#dce5eb;
+    padding:10px;
+    border-bottom:4px solid rgba(220,52,69,0);   
+    transition:.2s ease-out;
+}
+#formulario_sugerencia a:hover {
+    border-bottom:4px solid rgba(220,52,69,1);
+    margin:10px 0 0 10px;
+    transition:.2s ease-in;
+}
+#formulario_sugerencia div:has(input),
+#formulario_sugerencia div:has(select) {
+    margin:0;
+    padding:0;
+    width:100%;
+    height:40px;
+    margin:0 0 20px 0;
+}
+#formulario_sugerencia div input {
+    width: 90%;
+    padding:5%;
+}
+#formulario_sugerencia div select {
+    width:100%;
+    padding:5%;
+}
+#formulario_sugerencia div label {
+    display:none;
+}
+#formulario_sugerencia div:has(textarea) {
+    margin:0;
+    padding:0;
+    width:100%;
+}
+#formularioContacto textarea {
+    min-height: 150px;
+}
+#formulario_sugerencia .boton {
+    color:#fafafa;
+    width: 100%;
+}
+#formulario_sugerencia > div:nth-of-type(5),
+#formulario_sugerencia > div:nth-of-type(6),
+#formulario_sugerencia > div:nth-of-type(7){
+    width:100% !important;
+    height:20px;
+}
+.placeholderCustom {
+    margin-right: 10px;
+}
+.placeholderCustom::after {
+    content: attr(placeholder);
+    color: #fafafa;
+    font-size: 14px;
+    vertical-align: middle;
+}
+.select-placeholder {
+    color: #fafafa;
+}
+
+ul.column.w50 {
+    background-image:url("../img/canchasBg.webp");
+    background-repeat:no-repeat; 
+    background-size:cover;
+    background-position: center;
+    transition:.5s ease-in;
+}
+ 

@@ -1,35 +1,39 @@
-{% extends 'base.html' %}
-
-{% block titulo %}Enviar Sugerencia{% endblock %}
+{% extends "web/base.html" %}
+{% load static %}
+{% block titulo %}ENVIAR SUGERENCIA » Canchas Cancheras{% endblock %}
+{% block extra_css_js %}
+  <link rel="stylesheet" href="{% static 'web/css/enviarSugerencia.css' %}">
+{% endblock %}
 
 {% block principal %}
-<div class="container my-5">
-    <h1>Envía tu Sugerencia</h1>
-    <form method="post">
-        {% csrf_token %}
-        {% if form.errors %}
-        <div class="alert alert-danger">
-            {% for field in form %}
-                {% if field.errors %}
-                    <p>{{ field.label }}: {{ field.errors|striptags }}</p>
-                {% endif %}
-            {% endfor %}
-        </div>
-        {% endif %}
-        <br>
-        <div class="form-group">
-            {{ form.nombre.label }}
-            {{ form.nombre }}
-        </div>
-        <div class="form-group">
-            {{ form.email.label }}
-            {{ form.email }}
-        </div>
-        <div class="form-group">
-            {{ form.sugerencia.label }}
-            {{ form.sugerencia }}
-        </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
+<main id="enviarSugerencia">
+  <section class="contenedor">    
+    <h1><i class="fa-regular fa-futbol"></i> Enviá tu sugerencia</h1>
+    <div class="row">
+        <form id="formulario_sugerencia" class="w50" method="post">
+            {% csrf_token %}
+            {% if form.errors %}
+            <div class="alert alert-danger">
+                {% for field in form %}
+                    {% if field.errors %}
+                        <p>{{ field.label }}: {{ field.errors|striptags }}</p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div>
+              {{ form.nombre }}
+            </div>
+            <div>
+              {{ form.email }}
+            </div>
+            <div>
+              {{ form.sugerencia }}
+            </div>
+            <button type="submit" class="boton">» Enviar</button>
+        </form>
+        <ul class="column w50"></ul>  
+    </div>
+  </section>
 </div>
 {% endblock %}

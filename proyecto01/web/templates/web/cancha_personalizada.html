@@ -7,7 +7,7 @@
 
 {% block principal %}
 <main id="cancha_personalizada">
-  <article class="contenedor">
+  <section class="contenedor">
     <h1><i class="fa-regular fa-futbol"></i> Personalizá tu cancha</h1>
     <div class="row">
       <form id="formulario_cancha_personalizada" class="w50" method="post" action="{% url 'cancha_personalizada' %}">
@@ -20,9 +20,8 @@
         {{ venta_form }}
         <input type="submit" value="» Enviar cotización" class="boton">
       </form>
-      <ul class="column w50">
-      </ul>  
+      <ul class="column w50"></ul>  
     </div>    
-  </article>
+  </section>
 </main>
 {% endblock %}

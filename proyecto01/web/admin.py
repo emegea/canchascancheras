@@ -1,9 +1,6 @@
 from django.contrib import admin
 from .models import Cancha, Cliente, Venta, MensajeContacto, Sugerencia
 
-
-
-
 class CanchaAdmin(admin.ModelAdmin):
     list_display = ['nombre', 'longitud', 'ancho', 'tipo_suelo', 'tipo_red', 'iluminacion', 'marcador', 'gradas']
     search_fields = ['nombre', 'tipo_suelo', 'tipo_red']
@@ -30,10 +27,12 @@ class MensajeContactoAdmin(admin.ModelAdmin):
 
 class SugerenciaAdmin(admin.ModelAdmin):
     list_display = ['nombre', 'email', 'sugerencia']
-    search_fields = ['nombre', 'email', 'sugerencia']    
-
+    search_fields = ['nombre', 'email', 'sugerencia']   
+    
+    
 admin.site.register(Cancha, CanchaAdmin)
 admin.site.register(Cliente, ClienteAdmin)
 admin.site.register(Venta, VentaAdmin)
 admin.site.register(MensajeContacto, MensajeContactoAdmin)
 admin.site.register(Sugerencia, SugerenciaAdmin)
+

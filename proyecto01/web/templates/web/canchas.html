@@ -16,7 +16,7 @@
         {% for cancha in canchas %}
         <li>
           <div class="cancha" id="{{ cancha.id }}">
-            <img src="https://picsum.photos/240/150?query='{{ cancha.nombre }}'?quality=50" alt="">
+            <img src="https://loremflickr.com/240/150/football,stadium,{{ cancha.id }}" alt="">
             <h3>{{ cancha.nombre }}</h3>
             <button class="mostrarDetalles">» Ver detalles</button>
             <div class="detalles" style="display: none;">

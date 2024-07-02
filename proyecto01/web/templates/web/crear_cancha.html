@@ -14,7 +14,7 @@
         <div class="row">
             <form id="formularioCrearCancha" class="w50" method="post" action="{% url 'crear_cancha' %}">
                 {% csrf_token %}
-                <h2>Ingresá las opciones cosntrucción</h2>
+                <h2>Ingresá las opciones construcción</h2>
                 {{ form }}
                 <button type="submit" class="boton">Guardar Cancha</button>
                 <a href="{% url 'listar_canchas' %}" class="">» Volver a la lista de canchas</a>

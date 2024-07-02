@@ -1,7 +1,6 @@
 from django import forms
 from .models import *
 from django.contrib.auth.models import User
-from .models import Sugerencia
 
 #
 # Formulario de Contacto basado en Modelo MensajeContacto
@@ -203,17 +202,15 @@ class formularioRegistro(forms.ModelForm):
         if commit:
             user.save()
         return user
-# form validacion con excepciones
-
 
 class SugerenciaForm(forms.ModelForm):
     class Meta:
         model = Sugerencia
         fields = ['nombre', 'email', 'sugerencia']
         widgets = {
-            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
-            'sugerencia': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
+            'nombre': forms.TextInput(attrs={'placeholder': 'Nombre'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'Email'}),
+            'sugerencia': forms.Textarea(attrs={'placeholder': 'Escribinos tu sugerencia', 'rows': 5}),
         }
         labels = {
             'nombre': 'Nombre',
