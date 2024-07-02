@@ -78,3 +78,18 @@ class MensajeContacto(models.Model):
 
     def __str__(self):
         return f'Mensaje de {self.nombre} - {self.email}'
+
+#modelo sugerencia
+
+class Sugerencia(models.Model):
+    nombre = models.CharField(max_length=100)
+    email = models.EmailField()
+    sugerencia = models.TextField()
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.nombre
+
+class MensajeAgradecimiento(models.Model):
+    contenido = models.TextField()
+    fecha_envio = models.DateTimeField(auto_now_add=True)      

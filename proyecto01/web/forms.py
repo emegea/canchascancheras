@@ -1,6 +1,7 @@
 from django import forms
 from .models import *
 from django.contrib.auth.models import User
+from .models import Sugerencia
 
 #
 # Formulario de Contacto basado en Modelo MensajeContacto
@@ -202,3 +203,35 @@ class formularioRegistro(forms.ModelForm):
         if commit:
             user.save()
         return user
+# form validacion con excepciones
+
+
+class SugerenciaForm(forms.ModelForm):
+    class Meta:
+        model = Sugerencia
+        fields = ['nombre', 'email', 'sugerencia']
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'sugerencia': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
+        }
+        labels = {
+            'nombre': 'Nombre',
+            'email': 'Correo electrónico',
+            'sugerencia': 'Sugerencia',
+        }
+        error_messages = {
+            'nombre': {
+                'required': 'Por favor, ingresa tu nombre.',
+                'max_length': 'El nombre no puede tener más de 100 caracteres.'
+            },
+            'email': {
+                'required': 'Por favor, ingresa un correo electrónico válido.',
+                'invalid': 'Por favor, ingresa un correo electrónico válido.'
+            },
+            'sugerencia': {
+                'required': 'Por favor, ingresa tu sugerencia.'
+            }
+        }
+
+        
