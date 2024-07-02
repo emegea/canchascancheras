@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import Cancha, Cliente, Venta, MensajeContacto
+from .models import Cancha, Cliente, Venta, MensajeContacto, Sugerencia
+
+
+
 
 class CanchaAdmin(admin.ModelAdmin):
     list_display = ['nombre', 'longitud', 'ancho', 'tipo_suelo', 'tipo_red', 'iluminacion', 'marcador', 'gradas']
@@ -25,7 +28,12 @@ class MensajeContactoAdmin(admin.ModelAdmin):
     list_display = ['nombre', 'dni', 'telefono', 'email', 'mensaje', 'fecha_envio']
     search_fields = ['nombre', 'dni', 'email']
 
+class SugerenciaAdmin(admin.ModelAdmin):
+    list_display = ['nombre', 'email', 'sugerencia']
+    search_fields = ['nombre', 'email', 'sugerencia']    
+
 admin.site.register(Cancha, CanchaAdmin)
 admin.site.register(Cliente, ClienteAdmin)
 admin.site.register(Venta, VentaAdmin)
 admin.site.register(MensajeContacto, MensajeContactoAdmin)
+admin.site.register(Sugerencia, SugerenciaAdmin)

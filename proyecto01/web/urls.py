@@ -28,5 +28,8 @@ urlpatterns = [
     path('cambiar_clave_enviar/', auth_views.PasswordResetDoneView.as_view(template_name="cambiar_clave_enviar.html"), name='password_reset_done'),
     path('cambiar_clave/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="cambiar_clave_confirmar.html"), name='password_reset_confirm'),
     path('cambiar_clave_ok/', auth_views.PasswordResetCompleteView.as_view(template_name="cambiar_clave_ok.html"), name='password_reset_complete'),
+    path('sugerencias/enviar/', views.enviar_sugerencia, name='enviar_sugerencia'),
+    path('sugerencias/gracias/', views.gracias, name='gracias'),
+
 
 ]
